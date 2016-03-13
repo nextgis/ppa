@@ -1,0 +1,408 @@
+pam-pgsql (0.7.3.3-1ubuntu2) trusty; urgency=medium
+
+  * Fix libgcrypt initialise.
+
+ -- Dmitry Baryshnikov <bishop.dev@gmail.com>  Tue, 02 Feb 2016 16:59:15 +0300
+
+pam-pgsql (0.7.3.2-1) unstable; urgency=medium
+
+  * New upstream version
+  * drop debian/patches/fix-698241-null-passwort-result-permits-
+    login.patch applied upstream
+  * drop patch debian/patches/pwtype_md5_postgres_fix_757556.patch
+    applied upstream
+  * bump Standards-Version to 3.9.6 (no changes)
+  * remove autoconf generated files and add extend-diff-ignore to
+    debian/source/options
+  * debian/rules: use dh --with autotools_dev to simplify debian/rules
+
+ -- Jan Dittberner <jandd@debian.org>  Mon, 06 Oct 2014 22:51:18 +0200
+
+pam-pgsql (0.7.3.1-5) unstable; urgency=medium
+
+  * rebuild with latest libraries (Closes: #701794)
+  * apply patch for pw_type=md5_postgres by Jan Baumgarten (Closes:
+    #757556)
+  * Bump Standards-Version (no changes)
+  * use canonical Vcs-* URLs in debian/control
+  * change debian/copyright to machine readable format, update copyright
+    information
+
+ -- Jan Dittberner <jandd@debian.org>  Sat, 27 Sep 2014 22:39:42 +0200
+
+pam-pgsql (0.7.3.1-4) unstable; urgency=low
+
+  * Fix "CVE-2013-0191: NULL password query result permits login with
+    any password" by adding patch
+    debian/patches/fix-698241-null-passwort-result-permits-login.patch from
+    upstream bug tracker (Closes: #698241)
+
+ -- Jan Dittberner <jandd@debian.org>  Sat, 19 Jan 2013 18:10:09 +0100
+
+pam-pgsql (0.7.3.1-3) unstable; urgency=low
+
+  * apply hardened build flags (Closes: #656003), thanks for the patch
+    to Moritz Muehlenhoff
+  * bump Standards-Version to 3.9.3 (no changes)
+
+ -- Jan Dittberner <jandd@debian.org>  Fri, 06 Apr 2012 21:04:45 +0200
+
+pam-pgsql (0.7.3.1-2) unstable; urgency=low
+
+  * Stop shipping libtool la files in binary packages.
+    http://wiki.debian.org/ReleaseGoals/LAFileRemoval (Closes: #621850),
+    thanks to Andreas Metzler
+
+ -- Jan Dittberner <jandd@debian.org>  Sat, 09 Apr 2011 21:04:35 +0200
+
+pam-pgsql (0.7.3.1-1) unstable; urgency=low
+
+  * New upstream version
+  * remove patches debian/patches/md5_64bit_584683.patch,
+    debian/patches/md5postgres_594721.patch, debian/patches/ipaddr-
+    crash_603436.patch and debian/patches/better_logging.patch which are
+    integrated in upstream release
+  * debian/control: add libgcrypt-dev to and remove libmhash-dev from
+    Build-Depends
+
+ -- Jan Dittberner <jandd@debian.org>  Sun, 27 Mar 2011 10:47:45 +0200
+
+pam-pgsql (0.7.1-5) unstable; urgency=low
+
+  * add debian/patches/better_logging.patch to improve logging
+  * add debian/patches/ipaddr-crash_603436.patch: fix crash on long
+    addresses that trigger signedness in "%d", thanks to Kees Cook for the
+    patch (LP: #722386, Closes: 603436).
+
+ -- Jan Dittberner <jandd@debian.org>  Wed, 23 Feb 2011 10:57:01 +0100
+
+pam-pgsql (0.7.1-4) unstable; urgency=low
+
+  * update DEP-3 information in
+    debian/patches/md5postgres_594721.patch, and fix a typo
+  * add debian/NEWS to notify about the change of default pw_type
+
+ -- Jan Dittberner <jandd@debian.org>  Sat, 11 Sep 2010 21:51:41 +0200
+
+pam-pgsql (0.7.1-3) unstable; urgency=low
+
+  * add debian/patches/md5postgres_594721.patch to add support for
+    PostgreSQLs own md5 passwords (Closes: #594721)
+  * add debian/postinst to set pw_type = clear on upgrades from version
+    < 0.7.1 where no pw_type has been specified. The default password
+    type has been changed from clear to sha1 (Closes: #596375)
+
+ -- Jan Dittberner <jandd@debian.org>  Fri, 10 Sep 2010 22:35:05 +0200
+
+pam-pgsql (0.7.1-2) unstable; urgency=low
+
+  * add debian/patches/md5_64bit_584683.patch to fix MD5 issue on non-
+    Alpha 64bit systems (Closes: #584683)
+  * debian/control:
+    - bump Standards-Version to 3.9.1 (no changes needed)
+    - change debhelper dependency to 7.0.50~ to simplify backports
+  * remove unused debian/patches/ftbfs_544586.patch
+
+ -- Jan Dittberner <jandd@debian.org>  Sun, 15 Aug 2010 18:13:32 +0200
+
+pam-pgsql (0.7.1-1) unstable; urgency=low
+
+  * New upstream version
+  * disable debian/patches/ftbfs_544686.patch, upstream restructured
+    configure.ac and it does not apply anymore
+  * debian/rules:
+    - update configure call and make install call to match new upstream build
+      system
+    - remove sample.sql and CHANGELOG from installed files to let
+      dh_installchangelogs and dh_installexamples do their jobs
+  * debian/control: update Standards-Version to 3.8.4 (no changes needed)
+
+ -- Jan Dittberner <jandd@debian.org>  Fri, 02 Apr 2010 12:51:17 +0200
+
+pam-pgsql (0.7-4) unstable; urgency=low
+
+  * switch to dh7
+    - debian/compat: debhelper compatibility level 5 -> 7
+    - debian/control: update debhelper dependency to 7.0.50,
+      add ${misc:Depends} to Depends
+    - debian/rules: use dh7 features, override dh_makeshlibs to not insert
+      useless ldconfig calls
+  * switch to source format 3.0 (quilt)
+    - debian/control: remove explicit quilt dependency
+    - debian/rules: remove quilt patching and unpatching
+    - create debian/source/format with "3.0 (quilt)"
+    - remove debian/README.source
+  * add debian/docs and debian/examples for dh_installdocs
+    - add COPYRIGHT to docs
+    - add samples.sql to examples
+  * debian/copyright: link to GPL-2 instead of GPL symlink
+
+ -- Jan Dittberner <jandd@debian.org>  Sun, 06 Dec 2009 20:22:43 +0100
+
+pam-pgsql (0.7-3) unstable; urgency=low
+
+  * debian/control: add autoconf, automake and libtool to Build-Depends
+  * debian/rules: rebuild configure (Closes: #544586) thanks Kibi
+
+ -- Jan Dittberner <jandd@debian.org>  Thu, 03 Sep 2009 08:42:49 +0200
+
+pam-pgsql (0.7-2) unstable; urgency=low
+
+  * debian/control:
+    - update Standards-Version to 3.8.3 (no changes needed)
+    - change email address to new @d.o address
+  * add debian/patches/ftbfs_544586.patch (Closes: #544586) to fix FTBFS
+    on GNU/kFreeBSD thanks to Petr Salinger
+
+ -- Jan Dittberner <jandd@debian.org>  Wed, 02 Sep 2009 17:22:13 +0200
+
+pam-pgsql (0.7-1) unstable; urgency=low
+
+  * New Upstream Version
+  * debian/watch: switch to new upstream file name
+  * debian/README.source: remove notice that upstream debian directory
+    is removed because this is no longer true
+  * refresh debian/patches/ftbfs_441679.patch
+
+ -- Jan Dittberner <jan@dittberner.info>  Wed, 03 Jun 2009 22:51:07 +0200
+
+pam-pgsql (0.6.4-2) unstable; urgency=low
+
+  * release to unstable
+
+ -- Jan Dittberner <jan@dittberner.info>  Sun, 22 Feb 2009 00:55:54 +0100
+
+pam-pgsql (0.6.4-1) experimental; urgency=low
+
+  * New Upstream Version
+  * Update watch file to use new upstream naming convention
+  * add debian/README.source
+  * debian/control:
+    - update Standards-Version to 3.8.0
+    - rewrap Build-Depends
+    - New maintainer (Closes: #456679)
+    - add Vcs-Git and Vcs-Browser fields
+  * remove debian/patches/security_481970.patch because it has been
+    applied by upstream
+  * debian/patches/ftbfs_441679.patch: add header to describe patch
+  * debian/copyright: update upstream URL
+
+ -- Jan Dittberner <jan@dittberner.info>  Fri, 23 Jan 2009 23:48:08 +0100
+
+pam-pgsql (0.6.3-2) unstable; urgency=high
+
+  * High-urgency QA upload to get security fix into testing.
+  * Fix upstream security issue that granted root access when pressing Ctrl-C
+    in sudo’s authentication conversation, closes: #481970.  The problem was
+    caused by a mistake in operator precedence leading to a pam_get_pass call
+    always being considered successful; it is fixed by adding a level of
+    parentheses.
+
+ -- Michael Schutte <m.schutte.jr@gmail.com>  Sat, 24 May 2008 22:30:02 +0200
+
+pam-pgsql (0.6.3-1) unstable; urgency=low
+
+  * QA upload.
+    + Set maintainer to Debian QA Group <packages@qa.debian.org>.
+  * Acknowledge NMUs. (Closes: #441679, #355180, #423928, #429978).
+  * New upstream release. (Closes: #466873).
+    + Revert old unneeded patches.
+  * Add watch file.
+  * Add Homepage entry in source header.
+  * Use latest version of the config.{sub,guess} files.
+  * Bump debhelper build-dep and compat to 5.
+  * Bump Standards Version to 3.7.3.
+
+ -- Barry deFreese <bddebian@comcast.net>  Fri, 11 Apr 2008 21:34:22 -0400
+
+pam-pgsql (0.5.2-9.3) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix FTBFS `error: NULL undeclared', thanks to Cyril Brulebois.
+    (Closes: #441679)
+
+ -- Philipp Kern <pkern@debian.org>  Sun, 16 Sep 2007 11:48:46 +0200
+
+pam-pgsql (0.5.2-9.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Added quilt to the build system.
+  * Made `binary-indep' an empty target and introduced `build-stamp'.
+  * Fixed a memory leak. (Closes: #355180)
+  * Applied a patch to remove unnecessary escaping of the SQL queries.
+    (Closes: #423928)
+  * Do not install `test.c' as an example.
+
+ -- Philipp Kern <pkern@debian.org>  Sun, 26 Aug 2007 22:14:25 +0200
+
+pam-pgsql (0.5.2-9.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Build-Depend on libpq-dev instead of postgresql-dev. Closes: #429978
+
+ -- Andreas Barth <aba@not.so.argh.org>  Fri, 20 Jul 2007 21:14:09 +0000
+
+pam-pgsql (0.5.2-9) unstable; urgency=low
+
+  * Reapplied security patches (Closes: #230875,#307784)
+  * Boolean values works with boolean type as well (Closes: #130496)
+  * Documentation typo (Closes: #218291)
+  * Reapplied other NMU patches (Closes: #307366)
+  * Allow port specification (Closes: #247536)
+  * Reapplied "Stack-Friendly patch" (Closes: #139473)
+  * Deleted wrong README.Debian (Closes: #204181)
+  * Documented host and port options (Closes: #204439)
+  * Reapplied patch to allow different config files (Closes: #236484)
+  * Reapplied patch to support another MD5 type passwords (Closes: #142889)
+  * Change "must change password" field (if any) to false after changing password
+  * Deleted build-all from root (Closes: #240823)
+  * Fixed few memory leaks (Closes: #280774)
+  * Added timeout option for database connects (Closes: #281703)
+  * Use debian/compat instead of DH_COMPAT
+  * drop DH_COMPAT and DH_VERBOSE exports from debian/rules
+  * don't ask root for password whan changing password
+  * New Maintainer (Closes: #303198)
+  * Fixed PAM stack to behave exactly as expected with use_authtok
+  * Fixed a lot of memory leaks introduced by security patches
+  * Fixed a lot of memory leaks arround returning error early
+
+ -- Primoz Bratanic <primoz@slo-tech.com>  Sun, 8 May 2005 23:10:16 +0200
+
+pam-pgsql (0.5.2-8) unstable; urgency=low
+
+  * Orphan. Set maintainer to QA.
+
+ -- Debian QA Group <packages@qa.debian.org>  Mon, 18 Apr 2005 09:22:16 +0200
+
+pam-pgsql (0.5.2-7) unstable; urgency=high
+
+  * Fix possible format string vulnerability in logging of username.
+    Thanks to Florian Zumbiehl for pointing this out. (closes: Bug#204438)
+  * urgency=high for this reason
+
+ -- Joerg Wendland <joergland@debian.org>  Thu,  7 Aug 2003 12:47:24 +0200
+
+pam-pgsql (0.5.2-6) unstable; urgency=low
+
+  * New Maintainer. (closes: Bug#188658)
+  * Standards-Version 3.5.9.
+  * Rebuild against libpq3. (closes: Bug#179766)
+  * DH_COMPAT=4
+  * Move to main.
+  * More to come soon...
+
+ -- Joerg Wendland <joergland@debian.org>  Tue, 13 May 2003 23:38:23 +0200
+
+pam-pgsql (0.5.2-5) unstable; urgency=critical
+
+  * Reupload with urgency=critical since we really want this in woody.
+
+ -- Tollef Fog Heen <tfheen@debian.org>  Sun, 28 Apr 2002 22:26:49 +0200
+
+pam-pgsql (0.5.2-4) unstable; urgency=low
+
+  * Marking the removal of the ("pgpkeys") from my Comment field in the gpg
+    key. Since the original secret key was lost in a crash I changed the key
+    and the Commet field.
+
+  * Added a sub-dir called public_key/ which contains both the OLD public key
+    and the NEW public key. The OLD key was signed with the NEW key in order
+    to establish within the package that a key changeover had taken place.
+    Since there was no way to revoke the key publicly, all documentation
+    regarding the lost key discussion can be found in the
+    debian-devel@lists.debian.org mail list archives. NOTE: This is _not_
+    meant to _supplant_ the established Debian rules regarding keys, but
+    merely to _augment_ that policy.
+
+  * Also imported entire structure from pristine source through current
+    version into CVS. I felt it was time to start using cvs-buildpackage to
+    handle package maintenence. HEAVY thanks go out to michaelw@debian.org for
+    helping me with getting the cvs up and running and teaching me the basics
+    correctly of cvs-buildpackage. (gotta love cvs-inject *.dsc)
+
+  * Fixed typo in README for pwtype. Thanks Tobias Olsson <tobias@toface.linux-site.net>
+    and Robert Pintarelli <robert.pintarelli@wh-hms.uni-ulm.de>. Closes: #138602, #142849
+
+  * Bad code for the queries was causing the system to lock out _every_ user
+    on the box if any single account was expired. Not Good(Tm). The fix for
+    this was submitted by Robert Pintarelli <robert.pintarelli@wh-hms.uni-ulm.de>
+    Closes: #143745
+
+ -- David D.W. Downey <david-downey@codecastle.com>  Fri, 26 Apr 2002 16:54:52 -0700
+
+pam-pgsql (0.5.2-3) unstable; urgency=low
+
+  * Just a rebuild against the current libpgsql. Hopefully this fixes any
+    problems with libpgsql2 version differences.
+
+ -- David D.W. Downey ("pgpkeys") <ddowney@codecastle.com>  Fri,  8 Mar 2002 18:13:57 -0800
+
+pam-pgsql (0.5.2-2) unstable; urgency=low
+
+  * Added escaped special char check and rewrite to handle bug #130114
+    Patch submitted by Joerg Wendland <joergland@debian.org>
+    Closes: #130114
+  * Added additional `\0` sanity check in while loop. Submitted by a friend
+    who wishes to remain anonymous due to legal contraints from his employer.
+
+ -- David D.W. Downey ("pgpkeys") <david-downey@codecastle.com>  Mon, 21 Jan 2002 01:41:36 -0800
+
+pam-pgsql (0.5.2-1) unstable; urgency=low
+
+  * New maintainer: David D.W. Downey ("pgpkeys") <david-downey@codecastle.com> Closes: #128400
+  * New upstream version (new upstream maintainer - me as well =)
+  * Not a debian native package any more
+  * New upstream source location is http://libpam-pgsql.codecastle.com
+
+ -- David D.W. Downey ("pgpkeys") <david-downey@codecastle.com>  Mon, 14 Jan 2002 09:37:28 -0800
+
+pam-pgsql (0.5.1) unstable; urgency=low
+
+  * Add libmhash-dev to Build-Depends. Closes: #94520
+
+ -- Leon Breedt <ljb@debian.org>  Thu, 19 Apr 2001 19:09:50 +0200
+
+pam-pgsql (0.5) unstable; urgency=low
+
+  * Always log error conditions to syslog.
+  * Fix typo in README, update CREDITS, and also taking this opportunity
+    to close wishlist bug fixed in 0.4 already. Closes: #76644
+
+ -- Leon Breedt <ljb@debian.org>  Wed, 18 Apr 2001 22:39:58 +0200
+
+pam-pgsql (0.4) unstable; urgency=low
+
+  * added MD5 and crypt() password support (introduces dependency on mhash)
+  * slightly more informative logging when 'debug' option is enabled
+
+ -- Leon Breedt <ljb@debian.org>  Tue, 17 Apr 2001 23:08:46 +0200
+
+pam-pgsql (0.3.1) unstable; urgency=low
+
+  * Non-maintainer upload, suggested by the maintainer, to recompile with
+    libpgsql2.1, because libpgsql2 was removed. As exception from the rule
+    the concerning bug is herewith closed because I am also its submitter;
+    closes: #86528 
+
+ -- Dr. Guenter Bechly <gbechly@debian.org>  Tue, 20 Feb 2001 22:03:20 +0100
+
+pam-pgsql (0.3) unstable; urgency=low
+
+  * Add Build-Depends for m68k build daemon
+
+ -- Leon Breedt <ljb@debian.org>  Wed,  2 Aug 2000 13:05:23 +0200
+
+pam-pgsql (0.2) unstable; urgency=low
+
+  * Initial autoconf support
+  * Include test.c in the examples
+  * Support for the FreeBSD platform
+
+ -- Leon Breedt <ljb@debian.org>  Tue, 04 Jul 2000 17:17:07 +0200
+
+pam-pgsql (0.1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Leon Breedt <ljb@debian.org>  Sat, 24 Jun 2000 21:20:40 +0200
+

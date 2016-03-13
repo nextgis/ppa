@@ -1,0 +1,1 @@
+extend-diff-ignore = "(^|/)((config(ure|\.guess|\.sub)|Makefile(|\.in)|aclocal\.m4|ltmain\.sh|m4/libtool\.m4|missing)$|autom4te\.cache)"

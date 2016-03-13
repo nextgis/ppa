@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+# -- Rules to build libpam-pgsql package
+
+## globals
+PACKAGE=    libpam-pgsql
+DESTDIR=    $(CURDIR)/debian/${PACKAGE}
+
+override_dh_auto_configure:
+	autoreconf -vfi
+	# Build the module
+	./configure $(shell dpkg-buildflags --export=configure) --docdir=/usr/share/doc/libpam-pgsql --libdir=/lib \
+	 --enable-shared
+
+override_dh_auto_install:
+	# Install it
+	$(MAKE) DESTDIR=${DESTDIR} install
+	rm -f ${DESTDIR}/usr/share/doc/libpam-pgsql/CHANGELOG \
+	 ${DESTDIR}/usr/share/doc/libpam-pgsql/sample.sql \
+	 ${DESTDIR}/lib/security/pam_pgsql.la
+
+override_dh_makeshlibs:
+	dh_makeshlibs --noscripts
+
+%:
+	dh $@ --with autotools_dev

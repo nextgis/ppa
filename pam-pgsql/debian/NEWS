@@ -1,0 +1,18 @@
+bpam_pgsql (0.7.3.3) trusty; urgency=medium
+
+ Fix libgcrypt initialise.
+
+ -- Dmitry Baryshnikov <bishop.dev@gmail.com>  Tue, 02 Feb 2016 16:19:11 +0300
+
+pam-pgsql (0.7.1-4) unstable; urgency=low
+
+  The default setting for pw_type has been changed from clear to sha1. This
+  change will break setups that previously used pam-pgsql < 0.7.1 where no
+  pw_type has been specified and another configuration file then
+  /etc/pam_pgsql.conf is used. The postinst script will set pw_type = clear
+  explicitly if you are upgrading from a version less than 0.7.1 and your
+  system's setup uses /etc/pam_pgsql.conf.  You are encouraged to change your
+  setup to use a more secure mechanism (i.e. sha1) and to change your database
+  accordingly though.
+
+ -- Jan Dittberner <jandd@debian.org>  Sat, 11 Sep 2010 21:28:22 +0200

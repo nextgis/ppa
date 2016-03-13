@@ -1,0 +1,18 @@
+Source: pam-pgsql
+Section: admin
+Priority: extra
+Maintainer: Jan Dittberner <jandd@debian.org>
+Standards-Version: 3.9.6
+Build-Depends: debhelper (>= 7.0.50~), autotools-dev, libpam0g-dev,
+ libpq-dev, autoconf, automake, libtool, libgcrypt-dev
+Homepage: http://sourceforge.net/projects/pam-pgsql/
+Vcs-Git: git://anonscm.debian.org/collab-maint/pam-pgsql.git
+Vcs-Browser: http://anonscm.debian.org/cgit/collab-maint/pam-pgsql.git
+
+Package: libpam-pgsql
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: PAM module to authenticate using a PostgreSQL database
+ This module lets you authenticate users against a table in a PostgreSQL
+ database. It also supports checking account information and updating 
+ authentication tokens (ie. passwords).
