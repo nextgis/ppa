@@ -4,7 +4,9 @@ XSBC-Original-Maintainer: Debian GIS Project <pkg-grass-devel@lists.alioth.debia
 Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
 Section: science
 Priority: optional
-Build-Depends: debhelper (>= 9),
+Build-Depends: debhelper (>= 9), 
+               cmake, 
+               cdbs,
                dh-autoreconf,
                zlib1g-dev,
                libjpeg-dev,
