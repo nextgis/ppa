@@ -35,5 +35,6 @@ DEB_CMAKE_EXTRA_FLAGS := -DBUILD_SHARED_LIBS=ON \
                          -DWITH_LibLZMA=ON \
                          -DPACKAGE_VENDOR=NextGIS \
                          -DPACKAGE_INSTALL_DIRECTORY=nextgis \
-                         -DCMAKE_BUILD_TYPE=release \
-                         -DWITH_PYTHON=ON
+                         -DCMAKE_BUILD_TYPE=release
+                         # \
+                         #-DWITH_PYTHON=ON
