@@ -22,7 +22,11 @@ usr/share/man/man1/gdaladdo.1
 usr/share/man/man1/gdalmanage.1
 usr/share/man/man1/gdalmove.1
 usr/share/man/man1/gdalwarp.1
-usr/share/man/man1/gdal_*.1
+usr/share/man/man1/gdal_contour.1
+usr/share/man/man1/gdal_grid.1
+usr/share/man/man1/gdal_rasterize.1
+usr/share/man/man1/gdal_translate.1
+usr/share/man/man1/gdal_utilities.1
 usr/share/man/man1/ogr*.1
 usr/share/man/man1/gnm*.1
 usr/share/man/man1/pct2rgb.1

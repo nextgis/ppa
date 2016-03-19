@@ -36,6 +36,5 @@ DEB_CMAKE_EXTRA_FLAGS := -DBUILD_SHARED_LIBS=ON \
                          -DPACKAGE_VENDOR=NextGIS \
                          -DPACKAGE_INSTALL_DIRECTORY=nextgis \
                          -DCMAKE_BUILD_TYPE=release \
-                         -DGDAL_INSTALL_DATA_IN_VERSION_DIR=ON
-                         # \
-                         #-DWITH_PYTHON=ON
+                         -DGDAL_INSTALL_DATA_IN_VERSION_DIR=ON \
+                         -DWITH_PYTHON=ON
