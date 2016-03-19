@@ -16,7 +16,6 @@ usr/bin/gdal_rasterize
 usr/bin/gdal_translate
 usr/bin/nearblack
 usr/bin/ogr*
-usr/bin/gnm*
 usr/bin/testepsg
 usr/share/man/man1/gdaladdo.1
 usr/share/man/man1/gdalbuildvrt.1
