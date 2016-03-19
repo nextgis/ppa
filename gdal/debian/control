@@ -223,14 +223,14 @@ Description: Python 3 bindings to the Geospatial Data Abstraction Library
  library (which lives within the GDAL source tree) provides
  a similar capability for simple features vector data.
  .
- GDAL supports 40+ popular data formats, including commonly used
+ GDAL supports 140+ popular data formats, including commonly used
  ones (GeoTIFF, JPEG, PNG and more) as well as the ones used in
  GIS and remote sensing software packages (ERDAS Imagine,
  ESRI Arc/Info, ENVI, PCI Geomatics). Also supported many remote
  sensing and scientific data distribution formats such as HDF,
  EOS FAST, NOAA L1B, NetCDF, FITS.
  .
- OGR library supports popular vector formats like ESRI Shapefile,
+ OGR library supports 80+ popular vector formats like ESRI Shapefile,
  TIGER data, S57, MapInfo File, DGN, GML and more.
  .
  This package contains Python 3 bindings for GDAL/OGR library and
