@@ -10,7 +10,10 @@ usr/bin/gdalsrsinfo
 usr/bin/gdaltindex
 usr/bin/gdaltransform
 usr/bin/gdalwarp
-usr/bin/gdal_*
+usr/bin/gdal_contour
+usr/bin/gdal_grid
+usr/bin/gdal_rasterize
+usr/bin/gdal_translate
 usr/bin/nearblack
 usr/bin/ogr*
 usr/bin/testepsg
