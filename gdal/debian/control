@@ -1,6 +1,5 @@
 Source: gdal
 Maintainer: NextGIS <info@nextgis.com>
-XSBC-Original-Maintainer: Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>
 Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
 Section: science
 Priority: optional
@@ -29,8 +28,8 @@ Build-Depends: debhelper (>= 9),
                libjson-c-dev
 Build-Conflicts: python-setuptools
 Standards-Version: 3.9.5
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-grass/gdal.git
-Vcs-Git: git://anonscm.debian.org/pkg-grass/gdal.git
+Vcs-Browser: https://github.com/nextgis-extra/lib_gdal
+Vcs-Git: git@github.com:nextgis-extra/lib_gdal.git
 Homepage: http://www.gdal.org/
 X-Python3-Version: >= 3.2
 
@@ -102,8 +101,8 @@ Depends: libgdal2 (= ${binary:Version}),
          libjson-c-dev,
          ${misc:Depends}
 Suggests: libgdal-doc
-Breaks: libgdal2-dev (<< 1.11.0-0~)
-Replaces: libgdal1-dev (<< 1.11.0-0~)
+Breaks: libgdal2-dev (<< 2.0.0-0~)
+Replaces: libgdal1-dev (<< 1.11.3-0~)
 Description: Geospatial Data Abstraction Library - Development files
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
@@ -154,7 +153,7 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends}
 Suggests: python-gdal
-Breaks: gdal-bin (<< 1.11.0-0~)
+Breaks: gdal-bin (<< 2.0.0-0~)
 Description: Geospatial Data Abstraction Library - Utility programs
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
