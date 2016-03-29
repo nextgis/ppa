@@ -26,7 +26,7 @@ include /usr/share/cdbs/1/class/cmake.mk
 DEB_CMAKE_EXTRA_FLAGS := -DBUILD_SHARED_LIBS=ON \
                          -DWITH_EXPAT=ON -DWITH_GeoTIFF=ON \
                          -DWITH_ICONV=ON -DWITH_JSONC=ON \
-                         -DWITH_LibXml2=ON \
+                         -DWITH_LibXml2=ON -DWITH_GEOS=ON \
                          -DWITH_PROJ4=ON \
                          -DWITH_TIFF=ON \
                          -DWITH_ZLIB=ON \
