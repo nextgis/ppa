@@ -3,9 +3,12 @@ Maintainer: NextGIS <info@nextgis.com>
 Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
 Section: science
 Priority: optional
-Build-Depends: debhelper (>= 9),
+Build-Depends: debhelper (>= 9), 
+               cmake, 
+               cdbs,
                doxygen,
                swig,
+               d-shlibs,
                dh-autoreconf
 Standards-Version: 3.9.5
 Vcs-Browser: https://github.com/nextgis-extra/lib_geos
