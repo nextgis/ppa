@@ -52,6 +52,8 @@ Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
          ${misc:Depends}
+Replaces: libgeos-c1v5 (<< 3.5.0-0~)
+Breaks: libgeos-c1v5 (<< 3.5.0-0~)
 Description: Geometry engine for Geographic Information Systems - C Library
  GEOS provides a spatial object model and fundamental geometric
  functions. It implements the geometry model defined in the
