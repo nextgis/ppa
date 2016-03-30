@@ -47,13 +47,13 @@ Description: Geometry engine for GIS - C++ development files
  programs should use the stable C API instead of the 
  unstable C++ one.
 
-Package: libgeos-c1
+Package: libgeos-c1v5
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
          ${misc:Depends}
-Replaces: libgeos-c1v5 (<< 3.5.0-0~)
-Breaks: libgeos-c1v5 (<< 3.5.0-0~)
+Breaks: libgeos-c1 (<< 3.4.2-8~)
+Replaces: libgeos-c1 (<< 3.4.2-8~)
 Description: Geometry engine for Geographic Information Systems - C Library
  GEOS provides a spatial object model and fundamental geometric
  functions. It implements the geometry model defined in the
