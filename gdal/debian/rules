@@ -21,7 +21,7 @@ include /usr/share/cdbs/1/class/cmake.mk
 #	dh $@ --buildsystem cmake
 
 #override_dh_auto_configure:
-#	dh_auto_configure -- -DBUILD_SHARED_LIBS=ON -DWITH_EXPAT=ON -DWITH_GeoTIFF=ON -DWITH_ICONV=ON -DWITH_JSONC=ON -DWITH_LibXml2=ON -DWITH_PROJ4=ON -DWITH_TIFF=ON -DWITH_ZLIB=ON -DWITH_JBIG=ON -DWITH_JPEG=ON -DWITH_LibLZMA=ON -DPACKAGE_VENDOR=NextGIS -DPACKAGE_INSTALL_DIRECTORY=nextgis -DCMAKE_BUILD_TYPE=release -DWITH_PYTHON=ON
+#	dh_auto_configure -- -DBUILD_SHARED_LIBS=ON -DWITH_EXPAT=ON -DWITH_GeoTIFF=ON -DWITH_ICONV=ON -DWITH_JSONC=ON -DWITH_LibXml2=ON -DWITH_PROJ4=ON -DWITH_TIFF=ON -DWITH_ZLIB=ON -DWITH_JBIG=ON -DWITH_JPEG=ON -DWITH_LibLZMA=ON -DPACKAGE_VENDOR=NextGIS -DPACKAGE_INSTALL_DIRECTORY=nextgis -DCMAKE_BUILD_TYPE=release -DWITH_PYTHON=ON -DWITH_SQLite3=ON
 
 DEB_CMAKE_EXTRA_FLAGS := -DBUILD_SHARED_LIBS=ON \
                          -DWITH_EXPAT=ON -DWITH_GeoTIFF=ON \
@@ -37,4 +37,5 @@ DEB_CMAKE_EXTRA_FLAGS := -DBUILD_SHARED_LIBS=ON \
                          -DCMAKE_BUILD_TYPE=release \
                          -DGDAL_INSTALL_DATA_IN_VERSION_DIR=ON \
                          -DWITH_PYTHON=ON \
-                         -DPYTHON_DESTDIR=$(CURDIR)/debian/tmp
+                         -DPYTHON_DESTDIR=$(CURDIR)/debian/tmp \
+                         -DWITH_SQLite3=ON
