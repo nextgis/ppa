@@ -25,7 +25,8 @@ Build-Depends: debhelper (>= 9),
                libarmadillo-dev,
                libtiff5-dev,
                libgeotiff-dev,
-               libjson-c-dev
+               libjson-c-dev,
+               libsqlite3-dev
 Build-Conflicts: python-setuptools
 Standards-Version: 3.9.5
 Vcs-Browser: https://github.com/nextgis-extra/lib_gdal
@@ -99,6 +100,7 @@ Depends: libgdal2 (= ${binary:Version}),
          libcurl4-gnutls-dev | libcurl-ssl-dev,
          libgeotiff-dev,
          libjson-c-dev,
+         libsqlite3-dev,
          ${misc:Depends}
 Suggests: libgdal-doc
 Breaks: libgdal2-dev (<< 2.0.0-0~)
