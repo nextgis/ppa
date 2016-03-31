@@ -18,7 +18,7 @@ Homepage: http://trac.osgeo.org/geos/
 Package: libgeos-dev
 Architecture: any
 Section: libdevel
-Depends: libgeos-c1 (= ${binary:Version}),
+Depends: libgeos-c1v5 (= ${binary:Version}),
          ${misc:Depends}
 Suggests: libgeos-doc
 Description: Geometry engine for GIS - Development files
