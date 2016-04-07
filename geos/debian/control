@@ -47,6 +47,14 @@ Description: Geometry engine for GIS - C++ development files
  programs should use the stable C API instead of the 
  unstable C++ one.
 
+Package: libgeos-c1
+Depends: libgeos-c1v5, ${misc:Depends}
+Architecture: all
+Priority: extra
+Section: oldlibs
+Description: transitional dummy libgeos-c package
+ This is a transitional dummy libgeos-c package. It can safely be removed.
+
 Package: libgeos-c1v5
 Architecture: any
 Section: libs
