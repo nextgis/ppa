@@ -71,13 +71,13 @@ Recommends: proj-bin
 Breaks: libgdal1 (<= 1.10.0-0~),
         libgdal1-1.6.0 (<= 1.10.0-0~),
         libgdal1h (<< 1.11.2+dfsg-1~exp4),
-        libgdal1i (<< 1.11.4~),
-        libgdal2 (<= 2.0.3~)
+        libgdal1i (<= 1.11.3),
+        libgdal2 (<= 2.0.3)
 Replaces: libgdal1 (<= 1.10.0-0~),
           libgdal1-1.6.0 (<= 1.10.0-0~),
           libgdal1h (<< 1.11.2+dfsg-1~exp4),
-          libgdal1i (<< 1.11.4~),
-          libgdal2 (<= 2.0.3~)
+          libgdal1i (<= 1.11.3),
+          libgdal2 (<= 2.0.3)
 Provides: libgdal.so.1-1.11.2,
           libgdal.so.1-1.11.3,
           libgdal.so.1-1.11.4,
@@ -109,10 +109,10 @@ Architecture: all
 Section: libdevel
 Depends: libgdal-dev,
          ${misc:Depends}
-Breaks: libgdal1-dev (<< 1.11.4~),
-        libgdal2-dev (<< 2.0.3~)
-Replaces: libgdal1-dev (<< 1.11.4~),
-          libgdal2-dev (<< 2.0.3~)
+Breaks: libgdal1-dev (<= 1.11.3),
+        libgdal2-dev (<= 2.0.3)
+Replaces: libgdal1-dev (<= 1.11.3),
+          libgdal2-dev (<= 2.0.3)
 Description: Geospatial Data Abstraction Library - Transitional package
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
@@ -148,10 +148,10 @@ Depends: libgdal2 (= ${binary:Version}),
          libsqlite3-dev,
          ${misc:Depends}
 Suggests: libgdal-doc
-Breaks: libgdal1-dev (<< 1.11.4~),
-        libgdal2-dev (<< 2.0.3~)
-Replaces: libgdal1-dev (<< 1.11.4~),
-          libgdal2-dev (<< 2.0.3~)
+Breaks: libgdal1-dev (<= 1.11.3),
+        libgdal2-dev (<= 2.0.3)
+Replaces: libgdal1-dev (<= 1.11.3),
+          libgdal2-dev (<= 2.0.3)
 Description: Geospatial Data Abstraction Library - Development files
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
@@ -202,7 +202,7 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends}
 Suggests: python-gdal
-Breaks: gdal-bin (<< 2.0.3~)
+Breaks: gdal-bin (<= 2.0.3)
 Description: Geospatial Data Abstraction Library - Utility programs
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
