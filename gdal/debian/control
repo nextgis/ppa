@@ -29,7 +29,7 @@ Build-Depends: debhelper (>= 9),
                libjson-c-dev,
                libsqlite3-dev,
                libpcre3-dev,
-               libspatialite-dev (>= 4.3.0-3~)
+               libspatialite-dev
 Build-Conflicts: python-setuptools
 Standards-Version: 3.9.5
 Vcs-Browser: https://github.com/nextgis-extra/lib_gdal
