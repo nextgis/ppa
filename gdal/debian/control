@@ -8,6 +8,7 @@ Build-Depends: debhelper (>= 9),
                cdbs,
                dh-autoreconf,
                zlib1g-dev,
+               libpng-dev,
                libjpeg-dev,
                doxygen,
                d-shlibs,
@@ -26,7 +27,9 @@ Build-Depends: debhelper (>= 9),
                libtiff5-dev,
                libgeotiff-dev,
                libjson-c-dev,
-               libsqlite3-dev
+               libsqlite3-dev,
+               libpcre3-dev,
+               libspatialite-dev (>= 4.3.0-3~)
 Build-Conflicts: python-setuptools
 Standards-Version: 3.9.5
 Vcs-Browser: https://github.com/nextgis-extra/lib_gdal
@@ -139,6 +142,7 @@ Architecture: any
 Section: libdevel
 Depends: libgdal2 (= ${binary:Version}),
          libc6-dev,
+         libpng-dev,
          libjpeg-dev,
          libgeos-dev,
          libtiff5-dev,
@@ -146,6 +150,7 @@ Depends: libgdal2 (= ${binary:Version}),
          libgeotiff-dev,
          libjson-c-dev,
          libsqlite3-dev,
+         libspatialite-dev,
          ${misc:Depends}
 Suggests: libgdal-doc
 Breaks: libgdal1-dev (<= 1.11.3),
