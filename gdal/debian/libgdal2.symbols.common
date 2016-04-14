@@ -607,6 +607,7 @@
  GDALRegister_DOQ2@GDAL_1.8 1.8.0
  GDALRegister_DTED@GDAL_1.8 1.8.0
  GDALRegister_E00GRID@GDAL_1.8 1.9.0
+ GDALRegister_ECRGTOC@GDAL_1.8 1.9.0
  GDALRegister_EHdr@GDAL_1.8 1.8.0
  GDALRegister_EIR@GDAL_1.8 1.8.0
  GDALRegister_ELAS@GDAL_1.8 1.8.0
@@ -653,6 +654,7 @@
  GDALRegister_MSGN@GDAL_1.8 1.8.0
  GDALRegister_NDF@GDAL_1.8 1.8.0
  GDALRegister_NGSGEOID@GDAL_1.8 1.9.0
+ GDALRegister_NITF@GDAL_1.8 1.8.0
  GDALRegister_NTv2@GDAL_1.8 1.8.0
  GDALRegister_NWT_GRC@GDAL_1.8 1.8.0
  GDALRegister_NWT_GRD@GDAL_1.8 1.8.0
@@ -664,6 +666,7 @@
  GDALRegister_R@GDAL_1.8 1.8.0
  GDALRegister_RIK@GDAL_1.8 1.8.0
  GDALRegister_RMF@GDAL_1.8 1.8.0
+ GDALRegister_RPFTOC@GDAL_1.8 1.8.0
  GDALRegister_RS2@GDAL_1.8 1.8.0
  GDALRegister_SAGA@GDAL_1.8 1.8.0
  GDALRegister_SAR_CEOS@GDAL_1.8 1.8.0
@@ -788,11 +791,41 @@
  HFAWriteXFormStack@GDAL_1.8 1.8.0
  LibgeotiffOneTimeInit@GDAL_1.8 1.10.1
  MEMCreateRasterBand@GDAL_1.8 1.8.0
+ NITFClose@GDAL_1.8 1.8.0
+ NITFCollectAttachments@GDAL_1.8 1.8.0
+ NITFCreate@GDAL_1.8 1.8.0
+ NITFDESAccess@GDAL_1.8 1.8.0
+ NITFDESDeaccess@GDAL_1.8 1.8.0
+ NITFDESExtractShapefile@GDAL_1.8 1.8.0
+ NITFDESFreeTREData@GDAL_1.8 1.8.0
+ NITFDESGetTRE@GDAL_1.8 1.8.0
+ NITFFindTRE@GDAL_1.8 1.8.0
+ NITFFindTREByIndex@GDAL_1.8 1.8.0
+ NITFGetSeriesInfo@GDAL_1.8 1.8.0
+ NITFIHFieldOffset@GDAL_1.8 1.8.0
+ NITFImageAccess@GDAL_1.8 1.8.0
+ NITFImageDeaccess@GDAL_1.8 1.8.0
+ NITFOpen@GDAL_1.8 1.8.0
+ NITFRPCGeoToImage@GDAL_1.8 1.8.0
+ NITFReadBLOCKA@GDAL_1.8 1.8.0
+ NITFReadCSEXRA@GDAL_1.8 1.9.0
+ NITFReadICHIPB@GDAL_1.8 1.8.0
+ NITFReadImageBlock@GDAL_1.8 1.8.0
+ NITFReadImageLine@GDAL_1.8 1.8.0
+ NITFReadPIAIMC@GDAL_1.8 1.9.0
+ NITFReadRPC00B@GDAL_1.8 1.8.0
+ NITFReadSTDIDC@GDAL_1.8 1.8.0
+ NITFReadUSE00A@GDAL_1.8 1.8.0
+ NITFReconcileAttachments@GDAL_1.8 1.8.0
+ NITFWriteIGEOLO@GDAL_1.8 1.8.0
+ NITFWriteImageBlock@GDAL_1.8 1.8.0
+ NITFWriteImageLine@GDAL_1.8 1.8.0
+ NITFWriteLUT@GDAL_1.8 1.8.0
+ NITF_WGS84_Geocentric_Latitude_To_Geodetic_Latitude@GDAL_1.8 1.8.0
  OCTDestroyCoordinateTransformation@GDAL_1.8 1.8.0
  OCTNewCoordinateTransformation@GDAL_1.8 1.8.0
  OCTTransform@GDAL_1.8 1.8.0
  OCTTransformEx@GDAL_1.8 1.8.0
- OGR2SQLITE_static_register@GDAL_1.8 1.10.1
  OGRBuildPolygonFromEdges@GDAL_1.8 1.8.0
  OGRCalloc@GDAL_1.8 1.8.0
  OGRCleanupAll@GDAL_1.8 1.8.0
@@ -1256,6 +1289,9 @@
  RECGetFieldDefinition@GDAL_1.8 1.8.0
  RECReadRecord@GDAL_1.8 1.8.0
  RPCInfoToMD@GDAL_1.8 1.10.1
+ RPFTOCFree@GDAL_1.8 1.8.0
+ RPFTOCRead@GDAL_1.8 1.8.0
+ RPFTOCReadFromBuffer@GDAL_1.8 1.8.0
  RegisterOGRARCGEN@GDAL_1.8 1.9.0
  RegisterOGRAVCBin@GDAL_1.8 1.8.0
  RegisterOGRAVCE00@GDAL_1.8 1.8.0
@@ -1275,7 +1311,6 @@
  RegisterOGRGPX@GDAL_1.8 1.8.0
  RegisterOGRGTM@GDAL_1.8 1.8.0
  RegisterOGRGeoJSON@GDAL_1.8 1.8.0
- RegisterOGRGeoPackage@GDAL_1.8 1.11.0
  RegisterOGRGeoRSS@GDAL_1.8 1.8.0
  RegisterOGRGeoconcept@GDAL_1.8 1.8.0
  RegisterOGRHTF@GDAL_1.8 1.8.0
@@ -1284,7 +1319,6 @@
  RegisterOGRMEM@GDAL_1.8 1.8.0
  RegisterOGRNTF@GDAL_1.8 1.8.0
  RegisterOGRODS@GDAL_1.8 1.10.1
- RegisterOGROSM@GDAL_1.8 1.10.1
  RegisterOGROpenAir@GDAL_1.8 1.8.0
  RegisterOGROpenFileGDB@GDAL_1.8 1.11.0
  RegisterOGRPDS@GDAL_1.8 1.8.0
@@ -1294,14 +1328,12 @@
  RegisterOGRSDTS@GDAL_1.8 1.8.0
  RegisterOGRSEGUKOOA@GDAL_1.8 1.9.0
  RegisterOGRSEGY@GDAL_1.8 1.9.0
- RegisterOGRSQLite@GDAL_1.8 1.8.0
  RegisterOGRSUA@GDAL_1.8 1.8.0
  RegisterOGRSVG@GDAL_1.8 1.9.0
  RegisterOGRSXF@GDAL_1.8 1.11.0
  RegisterOGRShape@GDAL_1.8 1.8.0
  RegisterOGRTAB@GDAL_1.8 1.8.0
  RegisterOGRTiger@GDAL_1.8 1.8.0
- RegisterOGRVFK@GDAL_1.8 1.8.0
  RegisterOGRVRT@GDAL_1.8 1.8.0
  RegisterOGRWAsP@GDAL_1.8 1.11.0
  RegisterOGRWFS@GDAL_1.8 1.8.0
@@ -1409,4 +1441,3 @@
  VSITime@GDAL_1.8 1.8.0
  VSIUngetc@GDAL_1.8 1.8.0
  VSIUnlink@GDAL_1.8 1.8.0
- sqlite3_extension_init@GDAL_1.8 1.10.1
