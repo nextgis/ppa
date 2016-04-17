@@ -40,4 +40,5 @@ DEB_CMAKE_EXTRA_FLAGS := -DBUILD_SHARED_LIBS=ON \
                          -DPYTHON_DESTDIR=$(CURDIR)/debian/tmp \
                          -DWITH_SQLite3=ON \
                          -DWITH_CURL=ON \
-                         -DWITH_PNG=ON
+                         -DWITH_PNG=ON \
+                         -DENABLE_OZI=ON
