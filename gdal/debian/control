@@ -30,7 +30,8 @@ Build-Depends: debhelper (>= 9),
                libsqlite3-dev,
                libpcre3-dev,
                libspatialite-dev,
-               libpq-dev
+               libpq-dev,
+               postgresql-server-dev-all
 Build-Conflicts: python-setuptools
 Standards-Version: 3.9.5
 Vcs-Browser: https://github.com/nextgis-extra/lib_gdal
@@ -152,7 +153,8 @@ Depends: libgdal2 (= ${binary:Version}),
          libjson-c-dev,
          libsqlite3-dev,
          libspatialite-dev,
-         libpq-dev
+         libpq-dev,
+         postgresql-server-dev-all
          ${misc:Depends}
 Suggests: libgdal-doc
 Breaks: libgdal1-dev (<= 1.11.3),
