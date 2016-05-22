@@ -41,6 +41,7 @@ DEB_CMAKE_EXTRA_FLAGS := -DBUILD_SHARED_LIBS=ON \
                          -DWITH_SQLite3=ON \
                          -DWITH_CURL=ON \
                          -DWITH_PNG=ON \
+                         -DENABLE_JPEG=ON \
                          -DENABLE_OZI=ON \
                          -DENABLE_NITF_RPFTOC_ECRGTOC=ON \
                          -DWITH_PostgreSQL=ON
