@@ -46,4 +46,5 @@ DEB_CMAKE_EXTRA_FLAGS := -DBUILD_SHARED_LIBS=ON \
                          -DENABLE_NITF_RPFTOC_ECRGTOC=ON \
                          -DENABLE_PG=ON \
                          -DENABLE_POSTGISRASTER=ON \
-                         -DWITH_PostgreSQL=ON
+                         -DWITH_PostgreSQL=ON \
+                         -DWITH_HDF4=ON 
