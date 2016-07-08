@@ -30,7 +30,6 @@ Package: formbuilder
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends}
-Breaks: libgdal-dev (< 2.1.0)
 Description: Forms editor for NextGIS Mobile
  NextGIS Formbuilder is a desktop application for creating and editing 
  forms. Forms can be loaded into NextGIS Mobile to be rendered on the 
