@@ -1,0 +1,52 @@
+#!/usr/bin/make -f
+# смотрите debhelper(7) (раскомментируйте для включения)
+# вывод каждой команды, которая изменяет файлы в системе сборки
+DH_VERBOSE = 1
+
+# смотрите ПРИМЕРЫ в dpkg-buildflags(1) и прочтите /usr/share/dpkg/*
+#DPKG_EXPORT_BUILDFLAGS = 1
+#include /usr/share/dpkg/default.mk
+
+# смотрите FEATURE AREAS в dpkg-buildflags(1)
+#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# This has to be exported to make some magic below work.
+#export DH_OPTIONS
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+
+# главный сценарий упаковки на основе синтаксиса dh7
+#%:
+#	dh $@ --buildsystem cmake
+
+#override_dh_auto_configure:
+#	dh_auto_configure -- -DBUILD_SHARED_LIBS=ON -DWITH_EXPAT=ON -DWITH_GeoTIFF=ON -DWITH_ICONV=ON -DWITH_JSONC=ON -DWITH_LibXml2=ON -DWITH_PROJ4=ON -DWITH_TIFF=ON -DWITH_ZLIB=ON -DWITH_JBIG=ON -DWITH_JPEG=ON -DWITH_LibLZMA=ON -DPACKAGE_VENDOR=NextGIS -DPACKAGE_INSTALL_DIRECTORY=nextgis -DCMAKE_BUILD_TYPE=release -DWITH_PYTHON=ON -DWITH_SQLite3=ON
+
+DEB_CMAKE_EXTRA_FLAGS := -DBUILD_SHARED_LIBS=ON \
+                         -DWITH_EXPAT=ON -DWITH_GeoTIFF=ON \
+                         -DWITH_ICONV=ON -DWITH_JSONC=ON \
+                         -DWITH_LibXml2=ON -DWITH_GEOS=ON \
+                         -DWITH_PROJ4=ON \
+                         -DWITH_TIFF=ON \
+                         -DWITH_ZLIB=ON \
+                         -DWITH_JBIG=ON \
+                         -DWITH_JPEG=ON \
+                         -DWITH_LibLZMA=ON \
+                         -DPACKAGE_VENDOR=NextGIS \
+                         -DCMAKE_BUILD_TYPE=release \
+                         -DGDAL_INSTALL_DATA_IN_VERSION_DIR=ON \
+                         -DWITH_PYTHON=ON \
+                         -DPYTHON_DESTDIR=$(CURDIR)/debian/tmp \
+                         -DWITH_SQLite3=ON \
+                         -DWITH_CURL=ON \
+                         -DWITH_PNG=ON \
+                         -DENABLE_JPEG=ON \
+                         -DENABLE_OZI=ON \
+                         -DENABLE_NITF_RPFTOC_ECRGTOC=ON \
+                         -DENABLE_PG=ON \
+                         -DENABLE_POSTGISRASTER=ON \
+                         -DENABLE_HDF4=ON \
+                         -DWITH_PostgreSQL=ON \
+                         -DWITH_HDF4=ON \
+                         -DGDAL_ENABLE_GNM=ON 
