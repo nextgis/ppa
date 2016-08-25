@@ -1,4 +1,4 @@
-Source: gdal
+Source: opencad
 Maintainer: NextGIS <info@nextgis.com>
 Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
 Section: science
@@ -62,7 +62,6 @@ Description: OpenCAD Library - Utility program
  everyday use. Under development, but some of basic functionality is already 
  available.
  .
- This package contains utility programs, based on GDAL/OGR library,
- namely gdal_translate, gdalinfo, gdaladdo, gdalwarp, ogr2ogr, ogrinfo,
- ogrtindex.
+ This package contains utility programs, based on OpenCAD library,
+ namely cadinfo.
 
