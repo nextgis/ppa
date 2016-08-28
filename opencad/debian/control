@@ -19,8 +19,7 @@ Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
          ${misc:Depends}
-Recommends: opencad-bin
-Provides: libopencad.so.0.1.0           
+Recommends: opencad-bin           
 Description: OpenSource library under X11/MIT license for everyday use. Under 
  development, but some of basic functionality is already available.
  .
