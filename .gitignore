@@ -24,7 +24,6 @@
 *.exe
 *.out
 *.app
-*.i*86
 *.x86_64
 *.hex
 
@@ -32,7 +31,7 @@
 *.dSYM/
 
 # Build
-/build
+/build*
 /inst
 
 # Temp
