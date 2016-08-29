@@ -115,7 +115,17 @@ Description: Geospatial Data Abstraction Library
  TIGER data, S57, MapInfo File, DGN, GML and more.
  .
  This package contains the shared library.
-
+ 
+Package: libgdal2-dev
+Depends: libgdal-dev, ${misc:Depends}
+Architecture: all
+Priority: extra
+Section: oldlibs
+Breaks: libgdal2-dev
+Replaces: libgdal2-dev
+Description: transitional dummy libgdal package
+ This is a transitional dummy libgdal package. It can safely be removed.
+ 
 Package: libgdal-dev
 Architecture: any
 Section: libdevel
