@@ -43,7 +43,7 @@ Homepage: http://www.gdal.org/
 X-Python3-Version: >= 3.2
 
 Package: libgdal1h
-Depends: libgdal2, ${misc:Depends}
+Depends: libgdal20, ${misc:Depends}
 Architecture: all
 Priority: extra
 Section: oldlibs
@@ -56,7 +56,7 @@ Description: transitional dummy libgdal package
  This is a transitional dummy libgdal package. It can safely be removed.
 
 Package: libgdal1i
-Depends: libgdal2, ${misc:Depends}
+Depends: libgdal20, ${misc:Depends}
 Architecture: all
 Priority: extra
 Section: oldlibs
@@ -69,31 +69,31 @@ Replaces: libgdal1 (<= 1.10.0-0~),
           libgdal1h (<< 1.11.2+dfsg-1~exp4)
 Description: transitional dummy libgdal package
  This is a transitional dummy libgdal package. It can safely be removed.
-
+ 
 Package: libgdal2
+Depends: libgdal20, ${misc:Depends}
+Architecture: all
+Priority: extra
+Section: oldlibs
+Recommends: proj-bin
+Breaks: libgdal1 (<= 1.10.0-0~),
+        libgdal1-1.6.0 (<= 1.10.0-0~),
+        libgdal1h (<< 1.11.2+dfsg-1~exp4),
+        libgdal1i (<< 1.11.2+dfsg~)
+Replaces: libgdal1 (<= 1.10.0-0~),
+          libgdal1-1.6.0 (<= 1.10.0-0~),
+          libgdal1h (<< 1.11.2+dfsg-1~exp4),
+          libgdal1i (<< 1.11.2+dfsg~)
+Description: transitional dummy libgdal package
+ This is a transitional dummy libgdal package. It can safely be removed.
+
+Package: libgdal20
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
          ${misc:Depends}
 Recommends: proj-bin
-Breaks: libgdal1 (<= 1.10.0-0~),
-        libgdal1-1.6.0 (<= 1.10.0-0~),
-        libgdal1h (<< 1.11.2+dfsg-1~exp4),
-        libgdal1i (<= 1.11.3),
-        libgdal2 (<= 2.1.0)
-Replaces: libgdal1 (<= 1.10.0-0~),
-          libgdal1-1.6.0 (<= 1.10.0-0~),
-          libgdal1h (<< 1.11.2+dfsg-1~exp4),
-          libgdal1i (<= 1.11.3),
-          libgdal2 (<= 2.1.0)
-Provides: libgdal.so.1-1.11.2,
-          libgdal.so.1-1.11.3,
-          libgdal.so.1-1.11.4,
-          libgdal.so.1-2.0.0,
-          libgdal.so.1-2.0.1,
-          libgdal.so.1-2.0.2,
-          libgdal.so.1-2.1.0,
-          libgdal.so.1-2.1.1            
+Provides: gdal-abi-2-1-0
 Description: Geospatial Data Abstraction Library
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
@@ -108,45 +108,15 @@ Description: Geospatial Data Abstraction Library
  sensing and scientific data distribution formats such as HDF,
  EOS FAST, NOAA L1B, NetCDF, FITS.
  .
- OGR library supports many popular vector formats like ESRI Shapefile,
+ OGR library supports popular vector formats like ESRI Shapefile,
  TIGER data, S57, MapInfo File, DGN, GML and more.
  .
  This package contains the shared library.
-
-Package: libgdal2-dev
-Architecture: all
-Section: libdevel
-Depends: libgdal-dev,
-         ${misc:Depends}
-Breaks: libgdal1-dev (<= 1.11.3),
-        libgdal2-dev (<= 2.1.0)
-Replaces: libgdal1-dev (<= 1.11.3),
-          libgdal2-dev (<= 2.1.0)
-Description: Geospatial Data Abstraction Library - Transitional package
- GDAL is a translator library for raster geospatial data formats.
- As a library, it presents a single abstract data model to the
- calling application for all supported formats. The related OGR
- library (which lives within the GDAL source tree) provides
- a similar capability for simple features vector data.
- .
- GDAL supports many popular data formats, including commonly used
- ones (GeoTIFF, JPEG, PNG and more) as well as the ones used in
- GIS and remote sensing software packages (ERDAS Imagine,
- ESRI Arc/Info, ENVI, PCI Geomatics). Also supported many remote
- sensing and scientific data distribution formats such as HDF,
- EOS FAST, NOAA L1B, NetCDF, FITS.
- .
- OGR library supports many popular vector formats like ESRI Shapefile,
- TIGER data, S57, MapInfo File, DGN, GML and more.
- .
- This is a transitional dummy package that depends on libgdal-dev 
- and is used to allow versioned build dependencies to work in 
- any build environment.
-
+ 
 Package: libgdal-dev
 Architecture: any
 Section: libdevel
-Depends: libgdal2 (= ${binary:Version}),
+Depends: libgdal20 (= ${binary:Version}),
          libc6-dev,
          libpng-dev,
          libjpeg-dev,
@@ -159,13 +129,9 @@ Depends: libgdal2 (= ${binary:Version}),
          libspatialite-dev,
          libpq-dev,
          postgresql-server-dev-all,
-         libhdf4-dev
+         libhdf4-dev,
          ${misc:Depends}
 Suggests: libgdal-doc
-Breaks: libgdal1-dev (<= 1.11.3),
-        libgdal2-dev (<= 2.1.0)
-Replaces: libgdal1-dev (<= 1.11.3),
-          libgdal2-dev (<= 2.1.0)
 Description: Geospatial Data Abstraction Library - Development files
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
@@ -190,7 +156,7 @@ Package: libgdal-doc
 Architecture: all
 Section: doc
 Depends: ${misc:Depends}
-Suggests: libgdal2
+Suggests: libgdal20
 Description: Documentation for the Geospatial Data Abstraction Library
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
@@ -216,7 +182,7 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends}
 Suggests: python-gdal
-Breaks: gdal-bin (<= 2.1.0)
+Breaks: gdal-bin (<< 1.10.0-0~)
 Description: Geospatial Data Abstraction Library - Utility programs
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
