@@ -5,7 +5,8 @@ Section: science
 Priority: optional
 Build-Depends:
  bison,
- cmake (>= 2.8),
+ cmake,
+ cdbs,
  debhelper (>= 9),
  dh-python,
  flex,
@@ -40,16 +41,8 @@ Build-Depends:
  python-nose2,
  python-sip (>= 4.5.0),
  python-sip-dev (>= 4.5.0),
- libosgearth-dev,
- libopenscenegraph-dev,
  libqscintilla2-dev,
  git,
- doxygen,
- graphviz,
- txt2tags,
- xvfb, xauth,
- xfonts-base, xfonts-100dpi, xfonts-75dpi, xfonts-scalable,
- spawn-fcgi, lighttpd, poppler-utils, locales, qt4-doc-html,
  libqt4-sql-sqlite, python-psycopg2
 Build-Conflicts: libngqgis-dev, ngqgis-dev
 Standards-Version: 3.8.4
@@ -93,91 +86,91 @@ Description: QGIS - architecture-independent data
  This package contains architecture-independent supporting data files for use
  with QGIS.
 
-Package: libngqgis-app{QGIS_ABI}
+Package: libngqgis-app
 Architecture: any
 Section: libs
 Depends:
  ${shlibs:Depends},
  ${misc:Depends}
-Replaces: libngqgis{QGIS_ABI}
+Replaces: libngqgis
 Description: QGIS - shared app library
  QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains the shared app library.
 
-Package: libngqgis-core{QGIS_ABI}
+Package: libngqgis-core
 Architecture: any
 Section: libs
 Depends:
  ${shlibs:Depends},
  ${misc:Depends}
-Replaces: libngqgis{QGIS_ABI}
+Replaces: libngqgis
 Description: QGIS - shared core library
  QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains the shared core library.
 
-Package: libngqgis-gui{QGIS_ABI}
+Package: libngqgis-gui
 Architecture: any
 Section: libs
 Depends:
  ${shlibs:Depends},
  ${misc:Depends}
-Replaces: libngqgis{QGIS_ABI}
+Replaces: libngqgis
 Description: QGIS - shared gui library
  QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains the shared gui library.
 
-Package: libngqgis-analysis{QGIS_ABI}
+Package: libngqgis-analysis
 Architecture: any
 Section: libs
 Depends:
  ${shlibs:Depends},
  ${misc:Depends}
-Replaces: libngqgis{QGIS_ABI}
+Replaces: libngqgis
 Description: QGIS - shared analysis library
  QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains the shared analysis library.
 
-Package: libngqgis-networkanalysis{QGIS_ABI}
+Package: libngqgis-networkanalysis
 Architecture: any
 Section: libs
 Depends:
  ${shlibs:Depends},
  ${misc:Depends}
-Replaces: libngqgis{QGIS_ABI}
+Replaces: libngqgis
 Description: QGIS - shared network analysis library
  QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains the shared network analysis library.
 
-Package: libngqgisgrass{GRASSVER}-{QGIS_ABI}
+Package: libngqgisgrass
 Architecture: any
 Section: libs
 Depends:
  ${shlibs:Depends},
  ${misc:Depends}
-Replaces: libngqgis{QGIS_ABI}, libngqgisgrass{QGIS_ABI}
+Replaces: libngqgis, libngqgisgrass
 Description: QGIS - shared grass library
  QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains the shared grass library.
 
-Package: libngqgispython{QGIS_ABI}
+Package: libngqgispython
 Architecture: any
 Section: libs
 Depends:
  ${shlibs:Depends},
  ${misc:Depends}
-Replaces: libngqgis{QGIS_ABI}
+Replaces: libngqgis
 Description: QGIS - shared Python library
  QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
@@ -208,17 +201,6 @@ Description: QGIS custom widgets for Qt Designer
  .
  This package contains a library to use specific QGIS widgets in Qt Designer.
 
-Package: libngqgis-server{QGIS_ABI}
-Architecture: any
-Depends:
- ${shlibs:Depends},
- ${misc:Depends}
-Description: QGIS - shared server library
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
- display databases of geographic information.
- .
- This package contains the shared server library.
-
 Package: libngqgis-dev
 Architecture: any
 Section: libdevel
@@ -230,14 +212,14 @@ Depends:
  libgsl-dev | libgsl0-dev,
  libpq-dev,
  libproj-dev,
- libngqgis-app{QGIS_ABI} (= ${binary:Version}),
- libngqgis-core{QGIS_ABI} (= ${binary:Version}),
- libngqgis-gui{QGIS_ABI} (= ${binary:Version}),
- libngqgis-analysis{QGIS_ABI} (= ${binary:Version}),
- libngqgis-networkanalysis{QGIS_ABI} (= ${binary:Version}),
- libngqgis-server{QGIS_ABI} (= ${binary:Version}),
- libngqgisgrass{GRASSVER}-{QGIS_ABI} (= ${binary:Version}),
- libngqgispython{QGIS_ABI} (= ${binary:Version}),
+ libngqgis-app (= ${binary:Version}),
+ libngqgis-core (= ${binary:Version}),
+ libngqgis-gui (= ${binary:Version}),
+ libngqgis-analysis (= ${binary:Version}),
+ libngqgis-networkanalysis (= ${binary:Version}),
+ libngqgis-server (= ${binary:Version}),
+ libngqgisgrass (= ${binary:Version}),
+ libngqgispython (= ${binary:Version}),
  libqt4-dev (>= 4.7.0),
  libsqlite3-dev,
  python-qt4 (>= 4.1.0),
@@ -255,27 +237,6 @@ Description: QGIS - development files
  .
  This package contains the headers and libraries needed to develop plugins for
  QGIS.
-
-Package: ngqgis-dbg
-Architecture: any
-Section: debug
-Priority: extra
-Depends:
- libngqgis-app{QGIS_ABI} (= ${binary:Version}),
- libngqgis-core{QGIS_ABI} (= ${binary:Version}),
- libngqgis-gui{QGIS_ABI} (= ${binary:Version}),
- libngqgis-analysis{QGIS_ABI} (= ${binary:Version}),
- libngqgis-networkanalysis{QGIS_ABI} (= ${binary:Version}),
- libngqgis-server{QGIS_ABI} (= ${binary:Version}),
- libngqgisgrass{GRASSVER}-{QGIS_ABI} (= ${binary:Version}),
- libngqgispython{QGIS_ABI} (= ${binary:Version}),
- ${misc:Depends}
-Suggests: gdb
-Description: QGIS - debugging symbols
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
- display databases of geographic information.
- .
- This package contains debugging symbols.
 
 Package: ngqgis-provider-grass
 Architecture: any
@@ -338,7 +299,7 @@ Depends:
  python-six,
  python-yaml,
  python-pyspatialite,
- libngqgispython{QGIS_ABI},
+ libngqgispython,
  ${shlibs:Depends},
  ${python:Depends},
  ${misc:Depends},
@@ -396,32 +357,3 @@ Description: collection of data providers to QGIS - architecture-independent fil
  display databases of geographic information.
  .
  This package contains architecture-independent files for the QGIS providers.
-
-Package: ngqgis-server
-Architecture: any
-Depends:
- ngqgis-providers (= ${binary:Version}),
- ${shlibs:Depends},
- ${misc:Depends}
-Conflicts: ngqgis-mapserver
-Provides: ngqgis-mapserver
-Replaces: ngqgis-mapserver
-Description: QGIS server providing various OGC services
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
- display databases of geographic information.
- .
- This package contains the QGIS server.
-
-Package: ngqgis-api-doc
-Architecture: all
-Section: doc
-Depends:
- libjs-jquery,
- ${misc:Depends}
-Recommends:
- qt4-doc-html
-Description: QGIS API documentation
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
- display databases of geographic information.
- .
- This package contains the QGIS API documentation.
