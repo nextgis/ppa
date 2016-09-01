@@ -1,6 +1,6 @@
 usr/share/ngqgis/svg/*
 usr/share/ngqgis/resources/qgis.db
-usr/share/ngqgis/resources/srs-template.db
+usr/share/ngqgis/resources/srs.db
 usr/share/ngqgis/resources/customization.xml
 usr/share/ngqgis/resources/symbology-ng-style.db
 usr/share/ngqgis/resources/cpt-city-qgis-min/*
