@@ -33,4 +33,5 @@ DEB_CMAKE_EXTRA_FLAGS := -DWITH_GRASS=FALSE \
                          -DWITH_ASTYLE=FALSE \
                          -DENABLE_TESTS=FALSE
 
-LD_LIBRARY_PATH=$(CURDIR)/debian/build/output/lib:$(LD_LIBRARY_PATH)
+test-stamp:
+	LD_LIBRARY_PATH=$(CURDIR)/debian/build/output/lib:$(LD_LIBRARY_PATH)
