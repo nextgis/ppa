@@ -29,7 +29,8 @@ DEB_CMAKE_EXTRA_FLAGS := -DWITH_GRASS=FALSE \
                          -DWITH_POSTGRESQL=FALSE \
                          -DWITH_BINDINGS=TRUE \
                          -DWITH_SERVER=FALSE \
-                         -DWITH_SERVER=FALSE \
                          -DWITH_CUSTOM_WIDGETS=FALSE \
                          -DWITH_ASTYLE=FALSE \
                          -DENABLE_TESTS=FALSE
+
+LD_LIBRARY_PATH=$(CURDIR)/debian/build/output/lib:$(LD_LIBRARY_PATH)
