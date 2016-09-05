@@ -34,6 +34,7 @@ DEB_CMAKE_EXTRA_FLAGS := -DBUILD_SHARED_LIBS=ON \
                          -DWITH_JBIG=ON \
                          -DWITH_JPEG=ON \
                          -DWITH_LibLZMA=ON \
+                         -DWITH_Armadillo=ON \
                          -DPACKAGE_VENDOR=NextGIS \
                          -DCMAKE_BUILD_TYPE=release \
                          -DGDAL_INSTALL_DATA_IN_VERSION_DIR=ON \
