@@ -1,1 +1,15 @@
-usr/lib/ngqgis/plugins/*
+usr/lib/ngqgis/plugins/libgeorefplugin.so
+usr/lib/ngqgis/plugins/libgpsimporterplugin.so
+usr/lib/ngqgis/plugins/libinterpolationplugin.so 
+usr/lib/ngqgis/plugins/libcoordinatecaptureplugin.so
+usr/lib/ngqgis/plugins/liboracleplugin.so
+usr/lib/ngqgis/plugins/libevis.so 
+usr/lib/ngqgis/plugins/librasterterrainplugin.so
+usr/lib/ngqgis/plugins/libspatialqueryplugin.so
+usr/lib/ngqgis/plugins/libofflineeditingplugin.so
+usr/lib/ngqgis/plugins/libroadgraphplugin.so
+usr/lib/ngqgis/plugins/libzonalstatisticsplugin.so
+usr/lib/ngqgis/plugins/libheatmapplugin.so
+usr/lib/ngqgis/plugins/libtopolplugin.so
+usr/lib/ngqgis/plugins/libgeometrycheckerplugin.so
+usr/lib/ngqgis/plugins/libgeometrysnapperplugin.so

@@ -24,14 +24,11 @@ include /usr/share/cdbs/1/class/cmake.mk
 #	dh_auto_configure -- -DWITH_GRASS=FALSE -DWITH_GRASS7=FALSE -DWITH_DESKTOP=TRUE -DWITH_POSTGRESQL=FALSE -DWITH_BINDINGS=TRUE -DWITH_SERVER=FALSE -DWITH_SERVER=FALSE -DWITH_CUSTOM_WIDGETS=FALSE -DWITH_ASTYLE=FALSE -DENABLE_TESTS=FALSE
 
 DEB_CMAKE_EXTRA_FLAGS := -DWITH_GRASS=FALSE \
-                         -DWITH_GRASS7=FALSE \
-                         -DWITH_DESKTOP=TRUE \
-                         -DWITH_POSTGRESQL=FALSE \
-                         -DWITH_BINDINGS=TRUE \
-                         -DWITH_SERVER=FALSE \
-                         -DWITH_CUSTOM_WIDGETS=FALSE \
-                         -DWITH_ASTYLE=FALSE \
-                         -DENABLE_TESTS=FALSE
-
-test-stamp:
-	LD_LIBRARY_PATH=$(CURDIR)/debian/build/output/lib:$(LD_LIBRARY_PATH)
+					-DWITH_GRASS7=FALSE \
+					-DWITH_DESKTOP=TRUE \
+					-DWITH_POSTGRESQL=FALSE \
+					-DWITH_BINDINGS=TRUE \
+					-DWITH_SERVER=FALSE \
+					-DWITH_CUSTOM_WIDGETS=FALSE \
+					-DWITH_ASTYLE=FALSE \
+					-DENABLE_TESTS=FALSE
