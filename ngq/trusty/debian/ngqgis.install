@@ -1,4 +1,3 @@
-usr/lib/ngqgis/plugins/libgeorefplugin.so
 usr/lib/ngqgis/plugins/libgpsimporterplugin.so
 usr/lib/ngqgis/plugins/libinterpolationplugin.so 
 usr/lib/ngqgis/plugins/libcoordinatecaptureplugin.so
