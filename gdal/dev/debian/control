@@ -113,6 +113,7 @@ Architecture: any
 Section: libdevel
 Depends: libgdal20 (= ${binary:Version}),
          libc6-dev,
+         libarmadillo-dev,
          libpng-dev,
          libjpeg-dev,
          libgeos-dev,
