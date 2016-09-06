@@ -13,8 +13,8 @@ Build-Depends:
  grass-dev,
  libexpat1-dev,
  libfcgi-dev,
- libgdal-dev (>= 2.0.0),
- gdal-bin (>= 2.0.0),
+ libgdal-dev (>= 1.10.1-0~),
+ gdal-bin,
  python-gdal,
  libgeos-dev (>= 3.0.0),
  libgsl-dev | libgsl0-dev,
@@ -193,8 +193,8 @@ Architecture: any
 Section: python
 Provides: ${python:Provides}
 Depends:
- gdal-bin (>= 2.0.0),
- python-gdal (>= 2.0.0),
+ gdal-bin,
+ python-gdal,
  python-matplotlib,
  libngqgis-core (= ${binary:Version}),
  libngqgispython (= ${source:Version}),
