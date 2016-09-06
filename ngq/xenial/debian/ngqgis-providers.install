@@ -1,0 +1,17 @@
+usr/lib/ngqgis/crssync
+usr/lib/ngqgis/plugins/libbasicauthmethod.so
+usr/lib/ngqgis/plugins/libdelimitedtextprovider.so
+usr/lib/ngqgis/plugins/libgdalprovider.so
+usr/lib/ngqgis/plugins/libgpxprovider.so
+usr/lib/ngqgis/plugins/libidentcertauthmethod.so
+usr/lib/ngqgis/plugins/libmemoryprovider.so
+usr/lib/ngqgis/plugins/libmssqlprovider.so
+usr/lib/ngqgis/plugins/libogrprovider.so
+usr/lib/ngqgis/plugins/libowsprovider.so
+usr/lib/ngqgis/plugins/libpkcs12authmethod.so
+usr/lib/ngqgis/plugins/libpkipathsauthmethod.so
+usr/lib/ngqgis/plugins/libspatialiteprovider.so
+usr/lib/ngqgis/plugins/libvirtuallayerprovider.so
+usr/lib/ngqgis/plugins/libwcsprovider.so
+usr/lib/ngqgis/plugins/libwfsprovider.so
+usr/lib/ngqgis/plugins/libwmsprovider.so

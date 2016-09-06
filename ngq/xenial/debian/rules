@@ -1,0 +1,42 @@
+#!/usr/bin/make -f
+# смотрите debhelper(7) (раскомментируйте для включения)
+# вывод каждой команды, которая изменяет файлы в системе сборки
+DH_VERBOSE = 1
+
+# смотрите ПРИМЕРЫ в dpkg-buildflags(1) и прочтите /usr/share/dpkg/*
+#DPKG_EXPORT_BUILDFLAGS = 1
+#include /usr/share/dpkg/default.mk
+
+# смотрите FEATURE AREAS в dpkg-buildflags(1)
+#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# This has to be exported to make some magic below work.
+#export DH_OPTIONS
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+
+# главный сценарий упаковки на основе синтаксиса dh7
+#%:
+#	dh $@ --buildsystem cmake
+
+#override_dh_auto_configure:
+#	dh_auto_configure -- -DWITH_GRASS=FALSE -DWITH_GRASS7=FALSE -DWITH_DESKTOP=TRUE -DWITH_POSTGRESQL=FALSE -DWITH_BINDINGS=TRUE -DWITH_SERVER=FALSE -DWITH_SERVER=FALSE -DWITH_CUSTOM_WIDGETS=FALSE -DWITH_ASTYLE=FALSE -DENABLE_TESTS=FALSE
+
+DEB_CMAKE_EXTRA_FLAGS := -DWITH_GRASS=FALSE \
+					-DWITH_GRASS7=FALSE \
+					-DWITH_DESKTOP=TRUE \
+					-DWITH_POSTGRESQL=FALSE \
+					-DWITH_BINDINGS=TRUE \
+					-DWITH_SERVER=FALSE \
+					-DWITH_CUSTOM_WIDGETS=FALSE \
+					-DWITH_ASTYLE=FALSE \
+					-DENABLE_TESTS=FALSE \
+					-DWITH_INTERNAL_HTTPLIB2=FALSE \
+					-DWITH_INTERNAL_JINJA2=FALSE \
+					-DWITH_INTERNAL_MARKUPSAFE=FALSE \
+					-DWITH_INTERNAL_PYGMENTS=FALSE \
+					-DWITH_INTERNAL_REQUESTS=FALSE \
+					-DWITH_INTERNAL_DATEUTIL=FALSE \
+					-DWITH_INTERNAL_PYTZ=FALSE \
+					-DWITH_INTERNAL_YAML=FALSE \
