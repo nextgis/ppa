@@ -36,7 +36,7 @@ Build-Depends:
  python-qt4-sql,
  python-yaml, python-mock,
  python-all (>= 2.6.6-3~), python-all-dev (>= 2.6.6-3~),
- pyqt4.qsci-dev
+ pyqt4.qsci-dev,
  python-pyspatialite,
  python-nose2,
  python-sip (>= 4.5.0),
