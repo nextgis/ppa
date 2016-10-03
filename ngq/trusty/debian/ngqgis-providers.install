@@ -15,3 +15,4 @@ usr/lib/ngqgis/plugins/libvirtuallayerprovider.so
 usr/lib/ngqgis/plugins/libwcsprovider.so
 usr/lib/ngqgis/plugins/libwfsprovider.so
 usr/lib/ngqgis/plugins/libwmsprovider.so
+usr/lib/ngqgis/plugins/libpostgresprovider.so
