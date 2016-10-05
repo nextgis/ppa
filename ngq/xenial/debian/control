@@ -53,7 +53,9 @@ Build-Depends:
  python-future,
  libqscintilla2-dev,
  git,
- libqt4-sql-sqlite, python-psycopg2
+ libqt4-sql-sqlite, python-psycopg2,
+ libopencv-dev,
+ python-opencv
 Build-Conflicts: libngqgis-dev, ngqgis-dev
 Standards-Version: 3.9.7
 XS-Python-Version: current
