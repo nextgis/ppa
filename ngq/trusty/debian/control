@@ -36,7 +36,6 @@ Build-Depends:
  python-qt4-sql,
  python-yaml, python-mock,
  python-all (>= 2.6.6-3~), python-all-dev (>= 2.6.6-3~),
- pyqt4.qsci-dev,
  python-pyspatialite,
  python-nose2,
  python-sip (>= 4.5.0),
@@ -50,14 +49,13 @@ Build-Depends:
  python-tz,
  python-six,
  python-yaml,
- python-future,
  libqscintilla2-dev,
  git,
  libqt4-sql-sqlite, python-psycopg2,
  libopencv-dev,
  python-opencv
 Build-Conflicts: libngqgis-dev, ngqgis-dev
-Standards-Version: 3.9.7
+Standards-Version: 3.8.4
 XS-Python-Version: current
 Vcs-Browser: https://github.com/nextgis/NextGIS-QGIS/
 Vcs-Git: https://github.com/nextgis/NextGIS_QGIS_open.git
@@ -212,7 +210,6 @@ Depends:
  python-pyspatialite,
  python-gdal,
  python-matplotlib,
- python-future,
  libngqgis-core (= ${binary:Version}),
  libngqgispython (= ${source:Version}),
  ${misc:Depends}
