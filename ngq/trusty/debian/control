@@ -53,6 +53,7 @@ Build-Depends:
  git,
  libqt4-sql-sqlite, python-psycopg2,
  libopencv-dev,
+ python-numpy,
  python-opencv
 Build-Conflicts: libngqgis-dev, ngqgis-dev
 Standards-Version: 3.8.4
