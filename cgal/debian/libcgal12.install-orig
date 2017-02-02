@@ -1,0 +1,4 @@
+usr/lib/*/libCGAL.so.*
+usr/lib/*/libCGAL_Core.so.*
+usr/lib/*/libCGAL_ImageIO.so.*
+usr/share/doc/cgal/changelog   usr/share/doc/libcgal12

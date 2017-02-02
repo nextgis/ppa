@@ -1,0 +1,82 @@
+Source: cgal
+Priority: optional
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+# "ipe" is only needed because it contains goodies.lua which is needed by FindIPE.cmake
+Build-Depends: debhelper (>= 9),
+               dpkg-awk,
+               tar (>= 1.28),
+               cmake,
+               zlib1g-dev,
+               libboost-dev,
+               libboost-thread-dev,
+#               libboost-program-options-dev,
+               libboost-system-dev,
+               libgmp10-dev,
+               libmpfr-dev,
+#               libglu1-mesa-dev,
+#               qtbase5-dev [!armel !armhf],
+#               libqt5opengl5-dev [!armel !armhf],
+#               libqt5svg5-dev [!armel !armhf],
+#               libipe-dev (>= 7),
+#               ipe
+#Standards-Version: 3.9.8
+Standards-Version: 3.9.5
+Section: libs
+Vcs-Browser: https://github.com/nextgis-borsch/lib_cgal
+Vcs-Git: git@github.com:nextgis-borsch/lib_cgal.git
+Homepage: http://www.cgal.org/
+
+Package: libcgal12
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: C++ library for computational geometry
+ CGAL (Computational Geometry Algorithms Library) makes the most important
+ of the solutions and methods developed in computational geometry available
+ to users in industry and academia in a C++ library. The goal is to provide
+ easy access to useful, reliable geometric algorithms.
+ .
+ The CGAL library contains:
+  - the Kernel with geometric primitives such as points, vectors, lines,
+    predicates for testing things such as relative positions of points, and
+    operations such as intersections and distance calculation.
+  - the Basic Library which is a collection of standard data structures and
+    geometric algorithms, such as convex hull in 2D/3D, (Delaunay)
+    triangulation in 2D/3D, planar map, polyhedron, smallest enclosing circle,
+    and multidimensional query structures.
+  - the Support Library which offers interfaces to other packages, e.g., for
+    visualisation, and I/O, and other support facilities.
+ .
+ This package contains the main library libCGAL.so as well as two support
+ libraries libCGAL_Core.so (from the CORE project) and libCGAL_ImageIO.so
+ (image I/O). The library libCGAL_Qt5.so used for visualization in demos
+ can be found in the package libcgal-qt5-12.
+
+Package: libcgal-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libcgal12 (= ${binary:Version}),
+         libboost-dev,
+         libboost-thread-dev,
+         libboost-system-dev,
+#         libboost-program-options-dev,
+         libgmp10-dev,
+         libmpfr-dev,
+         zlib1g-dev,
+         ${misc:Depends}
+Suggests: libmpfi-dev,
+          libntl-dev,
+          libtbb-dev
+Description: C++ library for computational geometry (development files)
+ CGAL (Computational Geometry Algorithms Library) makes the most important
+ of the solutions and methods developed in computational geometry available
+ to users in industry and academia in a C++ library. The goal is to provide
+ easy access to useful, reliable geometric algorithms.
+ .
+ This package contains the header files and static libraries for libCGAL.so,
+ libCGAL_Core.so, and libCGAL_ImageIO.so. The  header files and static
+ libraries for libCGAL_Qt5.so can be found in the package libcgal-qt5-dev.

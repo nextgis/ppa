@@ -1,0 +1,2 @@
+usr/lib/*/libCGAL.so.*
+usr/lib/*/libCGAL_ImageIO.so.*

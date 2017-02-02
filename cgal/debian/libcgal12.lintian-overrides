@@ -1,0 +1,2 @@
+libcgal12: hardening-no-fortify-functions usr/lib/*/libCGAL.so.*
+libcgal12: package-name-doesnt-match-sonames libcgal12
