@@ -23,4 +23,4 @@ include /usr/share/cdbs/1/class/cmake.mk
 DEB_CMAKE_EXTRA_FLAGS := -DBUILD_SHARED_LIBS=ON \
                          -DBUILD_STATIC_LIBS=ON \
                          -DPACKAGE_VENDOR=NextGIS \
-                         -DCMAKE_BUILD_TYPE=release
+                         -DCMAKE_BUILD_TYPE=Release \
