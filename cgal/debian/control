@@ -5,7 +5,7 @@ Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
 # "ipe" is only needed because it contains goodies.lua which is needed by FindIPE.cmake
 Build-Depends: debhelper (>= 9),
 #               dpkg-awk,
-               tar (>= 1.28),
+               tar (>= 1.27),
                cmake,
                zlib1g-dev,
                libboost-dev,
