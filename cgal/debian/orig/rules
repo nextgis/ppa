@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-export DH_VERBOSE=1
+# export DH_VERBOSE=1
 
 # See http://wiki.debian.org/Hardening#Notes_for_packages_using_CMake
 CFLAGS   := $(CFLAGS) $(CPPFLAGS)
@@ -20,11 +20,11 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
   NJOBS := -j $(subst parallel=,,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
-#OPENGL_ES_ARCHITECTURES := armel armhf
-#ifneq (,$(findstring $(DEB_HOST_ARCH), $(OPENGL_ES_ARCHITECTURES)))
-#  DEBHELPER_QT5 := -Nlibcgal-qt5-12 -Nlibcgal-qt5-dev
-#	CMAKE_QT5 := -DWITH_CGAL_Qt5=OFF
-#endif
+OPENGL_ES_ARCHITECTURES := armel armhf
+ifneq (,$(findstring $(DEB_HOST_ARCH), $(OPENGL_ES_ARCHITECTURES)))
+  DEBHELPER_QT5 := -Nlibcgal-qt5-12 -Nlibcgal-qt5-dev
+	CMAKE_QT5 := -DWITH_CGAL_Qt5=OFF
+endif
 
 %:
 	dh $@ --parallel $(DEBHELPER_QT5)
@@ -35,41 +35,24 @@ override_dh_auto_clean:
 	$(MAKE) -C debian/tests clean
 
 override_dh_auto_configure-arch:
-
 	mkdir -p static
-#	cd static && QTDIR= cmake .. \
-#	  -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
-#	  -DWITH_GMPXX=ON -DWITH_demos=OFF -DWITH_examples=OFF \
-#	  -DCGAL_ENABLE_PRECONFIG=OFF -DBUILD_SHARED_LIBS=FALSE \
-#	  -DCGAL_INSTALL_LIB_DIR=lib/$(DEB_HOST_MULTIARCH) \
-#	  -DCGAL_INSTALL_CMAKE_DIR=lib/$(DEB_HOST_MULTIARCH)/cmake/CGAL $(CMAKE_QT5)
-	cd static && cmake .. \
-	  -DPACKAGE_VENDOR=NextGIS \
+	cd static && QTDIR= cmake .. \
 	  -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
-	  -DWITH_GMPXX=OFF -DWITH_demos=OFF -DWITH_examples=OFF \
+	  -DWITH_GMPXX=ON -DWITH_demos=OFF -DWITH_examples=OFF \
 	  -DCGAL_ENABLE_PRECONFIG=OFF -DBUILD_SHARED_LIBS=FALSE \
 	  -DCGAL_INSTALL_LIB_DIR=lib/$(DEB_HOST_MULTIARCH) \
-	  -DCGAL_INSTALL_CMAKE_DIR=lib/$(DEB_HOST_MULTIARCH)/cmake/CGAL
-
+	  -DCGAL_INSTALL_CMAKE_DIR=lib/$(DEB_HOST_MULTIARCH)/cmake/CGAL $(CMAKE_QT5)
 	mkdir -p shared
-#	cd shared && QTDIR= cmake .. \
-#	  -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
-#	  -DWITH_GMPXX=ON -DWITH_demos=OFF -DWITH_examples=OFF \
-#	  -DCGAL_ENABLE_PRECONFIG=OFF -DBUILD_SHARED_LIBS=TRUE -DCMAKE_SKIP_RPATH=TRUE \
-#	  -DCGAL_INSTALL_LIB_DIR=lib/$(DEB_HOST_MULTIARCH) \
-#	  -DCGAL_INSTALL_CMAKE_DIR=lib/$(DEB_HOST_MULTIARCH)/cmake/CGAL $(CMAKE_QT5)
-	cd shared && cmake .. \
-	  -DPACKAGE_VENDOR=NextGIS \
+	cd shared && QTDIR= cmake .. \
 	  -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
-	  -DWITH_GMPXX=OFF -DWITH_demos=OFF -DWITH_examples=OFF \
+	  -DWITH_GMPXX=ON -DWITH_demos=OFF -DWITH_examples=OFF \
 	  -DCGAL_ENABLE_PRECONFIG=OFF -DBUILD_SHARED_LIBS=TRUE -DCMAKE_SKIP_RPATH=TRUE \
 	  -DCGAL_INSTALL_LIB_DIR=lib/$(DEB_HOST_MULTIARCH) \
-	  -DCGAL_INSTALL_CMAKE_DIR=lib/$(DEB_HOST_MULTIARCH)/cmake/CGAL
-
-#	mkdir -p shared/demo/CGAL_ipelets
-#	cd shared/demo/CGAL_ipelets && QTDIR= cmake ../../../demo/CGAL_ipelets \
-#	  -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
-#	  -DCGAL_DIR=$(CURDIR)/shared
+	  -DCGAL_INSTALL_CMAKE_DIR=lib/$(DEB_HOST_MULTIARCH)/cmake/CGAL $(CMAKE_QT5)
+	mkdir -p shared/demo/CGAL_ipelets
+	cd shared/demo/CGAL_ipelets && QTDIR= cmake ../../../demo/CGAL_ipelets \
+	  -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
+	  -DCGAL_DIR=$(CURDIR)/shared   
 
 override_dh_auto_configure-indep:
 	# empty
@@ -77,7 +60,7 @@ override_dh_auto_configure-indep:
 override_dh_auto_build-arch:
 	$(MAKE) $(NJOBS) -C static
 	$(MAKE) $(NJOBS) -C shared
-#	$(MAKE) $(NJOBS) -C shared/demo/CGAL_ipelets
+	$(MAKE) $(NJOBS) -C shared/demo/CGAL_ipelets
 
 override_dh_auto_build-indep:
 	# empty
@@ -100,7 +83,7 @@ override_dh_auto_test-indep:
 override_dh_install-arch:
 	$(MAKE) -C static DESTDIR=$(CURDIR)/debian/tmp install
 	$(MAKE) -C shared DESTDIR=$(CURDIR)/debian/tmp install
-#	$(MAKE) -C shared/demo/CGAL_ipelets DESTDIR=$(CURDIR)/debian/tmp install
+	$(MAKE) -C shared/demo/CGAL_ipelets DESTDIR=$(CURDIR)/debian/tmp install
 	mkdir -p debian/tmp/usr/include/$(DEB_HOST_MULTIARCH)/CGAL
 	mv debian/tmp/usr/include/CGAL/compiler_config.h debian/tmp/usr/include/$(DEB_HOST_MULTIARCH)/CGAL
 
@@ -118,40 +101,39 @@ override_dh_install-arch:
 
 	dh_install --sourcedir=debian/tmp --list-missing
 
-#ifeq (,$(findstring $(DEB_HOST_ARCH), $(OPENGL_ES_ARCHITECTURES)))
-#	mkdir -p  debian/libcgal-qt5-dev/usr/include/CGAL
-#	mv debian/libcgal-dev/usr/include/CGAL/Qt debian/libcgal-qt5-dev/usr/include/CGAL
-#	mkdir -p debian/libcgal-qt5-dev/usr/lib/$(DEB_HOST_MULTIARCH)/cmake/CGAL
-#	mv debian/libcgal-dev/usr/lib/$(DEB_HOST_MULTIARCH)/cmake/CGAL/CGAL_Qt5* debian/libcgal-qt5-dev/usr/lib/$(DEB_HOST_MULTIARCH)/cmake/CGAL
-#else
+ifeq (,$(findstring $(DEB_HOST_ARCH), $(OPENGL_ES_ARCHITECTURES)))
+	mkdir -p  debian/libcgal-qt5-dev/usr/include/CGAL
+	mv debian/libcgal-dev/usr/include/CGAL/Qt debian/libcgal-qt5-dev/usr/include/CGAL
+	mkdir -p debian/libcgal-qt5-dev/usr/lib/$(DEB_HOST_MULTIARCH)/cmake/CGAL
+	mv debian/libcgal-dev/usr/lib/$(DEB_HOST_MULTIARCH)/cmake/CGAL/CGAL_Qt5* debian/libcgal-qt5-dev/usr/lib/$(DEB_HOST_MULTIARCH)/cmake/CGAL
+else
 	rm -r debian/libcgal-dev/usr/include/CGAL/Qt
-#endif
+endif
 
 	mkdir -p debian/libcgal-dev/usr/share/doc
 	ln -s libcgal12 debian/libcgal-dev/usr/share/doc/libcgal-dev
-#	mkdir -p debian/libcgal-ipelets/usr/share/doc
-#	ln -s libcgal12 debian/libcgal-ipelets/usr/share/doc/libcgal-ipelets
-#ifeq (,$(findstring $(DEB_HOST_ARCH), $(OPENGL_ES_ARCHITECTURES)))
-#	mkdir -p debian/libcgal-qt5-12/usr/share/doc
-#	ln -s libcgal12 debian/libcgal-qt5-12/usr/share/doc/libcgal-qt5-12
-#	mkdir -p debian/libcgal-qt5-dev/usr/share/doc
-#	ln -s libcgal12 debian/libcgal-qt5-dev/usr/share/doc/libcgal-qt5-dev
-#endif
+	mkdir -p debian/libcgal-ipelets/usr/share/doc
+	ln -s libcgal12 debian/libcgal-ipelets/usr/share/doc/libcgal-ipelets
+ifeq (,$(findstring $(DEB_HOST_ARCH), $(OPENGL_ES_ARCHITECTURES)))
+	mkdir -p debian/libcgal-qt5-12/usr/share/doc
+	ln -s libcgal12 debian/libcgal-qt5-12/usr/share/doc/libcgal-qt5-12
+	mkdir -p debian/libcgal-qt5-dev/usr/share/doc
+	ln -s libcgal12 debian/libcgal-qt5-dev/usr/share/doc/libcgal-qt5-dev
+endif
 
 override_dh_install-indep:
-#	mkdir -p debian/tmp/usr/share/doc/cgal
-#	chmod -R u=rwX,g=rX,o=rX demo examples
-#	tar cf - --sort=name demo | gzip --no-name --best >debian/tmp/usr/share/doc/cgal/demo.tar.gz
-#	tar cf - --sort=name examples | gzip --no-name --best >debian/tmp/usr/share/doc/cgal/examples.tar.gz
+	mkdir -p debian/tmp/usr/share/doc/cgal
+	chmod -R u=rwX,g=rX,o=rX demo examples
+	tar cf - --sort=name demo | gzip --no-name --best >debian/tmp/usr/share/doc/cgal/demo.tar.gz
+	tar cf - --sort=name examples | gzip --no-name --best >debian/tmp/usr/share/doc/cgal/examples.tar.gz
 
-#	dh_install --sourcedir=debian/tmp --list-missing
+	dh_install --sourcedir=debian/tmp --list-missing
 
-#	mkdir -p debian/libcgal-demo/usr/share/doc
-#	ln -s libcgal12 debian/libcgal-demo/usr/share/doc/libcgal-demo
+	mkdir -p debian/libcgal-demo/usr/share/doc
+	ln -s libcgal12 debian/libcgal-demo/usr/share/doc/libcgal-demo
 
 override_dh_installdocs:
-#	dh_installdocs -plibcgal12 debian/copyright debian/NEWS.Debian
-	dh_installdocs -plibcgal12 debian/copyright
+	dh_installdocs -plibcgal12 debian/copyright debian/NEWS.Debian
 
 override_dh_installchangelogs:
 	dh_installchangelogs -plibcgal12
