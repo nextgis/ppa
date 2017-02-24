@@ -1,0 +1,26 @@
+mkdir build-ppa
+cd build-ppa
+cp -R /path/to/lib_cgal ./
+mv lib_cgal CGAL-4.9
+rm -Rf CGAL-4.9/.git
+rm CGAL-4.9/.gitignore
+tar -czf cgal_4.9.orig.tar.gz CGAL-4.9
+bzr dh-make cgal 4.9 cgal_4.9.orig.tar.gz
+
+[press l]
+[press y]
+
+rm -Rf cgal/debian
+cp -R /path/to/ppa/cgal/debian cgal/
+cd cgal
+dch --create
+
+[ change string from
+PACKAGE (VERSION) UNRELEASED; urgency=medium
+  to
+cgal (4.9-1ubuntu1) unstable; urgency=medium
+  save changes and exit from editor]
+
+bzr add
+bzr commit -m "Init 01"
+bzr builddeb -- -us -uc
