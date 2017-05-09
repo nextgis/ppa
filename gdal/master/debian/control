@@ -36,56 +36,11 @@ Build-Depends: debhelper (>= 9),
                postgresql-server-dev-all,
                libhdf4-dev
 Build-Conflicts: python-setuptools
-Standards-Version: 3.9.5
+Standards-Version: 3.9.8
 Vcs-Browser: https://github.com/nextgis-borsch/lib_gdal
 Vcs-Git: git@github.com:nextgis-borsch/lib_gdal.git
 Homepage: http://www.gdal.org/
 X-Python3-Version: >= 3.2
-
-Package: libgdal1h
-Depends: libgdal20, ${misc:Depends}
-Architecture: all
-Priority: extra
-Section: oldlibs
-Recommends: proj-bin
-Breaks: libgdal1 (<= 1.10.0-0~),
-        libgdal1-1.6.0 (<= 1.10.0-0~)
-Replaces: libgdal1 (<= 1.10.0-0~),
-          libgdal1-1.6.0 (<= 1.10.0-0~)
-Description: transitional dummy libgdal package
- This is a transitional dummy libgdal package. It can safely be removed.
-
-Package: libgdal1i
-Depends: libgdal20, ${misc:Depends}
-Architecture: all
-Priority: extra
-Section: oldlibs
-Recommends: proj-bin
-Breaks: libgdal1 (<= 1.10.0-0~),
-        libgdal1-1.6.0 (<= 1.10.0-0~),
-        libgdal1h (<< 1.11.2+dfsg-1~exp4)
-Replaces: libgdal1 (<= 1.10.0-0~),
-          libgdal1-1.6.0 (<= 1.10.0-0~),
-          libgdal1h (<< 1.11.2+dfsg-1~exp4)
-Description: transitional dummy libgdal package
- This is a transitional dummy libgdal package. It can safely be removed.
- 
-Package: libgdal2
-Depends: libgdal20, ${misc:Depends}
-Architecture: all
-Priority: extra
-Section: oldlibs
-Recommends: proj-bin
-Breaks: libgdal1 (<= 1.10.0-0~),
-        libgdal1-1.6.0 (<= 1.10.0-0~),
-        libgdal1h (<< 1.11.2+dfsg-1~exp4),
-        libgdal1i (<< 1.11.2+dfsg~)
-Replaces: libgdal1 (<= 1.10.0-0~),
-          libgdal1-1.6.0 (<= 1.10.0-0~),
-          libgdal1h (<< 1.11.2+dfsg-1~exp4),
-          libgdal1i (<< 1.11.2+dfsg~)
-Description: transitional dummy libgdal package
- This is a transitional dummy libgdal package. It can safely be removed.
 
 Package: libgdal20
 Architecture: any
@@ -93,7 +48,7 @@ Section: libs
 Depends: ${shlibs:Depends},
          ${misc:Depends}
 Recommends: proj-bin
-Provides: gdal-abi-2-1-0
+Provides: gdal-abi-2-2-0
 Description: Geospatial Data Abstraction Library
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
