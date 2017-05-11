@@ -34,7 +34,8 @@ Build-Depends: debhelper (>= 9),
                libspatialite-dev,
                libpq-dev,
                postgresql-server-dev-all,
-               libhdf4-dev
+               libhdf4-dev,
+               libopencad-dev
 Build-Conflicts: python-setuptools
 Standards-Version: 3.9.8
 Vcs-Browser: https://github.com/nextgis-borsch/lib_gdal
@@ -86,6 +87,7 @@ Depends: libgdal20 (= ${binary:Version}),
          libpq-dev,
          postgresql-server-dev-all,
          libhdf4-dev,
+         libopencad-dev,
          ${misc:Depends}
 Suggests: libgdal-doc
 Description: Geospatial Data Abstraction Library - Development files
