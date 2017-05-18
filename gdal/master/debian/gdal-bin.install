@@ -15,10 +15,10 @@ usr/bin/gdal_grid
 usr/bin/gdal_rasterize
 usr/bin/gdal_translate
 usr/bin/nearblack
-/usr/bin/ogr2ogr
-/usr/bin/ogrinfo
-/usr/bin/ogrlineref
-/usr/bin/ogrtindex
+usr/bin/ogr2ogr
+usr/bin/ogrinfo
+usr/bin/ogrlineref
+usr/bin/ogrtindex
 usr/bin/gnm*
 usr/bin/testepsg
 usr/share/man/man1/gdaladdo.1
