@@ -89,7 +89,7 @@ Depends: libgdal20 (= ${binary:Version}),
          postgresql-server-dev-all,
          libhdf4-dev,
          libopencad-dev,
-         libopenjpeg-dev,
+         libopenjpeg-dev | libopenjp2-7-dev,
          ${misc:Depends}
 Suggests: libgdal-doc
 Description: Geospatial Data Abstraction Library - Development files
