@@ -1,0 +1,757 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: PostGIS
+Upstream-Contact: PostGIS Developers <postgis-devel@lists.osgeo.org>
+Source: http://download.osgeo.org/postgis/source/
+Comment: The OGC test cases are removed because they have unclear licensing,
+ the work is probably licesed under the OGC Document Notice which doesn't
+ permit modification.
+Files-Excluded: extras/ogc_test_suite/*
+
+Files: astyle.sh
+ autogen.sh
+ extensions/opt_out.sh
+ extras/WFS_locks/WFS_locks.c
+ extras/rpm/patches/filter-requires-perl-Pg.sh
+ extras/tiger_geocoder/tiger_2011/create_geocode.sh
+ extras/tiger_geocoder/tiger_2011/legacy_import/tiger2008/import_tiger_shps.sh
+ extras/tiger_geocoder/tiger_2011/upgrade_geocoder.sh
+ extras/wkb_reader/printwkb.c
+ extras/wkb_reader/readwkb.c
+ extras/wkb_reader/wkbtest.h
+ java/jdbc/jtssrc/org/postgis/jts/JTSShape.java
+ liblwgeom/box2d.c
+ liblwgeom/cunit/cu_sfcgal.c
+ liblwgeom/cunit/cu_tester.h
+ liblwgeom/lwgeodetic_tree.c
+ liblwgeom/lwgeodetic_tree.h
+ liblwgeom/lwin_wkt.h
+ liblwgeom/lwin_wkt_lex.c
+ liblwgeom/lwprint.c
+ liblwgeom/lwtree.c
+ liblwgeom/lwtree.h
+ liblwgeom/lwutil.c
+ libpgcommon/gserialized_gist.h
+ libpgcommon/pgsql_compat.h
+ loader/getopt.c
+ loader/getopt.h
+ postgis/geography_measurement_trees.c
+ postgis/geography_measurement_trees.h
+ postgis/geometry_inout.c
+ postgis/lwgeom_box3d.c
+ postgis/lwgeom_inout.c
+ postgis/lwgeom_rtree.h
+ postgis/sqldefines.h
+ postgis_svn_revision.h
+ raster/test/regress/load_outdb-post.pl
+ raster/test/regress/load_outdb-post.sh
+ raster/test/regress/load_outdb-pre.pl
+ raster/test/regress/load_outdb-pre.sh
+ raster/test/regress/loader/Basic-post.pl
+ raster/test/regress/loader/Basic-post.sh
+ raster/test/regress/loader/Basic-pre.pl
+ raster/test/regress/loader/Basic-pre.sh
+ raster/test/regress/loader/BasicCopy-post.pl
+ raster/test/regress/loader/BasicCopy-post.sh
+ raster/test/regress/loader/BasicCopy-pre.pl
+ raster/test/regress/loader/BasicCopy-pre.sh
+ raster/test/regress/loader/BasicFilename-post.pl
+ raster/test/regress/loader/BasicFilename-post.sh
+ raster/test/regress/loader/BasicFilename-pre.pl
+ raster/test/regress/loader/BasicFilename-pre.sh
+ raster/test/regress/loader/BasicOutDB-post.pl
+ raster/test/regress/loader/BasicOutDB-post.sh
+ raster/test/regress/loader/BasicOutDB-pre.pl
+ raster/test/regress/loader/BasicOutDB-pre.sh
+ raster/test/regress/loader/Tiled10x10-post.pl
+ raster/test/regress/loader/Tiled10x10-post.sh
+ raster/test/regress/loader/Tiled10x10-pre.pl
+ raster/test/regress/loader/Tiled10x10-pre.sh
+ raster/test/regress/loader/Tiled10x10Copy-post.pl
+ raster/test/regress/loader/Tiled10x10Copy-post.sh
+ raster/test/regress/loader/Tiled10x10Copy-pre.pl
+ raster/test/regress/loader/Tiled10x10Copy-pre.sh
+ raster/test/regress/loader/Tiled8x8-post.pl
+ raster/test/regress/loader/Tiled8x8-post.sh
+ raster/test/regress/loader/Tiled8x8-pre.pl
+ raster/test/regress/loader/Tiled8x8-pre.sh
+ regress/run_test.pl
+ utils/profile_intersects.pl
+ utils/read_scripts_version.pl
+ utils/svn_repo_revision.pl
+ utils/test_estimation.pl
+ utils/test_geography_estimation.pl
+ utils/test_geography_joinestimation.pl
+ utils/test_joinestimation.pl
+Copyright: Refractions Research
+ Sandro Santilli,
+ Paul Ramsey, 
+ Jeff Lounsbury,
+ Chris Hodgson
+License: GPL-2.0+
+
+Files: liblwgeom/lwcircstring.c
+ liblwgeom/lwcollection.c
+ liblwgeom/lwcompound.c
+ liblwgeom/lwcurvepoly.c
+ liblwgeom/lwgeom.c
+ liblwgeom/lwgeom_api.c
+ liblwgeom/lwgeom_debug.c
+ liblwgeom/lwgeom_transform.c
+ liblwgeom/lwmcurve.c
+ liblwgeom/lwmline.c
+ liblwgeom/lwmpoint.c
+ liblwgeom/lwmpoly.c
+ liblwgeom/lwmsurface.c
+ liblwgeom/lwout_svg.c
+ liblwgeom/lwpoint.c
+ liblwgeom/lwpsurface.c
+ liblwgeom/lwsegmentize.c
+ liblwgeom/lwtin.c
+ libpgcommon/lwgeom_transform.c
+ libpgcommon/lwgeom_transform.h
+ loader/pgsql2shp-cli.c
+ loader/pgsql2shp-core.c
+ postgis/long_xact.c
+ postgis/lwgeom_dump.c
+ postgis/lwgeom_functions_analytic.c
+ postgis/lwgeom_functions_analytic.h
+ postgis/lwgeom_functions_basic.c
+ postgis/lwgeom_functions_lrs.c
+ postgis/lwgeom_ogc.c
+ postgis/lwgeom_rtree.c
+ postgis/lwgeom_spheroid.c
+ postgis/lwgeom_sqlmm.c
+ postgis/lwgeom_transform.c
+ postgis/lwgeom_triggers.c
+Copyright: 2001-2003, Refractions Research Inc
+  2001-2005, Refractions Research Inc
+  2001-2006, Refractions Research Inc
+  2001-2009, Refractions Research Inc
+  2001-2011, Refractions Research Inc
+  2004, Refractions Research Inc
+  2006, Refractions Research Inc
+License: GPL-2.0+
+
+Files: liblwgeom/cunit/cu_geodetic.c
+ liblwgeom/cunit/cu_geodetic_data.h
+ liblwgeom/cunit/cu_in_wkb.c
+ liblwgeom/cunit/cu_in_wkt.c
+ liblwgeom/cunit/cu_libgeom.c
+ liblwgeom/cunit/cu_measures.c
+ liblwgeom/cunit/cu_out_wkb.c
+ liblwgeom/cunit/cu_out_wkt.c
+ liblwgeom/cunit/cu_tester.c
+ liblwgeom/g_box.c
+ liblwgeom/g_serialized.c
+ liblwgeom/g_util.c
+ liblwgeom/lwgeodetic.h
+ liblwgeom/lwin_wkb.c
+ liblwgeom/lwin_wkt.c
+ liblwgeom/lwout_wkb.c
+ liblwgeom/lwout_wkt.c
+ libpgcommon/gserialized_gist.c
+ postgis/geography.h
+ postgis/geography_btree.c
+ postgis/geography_inout.c
+ postgis/geography_measurement.c
+ postgis/gserialized_estimate.c
+ postgis/gserialized_gist_2d.c
+ postgis/gserialized_gist_nd.c
+ postgis/gserialized_typmod.c
+ postgis/lwgeom_geos.h
+ postgis/lwgeom_geos_prepared.h
+Copyright: 2008, Paul Ramsey <pramsey@cleverelephant.ca>
+  2009, Paul Ramsey <pramsey@cleverelephant.ca>
+  2009-2011, Paul Ramsey <pramsey@cleverelephant.ca>
+  2010, Paul Ramsey <pramsey@cleverelephant.ca>
+  2012, Paul Ramsey <pramsey@cleverelephant.ca>
+License: GPL-2.0+
+
+Files: java/jdbc/jtssrc/org/postgis/jts/JtsBinaryParser.java
+ java/jdbc/jtssrc/org/postgis/jts/JtsBinaryWriter.java
+ java/jdbc/jtssrc/org/postgis/jts/JtsGeometry.java
+ java/jdbc/jtssrc/org/postgis/jts/JtsGisWrapper.java
+ java/jdbc/jtssrc/org/postgis/jts/JtsWrapper.java
+ java/jdbc/src/org/postgis/DriverWrapper.java
+ java/jdbc/src/org/postgis/DriverWrapperAutoprobe.java
+ java/jdbc/src/org/postgis/DriverWrapperLW.java
+ java/jdbc/src/org/postgis/PGgeometryLW.java
+ java/jdbc/src/org/postgis/Version.java
+ java/jdbc/src/org/postgis/binary/BinaryParser.java
+ java/jdbc/src/org/postgis/binary/BinaryWriter.java
+ java/jdbc/src/org/postgis/binary/ByteGetter.java
+ java/jdbc/src/org/postgis/binary/ByteSetter.java
+ java/jdbc/src/org/postgis/binary/ValueGetter.java
+ java/jdbc/src/org/postgis/binary/ValueSetter.java
+ java/jdbc/src/org/postgis/java2d/Java2DWrapper.java
+ java/jdbc/src/org/postgis/java2d/PGShapeGeometry.java
+ java/jdbc/src/org/postgis/java2d/ShapeBinaryParser.java
+Copyright: 2005, Markus Schaber, markus.schaber@logix-tt.com
+License: LGPL-2.1+
+
+Files: doc/xsl/post_gis_day_cards.html.xsl
+ doc/xsl/postgis_aggs_mm.xml.xsl
+ doc/xsl/postgis_cheatsheet.html.xsl
+ doc/xsl/postgis_comments.sql.xsl
+ doc/xsl/postgis_gardentest.sql.xsl
+ doc/xsl/postgis_gardentest_subset.sql.xsl
+ doc/xsl/postgis_reference.xml.xsl
+ doc/xsl/raster_cheatsheet.html.xsl
+ doc/xsl/raster_comments.sql.xsl
+ doc/xsl/raster_gardentest.sql.xsl
+ doc/xsl/sfcgal_cheatsheet.html.xsl
+ doc/xsl/sfcgal_comments.sql.xsl
+ doc/xsl/tiger_geocoder_cheatsheet.html.xsl
+ doc/xsl/tiger_geocoder_comments.sql.xsl
+ doc/xsl/topology_cheatsheet.html.xsl
+ doc/xsl/topology_comments.sql.xsl
+ doc/xsl/topology_gardentest.sql.xsl
+ liblwgeom/cunit/cu_out_x3d.c
+Copyright: 2008, Regina Obe
+  2008-2010, Regina Obe
+  2009, Regina Obe
+  2010, Regina Obe
+  2011, Regina Obe
+License: GPL-2.0+
+
+Files: liblwgeom/cunit/cu_buildarea.c
+ liblwgeom/cunit/cu_clean.c
+ liblwgeom/cunit/cu_geos.c
+ liblwgeom/cunit/cu_in_geojson.c
+ liblwgeom/cunit/cu_node.c
+ liblwgeom/cunit/cu_split.c
+ liblwgeom/cunit/cu_stringbuffer.c
+ liblwgeom/cunit/cu_tree.c
+ liblwgeom/cunit/cu_triangulate.c
+ liblwgeom/lwgeom_geos.c
+ liblwgeom/lwgeom_geos.h
+ liblwgeom/lwgeom_geos_clean.c
+ liblwgeom/lwgeom_geos_node.c
+ liblwgeom/lwgeom_geos_split.c
+ libpgcommon/lwgeom_cache.c
+ libpgcommon/lwgeom_cache.h
+ postgis/lwgeom_geos_clean.c
+ postgis/lwgeom_geos_relatematch.c
+Copyright: 2009-2010, Sandro Santilli <strk@keybit.net>
+  2010, Sandro Santilli <strk@keybit.net>
+  2011, Sandro Santilli <strk@keybit.net>
+  2011-2012, Sandro Santilli <strk@keybit.net>
+  2012, Sandro Santilli <strk@keybit.net>
+  2013, Sandro Santilli <strk@keybit.net>
+License: GPL-2.0+
+
+Files: java/jdbc/src/org/postgis/ComposedGeom.java
+ java/jdbc/src/org/postgis/Geometry.java
+ java/jdbc/src/org/postgis/GeometryCollection.java
+ java/jdbc/src/org/postgis/LineString.java
+ java/jdbc/src/org/postgis/LinearRing.java
+ java/jdbc/src/org/postgis/MultiLineString.java
+ java/jdbc/src/org/postgis/MultiPoint.java
+ java/jdbc/src/org/postgis/MultiPolygon.java
+ java/jdbc/src/org/postgis/PGbox2d.java
+ java/jdbc/src/org/postgis/PGbox3d.java
+ java/jdbc/src/org/postgis/PGboxbase.java
+ java/jdbc/src/org/postgis/PGgeometry.java
+ java/jdbc/src/org/postgis/Point.java
+ java/jdbc/src/org/postgis/PointComposedGeom.java
+ java/jdbc/src/org/postgis/Polygon.java
+Copyright: 2004, Paul Ramsey, pramsey@refractions.net
+  2005, Markus Schaber, markus.schaber@logix-tt.com
+License: LGPL-2.1+
+
+Files: raster/test/cunit/cu_band_basics.c
+ raster/test/cunit/cu_band_misc.c
+ raster/test/cunit/cu_band_stats.c
+ raster/test/cunit/cu_gdal.c
+ raster/test/cunit/cu_mapalgebra.c
+ raster/test/cunit/cu_misc.c
+ raster/test/cunit/cu_pixtype.c
+ raster/test/cunit/cu_raster_basics.c
+ raster/test/cunit/cu_raster_geometry.c
+ raster/test/cunit/cu_raster_misc.c
+ raster/test/cunit/cu_spatial_relationship.c
+Copyright: 2012, Regents of the University of California
+  2012-2013, Regents of the University of California
+  2013, Regents of the University of California
+License: GPL-2.0+
+
+Files: liblwgeom/cunit/cu_force_sfs.c
+ liblwgeom/cunit/cu_homogenize.c
+ liblwgeom/cunit/cu_out_geojson.c
+ liblwgeom/cunit/cu_out_gml.c
+ liblwgeom/cunit/cu_out_kml.c
+ liblwgeom/cunit/cu_out_svg.c
+ liblwgeom/cunit/cu_surface.c
+ liblwgeom/cunit/cu_surface.h
+ liblwgeom/lwhomogenize.c
+ postgis/lwgeom_export.c
+ postgis/lwgeom_export.h
+Copyright: 2009, Olivier Courtin <olivier.courtin@oslandia.com>
+  2009-2011, Olivier Courtin <olivier.courtin@oslandia.com>
+  2010, Olivier Courtin <olivier.courtin@oslandia.com>
+  2010-2012, Olivier Courtin <olivier.courtin@oslandia.com>
+  2013, Olivier Courtin <olivier.courtin@oslandia.com>
+License: GPL-2.0+
+
+Files: java/ejb3/src/org/postgis/ejb/PersonEntity.java
+ java/ejb3/src/org/postgis/ejb/UserBean.java
+ java/ejb3/src/org/postgis/ejb/UserBeanRemote.java
+ java/ejb3/src/org/postgis/ejb/mdb/IngestMDB.java
+ java/ejb3/src/org/postgis/hibernate/ContainsExpression.java
+ java/ejb3/src/org/postgis/hibernate/GeometryType.java
+ java/ejb3/src/org/postgis/hibernate/IntersectsExpression.java
+ java/ejb3/src/org/postgis/hibernate/PostGISDialect.java
+ java/ejb3/src/org/postgis/hibernate/WithinExpression.java
+Copyright: 2006, Norman Barker <norman.barker@gmail.com>
+License: LGPL-2.1+
+
+Files: raster/scripts/python/genraster.py
+ raster/scripts/python/ovdump.py
+ raster/scripts/python/pixval.py
+ raster/scripts/python/rtpixdump.py
+ raster/scripts/python/rtreader.py
+ raster/scripts/python/rtrowdump.py
+ raster/scripts/python/window.py
+Copyright: 2009, Mateusz Loskot <mateusz@loskot.net>
+License: GPL-2.0+
+
+Files: java/jdbc/jtssrc/examples/JtsTestParser.java
+ java/jdbc/src/examples/Test.java
+ java/jdbc/src/examples/TestBoxes.java
+ java/jdbc/src/examples/TestJava2d.java
+ java/jdbc/src/examples/TestParser.java
+ java/jdbc/src/examples/TestServer.java
+Copyright: 2004, Paul Ramsey, pramsey@refractions.net
+  2005, Markus Schaber, markus.schaber@logix-tt.com
+License: GPL-2.0+
+
+Files: java/ejb2/src/com/geodetix/geo/client/Client.java
+ java/ejb2/src/com/geodetix/geo/dao/PostGisGeometryDAO.java
+ java/ejb2/src/com/geodetix/geo/dao/PostGisGeometryDAOImpl.java
+ java/ejb2/src/com/geodetix/geo/ejb/GeometryBean.java
+ java/ejb2/src/com/geodetix/geo/ejb/GeometryFacadeBean.java
+ java/ejb2/src/com/geodetix/geo/exception/ApplicationGeoLayerException.java
+Copyright: 2006, Geodetix S.r.l. (http://www.geodetix.it)
+License: LGPL-2.1+
+
+Files: liblwgeom/lwgeom_sfcgal.c
+ liblwgeom/lwgeom_sfcgal.h
+ postgis/lwgeom_backend_api.c
+ postgis/lwgeom_backend_api.h
+ postgis/lwgeom_sfcgal.c
+ postgis/lwgeom_sfcgal.h
+Copyright: 2012-2013, Oslandia <infos@oslandia.com>
+License: GPL-2.0+
+
+Files: liblwgeom/cunit/cu_algorithm.c
+ liblwgeom/cunit/cu_misc.c
+ liblwgeom/cunit/cu_print.c
+ liblwgeom/lwalgorithm.c
+ liblwgeom/lwlinearreferencing.c
+ loader/cunit/cu_tester.c
+Copyright: 2008, Paul Ramsey
+  2011, Paul Ramsey
+License: GPL-2.0+
+
+Files: loader/dbfopen.c
+ loader/safileio.c
+ loader/shapefil.h
+ loader/shpopen.c
+Copyright: 1999, 2001, Frank Warmerdam
+  1999, Frank Warmerdam
+  2007, Frank Warmerdam
+License: MIT or LGPL-2.0+
+
+Files: loader/cunit/cu_pgsql2shp.c
+ loader/cunit/cu_pgsql2shp.h
+ loader/cunit/cu_shp2pgsql.c
+ loader/cunit/cu_shp2pgsql.h
+Copyright: 2010, LISAsoft Pty Ltd
+License: GPL-2.0+
+
+Files: raster/rt_core/rt_api.c
+ raster/rt_core/rt_api.h
+ raster/rt_pg/rt_pg.c
+Copyright: 2008-2009, Sandro Santilli <strk@keybit.net>
+  2009-2011, Mateusz Loskot <mateusz@loskot.net>
+  2009-2011, Pierre Racine <pierre.racine@sbf.ulaval.ca>
+  2010-2011, David Zwarg <dzwarg@azavea.com>
+  2010-2011, Jorge Arevalo <jorge.arevalo@deimos-space.com>
+  2011-2013, Regents of the University of California
+License: GPL-2.0+
+
+Files: doc/html/image_src/generator.c
+ doc/html/image_src/styles.c
+ doc/html/image_src/styles.h
+Copyright: 2008, Kevin Neufeld
+License: GPL-2.0+
+
+Files: liblwgeom/measures.h
+ liblwgeom/measures3d.c
+ liblwgeom/measures3d.h
+Copyright: 2010, Nicklas Avén
+  2011, Nicklas Avén
+License: GPL-2.0+
+
+Files: liblwgeom/lwtriangle.c
+ postgis/lwgeom_in_gml.c
+ postgis/lwgeom_in_kml.c
+Copyright: 2009, Oslandia
+  2009-2010, Oslandia
+  2010, - Oslandia
+License: GPL-2.0+
+
+Files: liblwgeom/lwline.c
+ liblwgeom/lwpoly.c
+ liblwgeom/ptarray.c
+Copyright: 2001-2006, Refractions Research Inc
+  2012, Sandro Santilli <strk@keybit.net>
+License: GPL-2.0+
+
+Files: liblwgeom/stringbuffer.c
+ liblwgeom/stringbuffer.h
+Copyright: 2002, Thamer Alharbash
+  2009, Paul Ramsey <pramsey@cleverelephant.ca>
+License: BSD-3-Clause
+
+Files: java/jdbc/src/examples/TestAutoregister.java
+ java/jdbc/src/examples/VersionPrinter.java
+Copyright: 2005, Markus Schaber, markus.schaber@logix-tt.com
+License: GPL-2.0+
+
+Files: raster/loader/raster2pgsql.c
+ raster/loader/raster2pgsql.h
+Copyright: 2001-2003, Refractions Research Inc
+  2009, Mark Cave-Ayland <mark.cave-ayland@siriusit.co.uk>
+  2009, Paul Ramsey <pramsey@cleverelephant.ca>
+  2011, Regents of the University of California
+License: GPL-2.0+
+
+Files: liblwgeom/lwin_wkt_parse.c
+ liblwgeom/lwin_wkt_parse.h
+Copyright: 1984, 1989-1990, 2000-2011, Free Software Foundation, Inc
+License: GPL-3.0+
+
+Files: liblwgeom/lwgeodetic.c
+ liblwgeom/lwspheroid.c
+Copyright: 2009, David Skea <David.Skea@gov.bc.ca>
+  2009, Paul Ramsey <pramsey@cleverelephant.ca>
+License: GPL-2.0+
+
+Files: liblwgeom/liblwgeom_internal.h
+ liblwgeom/lwgeom_log.h
+Copyright: 2001-2006, Refractions Research Inc
+  2007-2008, Mark Cave-Ayland
+  2008, Paul Ramsey <pramsey@cleverelephant.ca>
+  2011, Paul Ramsey <pramsey@cleverelephant.ca>
+  2011, Sandro Santilli <strk@keybit.net>
+  2011-2012, Sandro Santilli <strk@keybit.net>
+License: GPL-2.0+
+
+Files: loader/shpcommon.c
+ loader/shpcommon.h
+Copyright: 2010, Mark Cave-Ayland <mark.cave-ayland@siriusit.co.uk>
+License: GPL-2.0+
+
+Files: loader/shp2pgsql-cli.c
+ loader/shp2pgsql-core.c
+Copyright: 2008, OpenGeo.org
+  2009, Mark Cave-Ayland <mark.cave-ayland@siriusit.co.uk>
+License: GPL-2.0+
+
+Files: loader/pgsql2shp-core.h
+ loader/shp2pgsql-core.h
+Copyright: 2001-2003, Refractions Research Inc
+  2009, Mark Cave-Ayland <mark.cave-ayland@siriusit.co.uk>
+  2009, Paul Ramsey <pramsey@cleverelephant.ca>
+License: GPL-2.0+
+
+Files: libpgcommon/lwgeom_pg.c
+ libpgcommon/lwgeom_pg.h
+Copyright: 2004-2007, Refractions Research Inc
+  2008, Mark Cave-Ayland <mark.cave-ayland@siriusit.co.uk>
+  2009-2011, Paul Ramsey <pramsey@cleverelephant.ca>
+  2011, Sandro Santilli <strk@keybit.net>
+License: GPL-2.0+
+
+Files: java/jdbc/stubs/org/postgresql/Connection.java
+ java/jdbc/stubs/org/postgresql/PGConnection.java
+Copyright: 2003-2005, PostgreSQL Global Development Group
+  2005, Markus Schaber <markus.schaber@logix-tt.com>
+License: GPL-2.0+
+
+Files: postgis/lwgeom_geos.c
+ postgis/lwgeom_geos_prepared.c
+Copyright: 2001-2003, Refractions Research Inc
+  2007, Refractions Research Inc
+  2008, Paul Ramsey <pramsey@cleverelephant.ca>
+  2009-2012, Sandro Santilli <strk@keybit.net>
+  2012, Sandro Santilli <strk@keybit.net>
+License: GPL-2.0+
+
+Files: ltmain.sh
+Copyright: 1996-2001, 2003-2011
+License: GPL-2.0+ with Libtool exception
+
+Files: raster/rt_pg/rt_pg.h
+Copyright: 2008-2009, Sandro Santilli <strk@keybit.net>
+  2009-2011, Mateusz Loskot <mateusz@loskot.net>
+  2009-2011, Pierre Racine <pierre.racine@sbf.ulaval.ca>
+  2010-2011, David Zwarg <dzwarg@azavea.com>
+  2010-2011, Jorge Arevalo <jorge.arevalo@deimos-space.com>
+License: GPL-2.0+
+
+Files: liblwgeom/vsprintf.c
+Copyright: 1994, 1998-2001, Free Software Foundation, Inc
+License: GPL-2.0+
+
+Files: raster/scripts/python/raster2pgsql.py
+Copyright: 2009-2010, Jorge Arevalo <jorge.arevalo@deimos-space.com>
+  2009-2010, Mateusz Loskot <mateusz@loskot.net>
+  2009-2011, Pierre Racine <pierre.racine@sbf.ulaval.ca>
+License: GPL-2.0+
+
+Files: raster/scripts/python/rtgdalraster.py
+Copyright: 2009, Mateusz Loskot <mateusz@loskot.net>
+  2011, Regents of the University of California
+License: GPL-2.0+
+
+Files: raster/test/cunit/cu_tester.c
+ raster/test/cunit/cu_tester.h
+Copyright: 2008, Paul Ramsey <pramsey@cleverelephant.ca>
+License: GPL-2.0+
+
+Files: raster/test/cunit/cu_raster_wkb.c
+Copyright: 2009, Sandro Santilli <strk@keybit.net>
+  2012, Regents of the University of California
+License: GPL-2.0+
+
+Files: postgis/lwgeom_dumppoints.c
+Copyright: disclaimed
+License: public-domain
+ ST_DumpPoints for postgis.
+ By Nathan Wagner, copyright disclaimed,
+ this entire file is in the public domain
+
+Files: liblwgeom/lwout_x3d.c
+Copyright: 2011, Arrival 3D
+License: GPL-2.0+
+
+Files: liblwgeom/lwout_kml.c
+Copyright: 2006, Corporacion Autonoma Regional de Santander
+  2010, Paul Ramsey <pramsey@cleverelephant.ca>
+License: GPL-2.0+
+
+Files: postgis/lwgeom_in_geohash.c
+Copyright: 2012, J Smith <dark.panda@gmail.com>
+License: GPL-2.0+
+
+Files: postgis/lwgeom_in_geojson.c
+Copyright: 2011, Kashif Rasul <kashif.rasul@gmail.com>
+License: GPL-2.0+
+
+Files: liblwgeom/lwin_geojson.c
+Copyright: 2011, Kashif Rasul <kashif.rasul@gmail.com>
+  2013, Sandro Santilli <strk@keybit.net>
+License: GPL-2.0+
+
+Files: loader/shp2pgsql-gui.c
+Copyright: 2008, OpenGeo.org
+  2010, LISAsoft
+License: GPL-2.0+
+
+Files: postgis/lwgeom_btree.c
+Copyright: 2009-2011, Paul Ramsey <pramsey@cleverelephant.ca>
+  2010, Mark Cave-Ayland <mark.cave-ayland@siriusit.co.uk>
+  2010, Olivier Courtin <olivier.courtin@oslandia.com>
+License: GPL-2.0+
+
+Files: postgis/lwgeom_box.c
+Copyright: 2001-2009, Refractions Research Inc
+  2009, Mark Cave-Ayland <mark.cave-ayland@siriusit.co.uk>
+License: GPL-2.0+
+
+Files: loader/cunit/cu_tester.h
+Copyright: 2010, Mark Leslie
+License: GPL-2.0+
+
+Files: liblwgeom/measures.c
+Copyright: 2001-2006, Refractions Research Inc
+  2010, Nicklas Avén
+  2012, Paul Ramsey
+License: GPL-2.0+
+
+Files: libpgcommon/common.h
+Copyright: 2011, OSGeo
+License: GPL-2.0+
+
+Files: liblwgeom/lwout_geojson.c
+Copyright: 2001-2003, Refractions Research Inc
+  2009-2010, Olivier Courtin <olivier.courtin@oslandia.com>
+License: GPL-2.0+
+
+Files: postgis/postgis_module.c
+Copyright: 2011, OpenGeo.org
+License: GPL-2.0+
+
+Files: utils/create_undef.pl
+Copyright: 2001-2005, Refractions Research Inc
+  2009-2010, Paul Ramsey <pramsey@opengeo.org>
+  2011, OpenGeo.org
+License: GPL-2.0+
+
+Files: liblwgeom/lwout_gml.c
+Copyright: 2001-2003, Refractions Research Inc
+  2010-2012, Oslandia
+  2011, Sandro Santilli <strk@keybit.net>
+License: GPL-2.0+
+
+Files: liblwgeom/cunit/cu_ptarray.c
+Copyright: 2008, Paul Ramsey
+  2011, Sandro Santilli <strk@keybit.net>
+License: GPL-2.0+
+
+Files: postgis/lwgeom_accum.c
+Copyright: 2009, Paul Ramsey <pramsey@opengeo.org>
+License: GPL-2.0+
+
+Files: utils/postgis_proc_upgrade.pl
+Copyright: 2005, Refractions Research Inc
+  2009-2010, Paul Ramsey <pramsey@opengeo.org>
+License: GPL-2.0+
+
+License: GPL-2.0+ with Libtool exception
+ GNU Libtool is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ As a special exception to the GNU General Public License,
+ if you distribute this file as part of a program or library that
+ is built using GNU Libtool, you may include this file under the
+ same distribution terms that you use for the rest of that program.
+ .
+ GNU Libtool is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with GNU Libtool; see the file COPYING.  If not, a copy
+ can be downloaded from http://www.gnu.org/licenses/gpl.html,
+ or obtained by writing to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the full text of the GNU General Public
+ License version 2 can be found in the file
+ `/usr/share/common-licenses/GPL-2'.
+
+License: GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ On Debian systems, the full text of the GNU General Public License
+ version 2 can be found in the file
+ `/usr/share/common-licenses/GPL-2'.
+
+License: GPL-3.0+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ On Debian systems, the full text of the GNU General Public License
+ version 3 can be found in the file
+ `/usr/share/common-licenses/GPL-3'.
+
+License: LGPL-2.0+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ On Debian systems, the full text of the GNU Library General Public
+ License version 2 can be found in the file
+ `/usr/share/common-licenses/LGPL-2'.
+
+License: LGPL-2.1+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ On Debian systems, the full text of the GNU Lesser General Public
+ License version 2.1 can be found in the file
+ `/usr/share/common-licenses/LGPL-2.1'.
+
+License: MIT
+ Permission is hereby granted, free of charge, to any person obtaining a
+ copy of this software and associated documentation files (the "Software"),
+ to deal in the Software without restriction, including without limitation
+ the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ and/or sell copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included
+ in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ DEALINGS IN THE SOFTWARE.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or
+ without modification, are permitted provided that the following
+ conditions are met:
+ .
+ Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ .
+ Redistributions in binary form must reproduce the above
+ copyright notice, this list of conditions and the following
+ disclaimer in the documentation and/or other materials provided
+ with the distribution.
+ .
+ The name of the author may not be used to endorse or promote
+ products derived from this software without specific prior
+ written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY
+ EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR
+ BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ THE POSSIBILITY OF SUCH DAMAGE.
+
