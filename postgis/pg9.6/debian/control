@@ -32,7 +32,7 @@ Vcs-Git: git@github.com:nextgis-borsch/postgis.git
 Package: postgis
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Suggests: postgresql-9.5-postgis-2.2, postgis-doc
+Suggests: postgresql-9.6-postgis-2.2, postgis-doc
 Description: Geographic objects support for PostgreSQL
  PostGIS adds support for geographic objects to the PostgreSQL
  object-relational database. In effect, PostGIS "spatially enables"
@@ -78,14 +78,14 @@ Description: PostGIS "Lightweight Geometry" library - Development files
  processing functions, are implemented here.  This package contains
  the development files.
 
-Package: postgresql-9.5-postgis-2.2
-Depends: ${shlibs:Depends}, postgresql-9.5,
- postgresql-9.5-postgis-scripts, liblwgeom-2.2.2,
+Package: postgresql-9.6-postgis-2.2
+Depends: ${shlibs:Depends}, postgresql-9.6,
+ postgresql-9.6-postgis-scripts, liblwgeom-2.2.2,
  ${misc:Depends}
-Recommends: postgis, postgresql-contrib-9.5
+Recommends: postgis, postgresql-contrib-9.6
 Breaks: postgis (<< 1.2.1)
 Architecture: any
-Description: Geographic objects support for PostgreSQL 9.5
+Description: Geographic objects support for PostgreSQL 9.6
  PostGIS adds support for geographic objects to the PostgreSQL
  object-relational database. In effect, PostGIS "spatially enables"
  the PostgreSQL server, allowing it to be used as a backend spatial
@@ -93,17 +93,17 @@ Description: Geographic objects support for PostgreSQL 9.5
  SDE or Oracle's Spatial extension. PostGIS follows the OpenGIS
  "Simple Features Specification for SQL".
  .
- This package supports PostgreSQL 9.5.
+ This package supports PostgreSQL 9.6.
 
-Package: postgresql-9.5-postgis-scripts
+Package: postgresql-9.6-postgis-scripts
 Architecture: all
 Depends: ${misc:Depends}
-Recommends: postgresql-9.5-postgis-2.2
-Replaces: postgresql-9.5-postgis-2.0-scripts (<< 2.1.0~),
- postgresql-9.5-postgis-2.1-scripts (<< 2.1.0-4~)
-Breaks: postgresql-9.5-postgis-2.0-scripts (<< 2.1.0~),
- postgresql-9.5-postgis-2.1-scripts (<< 2.1.0-4~)
-Description: Geographic objects support for PostgreSQL 9.5 -- scripts
+Recommends: postgresql-9.6-postgis-2.2
+Replaces: postgresql-9.6-postgis-2.0-scripts (<< 2.1.0~),
+ postgresql-9.6-postgis-2.1-scripts (<< 2.1.0-4~)
+Breaks: postgresql-9.6-postgis-2.0-scripts (<< 2.1.0~),
+ postgresql-9.6-postgis-2.1-scripts (<< 2.1.0-4~)
+Description: Geographic objects support for PostgreSQL 9.6 -- scripts
  PostGIS adds support for geographic objects to the PostgreSQL
  object-relational database. In effect, PostGIS "spatially enables"
  the PostgreSQL server, allowing it to be used as a backend spatial
@@ -112,15 +112,15 @@ Description: Geographic objects support for PostgreSQL 9.5 -- scripts
  "Simple Features Specification for SQL".
  .
  This package contains SQL scripts to upgrade from earlier PostGIS
- versions for PostgreSQL 9.5 as well as Perl utility scripts.
+ versions for PostgreSQL 9.6 as well as Perl utility scripts.
 
-Package: postgresql-9.5-postgis-2.2-scripts
+Package: postgresql-9.6-postgis-2.2-scripts
 Architecture: all
 Depends: ${misc:Depends}
-Description: PostGIS for PostgreSQL 9.5 -- scripts -- dummy package
+Description: PostGIS for PostgreSQL 9.6 -- scripts -- dummy package
  This package contained SQL scripts to upgrade from earlier PostGIS
- versions for PostgreSQL 9.5 as well as Perl utility scripts.
- It got renamed to postgresql-9.5-postgis-scripts.
+ versions for PostgreSQL 9.6 as well as Perl utility scripts.
+ It got renamed to postgresql-9.6-postgis-scripts.
  .
  This is a transitional dummy package. It can safely be removed.
 
