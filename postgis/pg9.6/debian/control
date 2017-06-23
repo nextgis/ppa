@@ -14,7 +14,7 @@ Build-Depends: debhelper (>= 9),
                rdfind, 
                libgeos-dev (>= 3.3),
                libproj-dev (>= 4.6.0),
-               libjson0-dev (>= 0.9~),
+               libjson-c-dev (>= 0.9~),
                libproj-dev (>= 4.6.0), 
                libssl-dev, 
                libxml2-dev (>= 2.5.0~),
@@ -44,7 +44,7 @@ Description: Geographic objects support for PostgreSQL
  .
  This package contains the PostGIS userland binaries, common files.
 
-Package: liblwgeom-2.3.2
+Package: liblwgeom-2.3
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends}, libjson0 (>= 0.9~), ${misc:Depends}
@@ -64,7 +64,7 @@ Package: liblwgeom-dev
 Architecture: any
 Section: libdevel
 Depends: ${misc:Depends},
- liblwgeom-2.3.2 (= ${binary:Version})
+ liblwgeom-2.3 (= ${binary:Version})
 Breaks: postgis (<< 2.1.0)
 Description: PostGIS "Lightweight Geometry" library - Development files
  PostGIS adds support for geographic objects to the PostgreSQL
