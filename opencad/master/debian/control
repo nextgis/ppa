@@ -1,0 +1,66 @@
+Source: opencad
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+Section: science
+Priority: optional
+Build-Depends: debhelper (>= 9), 
+               cmake, 
+               cdbs,
+               dh-autoreconf,
+               d-shlibs,
+               chrpath
+Standards-Version: 3.9.5
+Vcs-Browser: https://github.com/nextgis-borsch/lib_opencad
+Vcs-Git: git@github.com:nextgis-borsch/lib_opencad.git
+Homepage: https://github.com/sandyre/libopencad/
+
+Package: libopencad1
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Recommends: opencad-bin           
+Description: OpenSource library under X11/MIT license for everyday use. Under 
+ development, but some of basic functionality is already available.
+ .
+ This package contains the shared library.
+
+Package: libopencad-dev
+Architecture: any
+Section: libdevel
+Depends: libopencad1 (= ${binary:Version}),
+         libc6-dev,
+         ${misc:Depends}
+Suggests: libopencad-doc
+Description: Developer files of OpenCAD.
+ The OpenCAD is OpenSource library under X11/MIT license for 
+ everyday use. Under development, but some of basic functionality is already 
+ available.
+ .
+ This package contains the files needed to develop a software that
+ will use the OpenCAD (headers, static objects, configuration script). 
+
+Package: libopencad-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}
+Suggests: libopencad1
+Description: Documentation for the OpenCAD Library
+ The OpenCAD is OpenSource library under X11/MIT license for 
+ everyday use. Under development, but some of basic functionality is already 
+ available.
+ .
+ This package contains documentation for OpenCAD API.
+
+Package: opencad-bin
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: OpenCAD Library - Utility program
+ The OpenCAD is OpenSource library under X11/MIT license for 
+ everyday use. Under development, but some of basic functionality is already 
+ available.
+ .
+ This package contains utility programs, based on OpenCAD library,
+ namely cadinfo.
+
