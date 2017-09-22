@@ -23,6 +23,10 @@ Build-Depends: debhelper (>= 9),
                postgresql-server-dev-all, 
                postgresql-common (>= 148~), 
                postgresql,
+               libprotobuf-dev,
+               libprotobuf-c-dev,
+               libprotoc-dev,
+               protobuf-c-compiler,
                d-shlibs,
                dh-autoreconf
 Standards-Version: 3.9.5
