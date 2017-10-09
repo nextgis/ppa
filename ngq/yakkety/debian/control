@@ -54,9 +54,7 @@ Build-Depends:
  libqscintilla2-dev,
  git,
  libqt4-sql-sqlite, python-psycopg2,
- libopencv-dev,
- python-numpy,
- python-opencv
+ python-numpy
 Build-Conflicts: libngqgis-dev, ngqgis-dev
 Standards-Version: 3.9.7
 XS-Python-Version: current
@@ -142,19 +140,7 @@ Description: QGIS - shared analysis library
  .
  This package contains the shared analysis library.
 
-Package: libngqgis-networkanalysis
-Architecture: any
-Section: libs
-Depends:
- ${shlibs:Depends},
- ${misc:Depends}
-Description: QGIS - shared network analysis library
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
- display databases of geographic information.
- .
- This package contains the shared network analysis library.
-
-Package: libngqgispython
+Package: libngqgis-python
 Architecture: any
 Section: libs
 Depends:
@@ -215,7 +201,7 @@ Depends:
  python-matplotlib,
  python-future,
  libngqgis-core (= ${binary:Version}),
- libngqgispython (= ${source:Version}),
+ libngqgis-python (= ${source:Version}),
  ${misc:Depends}
 XB-Python-Version: ${python:Versions}
 Description: Python bindings to QGIS - architecture-independent files
