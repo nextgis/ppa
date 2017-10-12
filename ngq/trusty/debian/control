@@ -51,7 +51,8 @@ Build-Depends:
  python-yaml,
  libqscintilla2-dev,
  git,
- libqt4-sql-sqlite, python-psycopg2,
+ libqt4-sql-sqlite,
+ python-psycopg2,
  python-numpy
 Build-Conflicts: libngqgis-dev, ngqgis-dev
 Standards-Version: 3.8.4
