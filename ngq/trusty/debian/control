@@ -198,7 +198,6 @@ Depends:
  python-pyspatialite,
  python-gdal,
  python-matplotlib,
- python-future,
  libngqgis-core (= ${binary:Version}),
  libngqgis-python (= ${source:Version}),
  ${misc:Depends}

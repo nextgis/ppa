@@ -36,7 +36,7 @@ Build-Depends:
  python-qt4-sql,
  python-yaml, python-mock,
  python-all (>= 2.6.6-3~), python-all-dev (>= 2.6.6-3~),
-#xenial yakkety# pyqt4.qsci-dev,
+#xenial zesty# pyqt4.qsci-dev,
  python-pyspatialite,
  python-nose2,
  python-sip (>= 4.5.0),
@@ -50,13 +50,13 @@ Build-Depends:
  python-tz,
  python-six,
  python-yaml,
-#xenial yakkety# python-future,
+#xenial zesty# python-future,
  libqscintilla2-dev,
  git,
  libqt4-sql-sqlite, python-psycopg2,
  python-numpy
 Build-Conflicts: libngqgis-dev, ngqgis-dev
-#xenial yakkety#Standards-Version: 3.9.7
+#xenial zesty#Standards-Version: 3.9.7
 #trusty#Standards-Version: 3.8.4
 XS-Python-Version: current
 Vcs-Browser: https://github.com/nextgis/NextGIS-QGIS/
@@ -200,7 +200,7 @@ Depends:
  python-pyspatialite,
  python-gdal,
  python-matplotlib,
- python-future,
+#xenial zesty#  python-future,
  libngqgis-core (= ${binary:Version}),
  libngqgis-python (= ${source:Version}),
  ${misc:Depends}
