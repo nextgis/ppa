@@ -93,7 +93,7 @@ Depends: libgdal20 (= ${binary:Version}),
          libopencad-dev,
          libopenjp2-7-dev | libopenjpeg-dev,
          libgif-dev,
-         libspatialite-dev
+         libspatialite-dev,
          ${misc:Depends}
 Suggests: libgdal-doc
 Description: Geospatial Data Abstraction Library - Development files
