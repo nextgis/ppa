@@ -1,0 +1,25 @@
+Source: nextgisutilities
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+Section: science
+Priority: optional
+Build-Depends: debhelper (>= 9),
+               cmake,
+               cdbs,
+               dh-autoreconf,
+               d-shlibs,
+               chrpath,
+               libgdal-dev,
+               libgeos-dev,
+               liblwgeom-dev
+Standards-Version: 3.9.5
+Vcs-Browser: https://github.com/nextgis/nextgisutilities
+Vcs-Git: git@github.com:nextgis/nextgisutilities.git
+Homepage: https://nextgis.com
+
+Package: nextgisutilities-bin
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: NextGIS various utility program
+ This package contains utility programs, based on GDAL, GEOS and LWGEOM libraries.
