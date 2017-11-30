@@ -11,6 +11,7 @@ Build-Depends: debhelper (>= 9),
                chrpath,
                libgdal-dev,
                libgeos-dev,
+               libproj-dev,
                liblwgeom-dev
 Standards-Version: 3.9.5
 Vcs-Browser: https://github.com/nextgis/nextgisutilities
