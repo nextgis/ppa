@@ -1,7 +1,8 @@
-Source: fonts-paratype
+Source: fonts
 Section: fonts
 Priority: optional
-Maintainer: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
 Build-Depends: debhelper (>= 8)
 Build-Depends-Indep: fontforge-nox | fontforge
 Standards-Version: 3.9.4
