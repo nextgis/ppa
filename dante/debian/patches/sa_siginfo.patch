@@ -1,0 +1,219 @@
+From 85e3ce54ecacad9d106f976faa3dff4c879ce79a Mon Sep 17 00:00:00 2001
+From: Peter Pentchev <roam@ringlet.net>
+Date: Mon, 30 Oct 2017 00:42:40 +0200
+Subject: Only use SA_SIGINFO if available (e.g. not on GNU/Hurd)
+
+Forwarded: no
+Last-Update: 2016-04-05
+Patch-Name: sa_siginfo.patch
+---
+ lib/connectchild.c      | 10 ++++++++++
+ lib/upnp.c              |  2 ++
+ sockd/monitor.c         |  4 ++++
+ sockd/mother_util.c     |  6 ++++++
+ sockd/sockd.c           |  4 ++++
+ sockd/sockd_child.c     |  4 ++++
+ sockd/sockd_io.c        |  4 ++++
+ sockd/sockd_negotiate.c |  4 ++++
+ sockd/sockd_request.c   |  4 ++++
+ 9 files changed, 42 insertions(+)
+
+diff --git a/lib/connectchild.c b/lib/connectchild.c
+index 15824a9..9692710 100644
+--- a/lib/connectchild.c
++++ b/lib/connectchild.c
+@@ -129,6 +129,7 @@ socks_nbconnectroute(s, control, packet, src, dst, emsg, emsglen)
+       return NULL;
+    }
+ 
++#ifdef SA_SIGINFO
+    if (currentsig.sa_flags & SA_SIGINFO) { /* sa_sigaction. */
+       isourhandler = (currentsig.sa_sigaction == sigio);
+ 
+@@ -146,6 +147,7 @@ socks_nbconnectroute(s, control, packet, src, dst, emsg, emsglen)
+       }
+    }
+    else { /* sa_handler. */
++#endif
+       isourhandler = 0; /* we install with SA_SIGINFO. */
+ 
+       if (currentsig.sa_handler != SIG_IGN
+@@ -155,12 +157,16 @@ socks_nbconnectroute(s, control, packet, src, dst, emsg, emsglen)
+       else
+          slog(LOG_DEBUG,
+               "%s: no SIGIO handler previously installed", function);
++#ifdef SA_SIGINFO
+    }
++#endif
+ 
+    if (!isourhandler) {
+       newsig               = currentsig; /* keep same as much as possible. */
+       newsig.sa_sigaction  = sigio;
++#ifdef SA_SIGINFO
+       newsig.sa_flags     |= SA_SIGINFO;
++#endif
+ 
+       slog(LOG_DEBUG, "%s: our signal handler is not installed, installing ...",
+            function);
+@@ -1288,6 +1294,7 @@ sigio(sig, sip, scp)
+       return;
+    }
+ 
++#ifdef SA_SIGINFO
+    if (originalsig.sa_flags & SA_SIGINFO
+    &&  originalsig.sa_sigaction != NULL) {
+       const char *msgv[] =
+@@ -1302,6 +1309,7 @@ sigio(sig, sip, scp)
+       originalsig.sa_sigaction(sig, sip, scp);
+    }
+    else {
++#endif
+       if (originalsig.sa_handler != SIG_IGN
+       &&  originalsig.sa_handler != SIG_DFL) {
+          const char *msgv[] =
+@@ -1315,7 +1323,9 @@ sigio(sig, sip, scp)
+ 
+          originalsig.sa_handler(sig);
+       }
++#ifdef SA_SIGINFO
+    }
++#endif
+ 
+    if (sockscf.connectchild == 0) {
+       sockscf.state.insignal = 0;
+diff --git a/lib/upnp.c b/lib/upnp.c
+index ac477de..7904641 100644
+--- a/lib/upnp.c
++++ b/lib/upnp.c
+@@ -801,7 +801,9 @@ upnp_negotiate(s, packet, gw, emsg, emsglen)
+ 
+                oursig = oldsig;
+                oursig.sa_handler = sighandler;
++#ifdef SA_SIGINFO
+                oursig.sa_flags  |= SA_SIGINFO;
++#endif
+ 
+                if (sigaction(signalv[i], &oursig, NULL) != 0) {
+                   swarn("%s: sigaction(%d)", function, signalv[i]);
+diff --git a/sockd/monitor.c b/sockd/monitor.c
+index 33886b6..37485ba 100755
+--- a/sockd/monitor.c
++++ b/sockd/monitor.c
+@@ -408,7 +408,11 @@ run_monitor(void)
+    fd_set *rset;
+ 
+    bzero(&sigact, sizeof(sigact));
++#ifdef SA_SIGINFO
+    sigact.sa_flags     = SA_RESTART | SA_SIGINFO;
++#else
++   sigact.sa_flags     = SA_RESTART;
++#endif
+    sigact.sa_sigaction = siginfo;
+ 
+ #if HAVE_SIGNAL_SIGINFO
+diff --git a/sockd/mother_util.c b/sockd/mother_util.c
+index 51d77eb..15731f4 100755
+--- a/sockd/mother_util.c
++++ b/sockd/mother_util.c
+@@ -259,7 +259,11 @@ mother_envsetup(argc, argv)
+     */
+ 
+    bzero(&sigact, sizeof(sigact));
++#ifdef SA_SIGINFO
+    sigact.sa_flags = SA_RESTART | SA_NOCLDSTOP | SA_SIGINFO;
++#else
++   sigact.sa_flags = SA_RESTART | SA_NOCLDSTOP;
++#endif
+ 
+    sigact.sa_sigaction = siginfo;
+ #if HAVE_SIGNAL_SIGINFO
+@@ -292,7 +296,9 @@ mother_envsetup(argc, argv)
+       if (sigaction(ignoresignalv[i], &sigact, NULL) != 0)
+          serr("sigaction(%d)", ignoresignalv[i]);
+ 
++#ifdef SA_SIGINFO
+    sigact.sa_flags     = SA_SIGINFO;   /* want to be interrupted. */
++#endif
+    sigact.sa_sigaction = sigalrm;
+    if (sigaction(SIGALRM, &sigact, NULL) != 0)
+       serr("sigaction(SIGALRM)");
+diff --git a/sockd/sockd.c b/sockd/sockd.c
+index ed8ca46..520a18d 100755
+--- a/sockd/sockd.c
++++ b/sockd/sockd.c
+@@ -236,7 +236,11 @@ main(argc, argv)
+             newprocinit();
+ 
+             bzero(&sigact, sizeof(sigact));
++#ifdef SA_SIGINFO
+             sigact.sa_flags = SA_RESTART | SA_NOCLDSTOP | SA_SIGINFO;
++#else
++            sigact.sa_flags = SA_RESTART | SA_NOCLDSTOP;
++#endif
+ 
+             sigact.sa_sigaction = sighup_child;
+             if (sigaction(SIGHUP, &sigact, NULL) != 0) {
+diff --git a/sockd/sockd_child.c b/sockd/sockd_child.c
+index 20ae778..8b48bfe 100644
+--- a/sockd/sockd_child.c
++++ b/sockd/sockd_child.c
+@@ -1828,7 +1828,11 @@ addchild(type)
+           * Next install a SIGHUP handler.  Same for all children and
+           * different from the one mother uses.
+           */
++#ifdef SA_SIGINFO
+          sigact.sa_flags = SA_RESTART | SA_NOCLDSTOP | SA_SIGINFO;
++#else
++         sigact.sa_flags = SA_RESTART | SA_NOCLDSTOP;
++#endif
+ 
+          sigact.sa_sigaction = sighup_child;
+          if (sigaction(SIGHUP, &sigact, NULL) != 0)
+diff --git a/sockd/sockd_io.c b/sockd/sockd_io.c
+index 41e8185..bfe6dd6 100644
+--- a/sockd/sockd_io.c
++++ b/sockd/sockd_io.c
+@@ -329,7 +329,11 @@ run_io()
+ #endif /* DIAGNOSTIC */
+ 
+    bzero(&sigact, sizeof(sigact));
++#ifdef SA_SIGINFO
+    sigact.sa_flags     = SA_RESTART | SA_NOCLDSTOP | SA_SIGINFO;
++#else
++   sigact.sa_flags     = SA_RESTART | SA_NOCLDSTOP;
++#endif
+    sigact.sa_sigaction = siginfo;
+ 
+ #if HAVE_SIGNAL_SIGINFO
+diff --git a/sockd/sockd_negotiate.c b/sockd/sockd_negotiate.c
+index 42c1f5e..d6980d5 100644
+--- a/sockd/sockd_negotiate.c
++++ b/sockd/sockd_negotiate.c
+@@ -227,7 +227,11 @@ run_negotiate()
+    int sendfailed;
+ 
+    bzero(&sigact, sizeof(sigact));
++#ifdef SA_SIGINFO
+    sigact.sa_flags     = SA_RESTART | SA_NOCLDSTOP | SA_SIGINFO;
++#else
++   sigact.sa_flags     = SA_RESTART | SA_NOCLDSTOP;
++#endif
+    sigact.sa_sigaction = siginfo;
+ 
+ #if HAVE_SIGNAL_SIGINFO
+diff --git a/sockd/sockd_request.c b/sockd/sockd_request.c
+index 0706af4..868e401 100644
+--- a/sockd/sockd_request.c
++++ b/sockd/sockd_request.c
+@@ -247,7 +247,11 @@ run_request()
+    fd_set *rset;
+ 
+    bzero(&sigact, sizeof(sigact));
++#ifdef SA_SIGINFO
+    sigact.sa_flags     = SA_RESTART | SA_NOCLDSTOP | SA_SIGINFO;
++#else
++   sigact.sa_flags     = SA_RESTART | SA_NOCLDSTOP;
++#endif
+    sigact.sa_sigaction = siginfo;
+ 
+ #if HAVE_SIGNAL_SIGINFO

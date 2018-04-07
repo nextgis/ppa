@@ -1,0 +1,15 @@
+rename-library.patch
+rename-programs.patch
+configure.patch
+readme-functions.patch
+config-users.patch
+linux-eccentricities.patch
+man-errors.patch
+sa_siginfo.patch
+cppcheck.patch
+dante-client-multiarch.patch
+standards.patch
+typos.patch
+sendbuf-ioctl.patch
+signal-names.patch
+path-max.patch

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+dante_service_error()
+{
+	local res="$?" conffile='/etc/danted.conf' notfound='' var
+	for var in internal external; do
+		if ! egrep -qe '^[[:space:]]*'"$var"'[[:space:]]*:' -- "$conffile"; then
+			notfound="$notfound $var"
+		fi
+	done
+	if [ -n "$notfound" ]; then
+		echo "Please edit the Dante server config file $conffile and specify at least the following directives:$notfound" 1>&2
+	else
+		# The required directives are specified, so propagate the error
+		exit "$res"
+	fi
+}
+
+#DEBHELPER#

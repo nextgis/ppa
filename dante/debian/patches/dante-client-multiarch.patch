@@ -1,0 +1,70 @@
+From b3ba873547c02901cc3b0fa57f71058733c48213 Mon Sep 17 00:00:00 2001
+From: Peter Pentchev <roam@ringlet.net>
+Date: Mon, 30 Oct 2017 00:42:42 +0200
+Subject: Leave it to the loader to preload the correct ABI libraries.
+
+Teach dante-client to put only the library names into LD_PRELOAD so that
+the actual runtime loader can figure out which libraries to load, taking
+into account the ABI of the executable files.
+
+Install the dynamic preload library as a full-fledged library, SONAME and all.
+
+Forwarded: not-yet
+Last-Update: 2016-04-07
+Patch-Name: dante-client-multiarch.patch
+---
+ bin/socksify.in  | 21 +++++++++++++++++++--
+ dlib/Makefile.am |  2 +-
+ 2 files changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/bin/socksify.in b/bin/socksify.in
+index 702e920..83b1df4 100755
+--- a/bin/socksify.in
++++ b/bin/socksify.in
+@@ -72,14 +72,31 @@ fi
+ 
+ #dlib/Makefile.am libtool flags should produce a predictable library name
+ #(ending in SOLIB_POSTFIX).
+-LIBRARY="${SOCKS_LIBRARY:-${FULLPATH}libdsocksd.@SOLIB_POSTFIX@}"
++LIBRARY="${SOCKS_LIBRARY:-${FULLPATH}libdsocksd.@SOLIB_POSTFIX@.0}"
+ 
+ #platform dependent LD_PRELOAD-variant format
+ PRELOAD_SEPERATOR="@PRELOAD_SEPERATOR@"
+ PRELOAD_POSTFIX="@PRELOAD_POSTFIX@"
+ 
++PRELOAD_NAME_ONLY="1"
++
+ #set variable activating preloading (LD_PRELOAD etc.)
+-@PRELOAD_VARIABLE@="${LIBRARY}${SOCKSIFY_PRELOAD_LIBS:+${PRELOAD_SEPERATOR}}${SOCKSIFY_PRELOAD_LIBS}${PRELOAD_POSTFIX:+${PRELOAD_SEPERATOR}}${PRELOAD_POSTFIX}"
++if test x"$PRELOAD_NAME_ONLY" = x; then
++    @PRELOAD_VARIABLE@="${LIBRARY}${SOCKSIFY_PRELOAD_LIBS:+${PRELOAD_SEPERATOR}}${SOCKSIFY_PRELOAD_LIBS}${PRELOAD_POSTFIX:+${PRELOAD_SEPERATOR}}${PRELOAD_POSTFIX}"
++else
++    preload_libs=''
++    for lib in "$LIBRARY" $SOCKSIFY_PRELOAD_LIBS; do
++        base=`basename "$lib"`
++        preload_libs="${preload_libs}${PRELOAD_SEPERATOR}${base}"
++    done
++
++    #do not run PRELOAD_POSTFIX through basename
++    if test x"$PRELOAD_POSTFIX" != x; then
++        preload_libs="${preload_libs}${PRELOAD_SEPERATOR}${PRELOAD_POSTFIX}"
++    fi
++
++    @PRELOAD_VARIABLE@="${preload_libs#${PRELOAD_SEPERATOR}}"
++fi
+ export @PRELOAD_VARIABLE@
+ 
+ LD_LIBRARY_PATH="${SOCKS_LIBDIR}${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"
+diff --git a/dlib/Makefile.am b/dlib/Makefile.am
+index 64248f3..af62a11 100644
+--- a/dlib/Makefile.am
++++ b/dlib/Makefile.am
+@@ -30,7 +30,7 @@ EXTRA_libdsocksd_la_SOURCES = ../libscompat/getifaddrs.c \
+ #libscompat - files only used by client
+ EXTRA_libdsocksd_la_SOURCES += ../libscompat/issetugid.c
+ 
+-libdsocksd_la_LDFLAGS = -avoid-version -all-dynamic @MAPOPT@
++libdsocksd_la_LDFLAGS = -version-info 0:0:0 -all-dynamic @MAPOPT@
+ libdsocksd_la_LIBADD = @LIBDSCSRC@ @DLIBDEPS@ @LIBSCOMPAT@
+ libdsocksd_la_DEPENDENCIES = Makefile.am _reconf @LIBDSCSRC@
+ libdsocksd_la_LIBTOOLFLAGS = --tag=disable-static

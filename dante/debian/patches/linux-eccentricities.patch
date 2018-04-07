@@ -1,0 +1,68 @@
+From 9954e027c1cea7c55ed33c3636ab705c2e94bd4f Mon Sep 17 00:00:00 2001
+From: Peter Pentchev <roam@ringlet.net>
+Date: Mon, 30 Oct 2017 00:42:38 +0200
+Subject: Fix the build on non-Linux architectures.
+
+- never build with the "Linux eccentricities" on Debian
+- make the CMSG_CONTROLDATA() macro work and introduce
+  an lvalue equivalent
+- add two more kFreeBSD tests in the configure script
+
+Forwarded: no
+Last-Update: 2016-04-06
+Patch-Name: linux-eccentricities.patch
+---
+ include/common.h | 3 ++-
+ lib/Rcompat.c    | 2 +-
+ preload.m4       | 4 ++--
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/include/common.h b/include/common.h
+index bbac4b5..81f3779 100755
+--- a/include/common.h
++++ b/include/common.h
+@@ -1088,7 +1088,8 @@ do {                                                                           \
+  * cast is necessary on AIX, due to buggy headers there?
+  * needs additional testing on AIX, disable for now.
+  */
+-#define CMSG_CONTROLDATA(msg)   ((msg).msg_control)
++#define CMSG_CONTROLDATA(msg)   ((struct cmsghdr *)((msg).msg_control))
++#define CMSG_CONTROLDATA_MUTABLE(msg)   ((msg).msg_control)
+ #else /* !HAVE_CMSGHDR */
+ #define CMSG_CONTROLDATA(msg)   ((msg).msg_accrights)
+ #endif /* HAVE_CMSGHDR */
+diff --git a/lib/Rcompat.c b/lib/Rcompat.c
+index 3ca38d5..a75f435 100755
+--- a/lib/Rcompat.c
++++ b/lib/Rcompat.c
+@@ -293,7 +293,7 @@ Rrecvmsg(s, msg, flags)
+ 
+    /* no cmsg on proxied sockets. */
+    CMSG_TOTLEN(*msg)      = 0;
+-   CMSG_CONTROLDATA(*msg) = NULL;
++   CMSG_CONTROLDATA_MUTABLE(*msg) = NULL;
+ 
+    for (received = ioc = rc = 0; ioc < (size_t)msg->msg_iovlen; ++ioc) {
+       if ((rc = Rrecvfrom(s,
+diff --git a/preload.m4 b/preload.m4
+index e1b8724..f207760 100644
+--- a/preload.m4
++++ b/preload.m4
+@@ -438,7 +438,7 @@ if test x"$use_threads" = xt; then
+     AC_DEFINE(HAVE_PTHREAD_H, 1, [have pthread header])
+     if test x"${ac_cv_search_pthread_mutexattr_init}" = x"-lpthread"; then
+         case $host in
+-	    *-*-linux-*)
++	    *-*-linux-*|*-gnu)
+ 	        #XXX attempt to find latest pthread library
+ 		PATH=$PATH:/sbin
+ 		export PATH
+@@ -616,7 +616,7 @@ if test x"${LIBC_NAME}" = x; then
+ 	    fi
+ 	    ;;
+ 
+-	*-*-linux-*)
++	*-*-linux-*|*-gnu)
+ 	    #XXX
+ 	    #can't set it to libc.so directly, might be ld script
+ 	    unset LIBC_ALTS

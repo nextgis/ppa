@@ -1,0 +1,59 @@
+From dde2d3cd94a7a5c9298523eef3708de18f2d316e Mon Sep 17 00:00:00 2001
+From: Peter Pentchev <roam@ringlet.net>
+Date: Mon, 30 Oct 2017 00:42:41 +0200
+Subject: Fix some cppcheck warnings.
+
+Forwarded: no
+Last-Update: 2016-04-05
+Patch-Name: cppcheck.patch
+---
+ lib/address.c        | 2 +-
+ lib/clientprotocol.c | 7 ++++++-
+ sockd/method_uname.c | 2 +-
+ 3 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/lib/address.c b/lib/address.c
+index 55bfbdb..389c92e 100644
+--- a/lib/address.c
++++ b/lib/address.c
+@@ -1227,8 +1227,8 @@ socks_addrinit(void)
+                serr("%s: mutex_init() failed", function);
+          }
+       }
+-#endif /* HAVE_PTHREAD_H */
+    }
++#endif /* HAVE_PTHREAD_H */
+ 
+    inited         = 1;
+    doing_addrinit = 0;
+diff --git a/lib/clientprotocol.c b/lib/clientprotocol.c
+index 3ecbb7a..89ef0e0 100644
+--- a/lib/clientprotocol.c
++++ b/lib/clientprotocol.c
+@@ -1213,7 +1213,12 @@ clientmethod_gssapi(s, protocol, gw, version, auth, emsg, emsglen)
+    SOCKS_SIGUNBLOCK_IF_CLIENT(&oldset);
+ 
+    if (gss_err_isset(major_status, minor_status, tmpbuf, sizeof(tmpbuf))) {
+-      snprintf(emsg, emsglen, "gss_import_name() failed: %s", emsg);
++      char *ebuf = malloc(emsglen);
++      if (ebuf != NULL) {
++        snprintf(ebuf, emsglen, "%s", emsg);
++        snprintf(emsg, emsglen, "gss_import_name() failed: %s", ebuf);
++        free(ebuf);
++      }
+ 
+       SOCKS_SIGUNBLOCK_IF_CLIENT(&oldset);
+       goto error;
+diff --git a/sockd/method_uname.c b/sockd/method_uname.c
+index de8e2bc..d8de9b1 100644
+--- a/sockd/method_uname.c
++++ b/sockd/method_uname.c
+@@ -140,7 +140,7 @@ passworddbisunique(void)
+ #if HAVE_PAM
+          else if (methodisset(AUTHMETHOD_PAM_USERNAME,
+                               sockscf.smethodv,
+-                              sockscf.smethodc)) {
++                              sockscf.smethodc))
+          rc = 0;
+ #endif /* HAVE_PAM */
+       else

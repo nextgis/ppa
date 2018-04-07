@@ -1,0 +1,27 @@
+From b80a9f5e3a9c376855080ec5dafbdd1269a358b3 Mon Sep 17 00:00:00 2001
+From: Peter Pentchev <roam@ringlet.net>
+Date: Mon, 30 Oct 2017 00:42:48 +0200
+Subject: Use a sensible value for PATH_MAX if it is not defined.
+
+Forwarded: no
+Last-Update: 2017-01-12
+Patch-Name: path-max.patch
+---
+ include/osdep.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/include/osdep.h b/include/osdep.h
+index 8b3a5fc..db6320c 100644
+--- a/include/osdep.h
++++ b/include/osdep.h
+@@ -475,6 +475,10 @@ do {                                                                           \
+ #define ETHER_ADDR_LEN  (6)
+ #endif /* !ETHER_ADDR_LEN */
+ 
++#ifndef PATH_MAX
++#define PATH_MAX	1024
++#endif
++
+ #if !HAVE_STRUCT_IPOPTS
+ #define   MAX_IPOPTLEN   40
+ struct ipoption {

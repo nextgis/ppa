@@ -1,0 +1,16 @@
+_reconf
+_sockopttmp0.c
+buildenv.txt
+buildenvrc
+dlib/_reconf
+dlib/config_parse.c
+dlib/config_scan.c
+dlib/socks.map
+dlib/socks.sym
+include/errorsymbols_gen.h
+lib/_reconf
+lib/sockopt_gen.c
+lib/socks.sym
+sockd/_reconf
+sockd/config_parse.c
+sockd/config_scan.c

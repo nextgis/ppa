@@ -1,0 +1,39 @@
+From 4cc1570947e24117a5f6a3d4cf7da0b4bd145aa4 Mon Sep 17 00:00:00 2001
+From: Adrian Bridgett <bridgett@debian.org>
+Date: Mon, 30 Oct 2017 00:42:37 +0200
+Subject: Do not invent our own users, use "proxy" and "nobody".
+
+Forwarded: not-needed
+Last-Update: 2010-07-02
+Patch-Name: config-users.patch
+---
+ example/sockd.conf | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/example/sockd.conf b/example/sockd.conf
+index 5ce9587..fa2e52d 100644
+--- a/example/sockd.conf
++++ b/example/sockd.conf
+@@ -76,17 +76,18 @@ logoutput: stderr
+ #
+ 
+ # when doing something that can require privilege, it will use the
+-# userid "sockd".
+-#user.privileged: sockd
++# userid:
++user.privileged: proxy
+ 
+-# when running as usual, it will use the unprivileged userid of "sockd".
+-#user.unprivileged: sockd
++# when running as usual, it will use the unprivileged userid of:
++user.unprivileged: nobody
+ 
+ # If you are not using libwrap, no need for the below line, so leave
+ # it commented.
+ # If you compiled with libwrap support, what userid should it use
+ # when executing your libwrap commands?  "libwrap".
+ #user.libwrap: libwrap
++user.libwrap: nobody
+ 
+ 
+ #

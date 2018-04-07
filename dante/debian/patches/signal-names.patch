@@ -1,0 +1,27 @@
+From 5e6880ee8582441b3194d0f9ab198120d164f11f Mon Sep 17 00:00:00 2001
+From: Peter Pentchev <roam@ringlet.net>
+Date: Mon, 30 Oct 2017 00:42:47 +0200
+Subject: Make sure SIGPWR is not the same as SIGINFO or SIGLOST
+
+Avoid a duplicate case value in a switch statement on e.g. Alpha or Sparc.
+
+Forwarded: not-yet
+Last-Update: 2017-01-09
+Patch-Name: signal-names.patch
+---
+ lib/tostring.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/tostring.c b/lib/tostring.c
+index 2bae5e9..5cc1623 100644
+--- a/lib/tostring.c
++++ b/lib/tostring.c
+@@ -1551,7 +1551,7 @@ signal2string(sig)
+          return "SIGPROF";
+ #endif /* SIGPROF */
+ 
+-#ifdef SIGPWR
++#if (defined SIGPWR) && (!defined SIGINFO || SIGINFO != SIGPWR) && (!defined SIGLOST || SIGLOST != SIGPWR)
+       case SIGPWR:
+          return "SIGPWR";
+ #endif /* SIGPWR */

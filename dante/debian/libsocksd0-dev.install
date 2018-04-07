@@ -1,0 +1,3 @@
+usr/lib/*/libsocksd.a
+usr/lib/*/libsocksd.so
+usr/include/socks.h usr/include

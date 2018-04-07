@@ -1,0 +1,65 @@
+From 2d7808950e891391c6800850008e1c376e2c66e1 Mon Sep 17 00:00:00 2001
+From: Adrian Bridgett <bridgett@debian.org>
+Date: Mon, 30 Oct 2017 00:42:36 +0200
+Subject: Remove the list of overridden functions; better to include socks.h
+
+Forwarded: no
+Last-Update: 2010-07-02
+Patch-Name: readme-functions.patch
+---
+ doc/README.usage | 36 ++----------------------------------
+ 1 file changed, 2 insertions(+), 34 deletions(-)
+
+diff --git a/doc/README.usage b/doc/README.usage
+index d00757c..a31f170 100644
+--- a/doc/README.usage
++++ b/doc/README.usage
+@@ -27,46 +27,14 @@ socksified versions instead of the standard ones.  The application
+ is then linked with the libsocks library in the distribution (-lsocksd,
+ not -ldsocksd).
+ 
+-These function calls can be found in the socks library:
+-Raccept
+-Rbind
+-Rbindresvport
+-Rconnect
+-Rgetaddrinfo
+-Rgethostbyname
+-Rgethostbyname2
+-Rgetipnodebyname
+-Rgetpeername
+-Rgetsockname
+-Rlisten
+-Rread
+-Rreadv
+-Rrecv
+-Rrecvfrom
+-Rrecvfrom
+-Rrecvmsg
+-Rrresvport
+-Rsend
+-Rsendmsg
+-Rsendto
+-Rwrite
+-Rwritev
++These system calls can be found in the socks include file "socks.h"
++which should be included in all relevant source files.
+ 
+ These calls currently does nothing and are only provided for
+ compatibility with programs which use them:
+ Rselect
+ SOCKSinit
+ 
+-The source can either be modified directly, or by using defines to
+-change the source during compilation, as following:
+-
+-Either add this line to the command compilation line (e.g. CFLAGS):
+--Dconnect=Rconnect -Dbind=Rbind -Dgetsockname=Rgetsockname -Dgetpeername=Rgetpeername -Daccept=Raccept -Drresvport=Rrresvport -Dbindresvport=Rbindresvport -Dgethostbyname=Rgethostbyname -Dgethostbyname2=Rgethostbyname2 -Dsendto=Rsendto -Drecvfrom=Rrecvfrom -Drecvfrom=Rrecvfrom -Dwrite=Rwrite -Dwritev=Rwritev -Dlisten=Rlisten -Dsend=Rsend -Dsendmsg=Rsendmsg -Dread=Rread -Dreadv=Rreadv -Drecv=Rrecv -Drecvmsg=Rrecvmsg -Dgetaddrinfo=Rgetaddrinfo -Dgetipnodebyname=Rgetipnodebyname
+-
+-or add "include <socks.h>" to every C file in the program you are
+-compiling.
+-
+-
+ 
+ Libraries
+ 	In total there are three libraries distributed with this package:
