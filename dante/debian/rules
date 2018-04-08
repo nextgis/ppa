@@ -21,6 +21,7 @@ override_dh_auto_configure:
 
 override_dh_auto_clean:
 	dh_auto_clean
+	dh_autoreconf_clean
 	for d in sockd dlib; do \
 	  cd $$d; \
 	  for i in *; do \
@@ -29,8 +30,6 @@ override_dh_auto_clean:
 	  cd ..; \
 	done
 	rm -rf example/renamed
-	dh_autoreconf_clean
-    dh_clean
 
 override_dh_install:
 	cp $(DEB)/usr/share/man/man5/socks.conf.5  $(DEB)/usr/share/man/man5/dante.conf.5
