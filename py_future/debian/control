@@ -1,0 +1,46 @@
+Source: python-future
+Section: python
+Priority: optional
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+Build-Depends: debhelper (>= 9),
+               dh-python,
+               python-all (>= 2.6.6-3~),
+               python-setuptools,
+               python3-all,
+               python3-setuptools,
+Build-Depends-Indep: openssl, python-pytest, python-unittest2, python3-pytest, ca-certificates, python-urllib3
+Standards-Version: 3.9.6
+Vcs-Git: git@github.com:nextgis-borsch/py_future.git
+Vcs-Browser: https://github.com/nextgis-borsch/py_future
+Homepage: https://python-future.org
+
+Package: python-future
+Architecture: all
+Pre-Depends: dpkg (>= 1.15.6~)
+Depends: ${misc:Depends}, ${python:Depends}
+Description: single-source support for Python 3 and 2 - Python 2.x
+ Future is the missing compatibility layer between Python 2 and Python 3. It
+ allows one to use a single, clean Python 3.x-compatible codebase to support
+ both Python 2 and Python 3 with minimal overhead.
+ .
+ The imports have no effect on Python 3. On Python 2, they shadow the
+ corresponding builtins, which normally have different semantics on Python 3
+ versus 2, to provide their Python 3 semantics.
+ .
+ This package contains the Python 2.x module.
+
+Package: python3-future
+Architecture: all
+Pre-Depends: dpkg (>= 1.15.6~)
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: Clean single-source support for Python 3 and 2 - Python 3.x
+ Future is the missing compatibility layer between Python 2 and Python 3. It
+ allows one to use a single, clean Python 3.x-compatible codebase to support
+ both Python 2 and Python 3 with minimal overhead.
+ .
+ The imports have no effect on Python 3. On Python 2, they shadow the
+ corresponding builtins, which normally have different semantics on Python 3
+ versus 2, to provide their Python 3 semantics.
+ .
+ This package contains the Python 3.x module.
