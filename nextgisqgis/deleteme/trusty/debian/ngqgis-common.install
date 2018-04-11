@@ -1,0 +1,5 @@
+usr/share/ngqgis/i18n/*
+usr/share/ngqgis/images/*
+usr/share/ngqgis/resources/spatialite.db
+usr/share/ngqgis/resources/themes/*
+usr/share/ngqgis/python/*

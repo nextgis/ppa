@@ -1,0 +1,13 @@
+usr/bin/ngqgis
+usr/share/applications/ngqgis.desktop
+usr/share/ngqgis/svg/*
+usr/share/ngqgis/resources/qgis.db
+usr/share/ngqgis/resources/srs.db
+usr/share/ngqgis/resources/customization.xml
+usr/share/ngqgis/resources/symbology-ng-style.db
+usr/share/ngqgis/resources/cpt-city-qgis-min/*
+usr/share/ngqgis/i18n/*
+usr/share/ngqgis/images/*
+usr/share/ngqgis/resources/spatialite.db
+usr/share/ngqgis/resources/themes/*
+usr/share/ngqgis/python/*

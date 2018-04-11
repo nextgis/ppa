@@ -1,0 +1,27 @@
+#!/usr/bin/make -f
+
+DH_VERBOSE = 1
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+
+DEB_CMAKE_EXTRA_FLAGS := -DWITH_EXPAT=ON \
+						 -DWITH_GDAL=ON \
+						 -DWITH_GEOS=ON \
+						 -DWITH_GSL=ON \
+						 -DWITH_LibXml2=ON \
+						 -DWITH_PostgreSQL=ON \
+						 -DWITH_PROJ4=ON \
+						 -DWITH_Qca=ON \
+						 -DWITH_Qscintilla=ON \
+						 -DWITH_Qwt=ON \
+						 -DWITH_SpatialIndex=ON \
+						 -DWITH_Spatialite=ON \
+						 -DWITH_SQLite3=ON \
+						 -DWITH_SIP=ON \
+						 -DWITH_Qt4=ON \
+						 -DWITH_BINDINGS=ON \
+						 -DPYTHON_DESTDIR=$(CURDIR)/debian/tmp \
+						 -DWITH_PyQt4=ON \
+						 -DWITH_Qsci=ON \
+						 -DWITH_ZLIB=ON
