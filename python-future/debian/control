@@ -5,6 +5,8 @@ Maintainer: NextGIS <info@nextgis.com>
 Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
 Build-Depends: debhelper (>= 9),
                dh-python,
+               cmake,
+               cdbs,
                python-all (>= 2.6.6-3~),
                python-setuptools,
                python3-all,
