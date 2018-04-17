@@ -46,7 +46,7 @@ Description: Scintilla source code editing widget for Qt4, translation files
 
 Package: libqscintilla2-dev
 Section: libdevel
-Architecture: all
+Architecture: any
 Depends: libqscintilla2-12v5,
          libqt4-dev,
          ${misc:Depends}
