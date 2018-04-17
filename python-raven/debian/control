@@ -12,8 +12,9 @@ Build-Depends: debhelper (>= 9),
                python3-all,
                python3-setuptools,
                python-contextlib2,
-               python-flask, python3-flask,
-               python-blinker, python3-blinker
+# In normal case to send to a Sentry crash not needed:
+#               python-flask, python3-flask,
+#               python-blinker, python3-blinker
 Standards-Version: 3.9.6
 Vcs-Git: git@github.com:nextgis-borsch/py_raven.git
 Vcs-Browser: https://github.com/nextgis-borsch/py_raven
