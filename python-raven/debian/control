@@ -1,0 +1,46 @@
+Source: python-raven
+Section: python
+Priority: optional
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+Build-Depends: debhelper (>= 9),
+               dh-python,
+               cmake,
+               cdbs,
+               python-all,
+               python-setuptools,
+               python3-all,
+               python3-setuptools,
+               python-contextlib2,
+               python-flask, python3-flask,
+               python-blinker, python3-blinker
+Standards-Version: 3.9.6
+Vcs-Git: git@github.com:nextgis-borsch/py_raven.git
+Vcs-Browser: https://github.com/nextgis-borsch/py_raven
+Homepage: https://docs.sentry.io/clients/python/
+
+Package: python-raven
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends},
+Recommends: ${python:Recommends}
+Suggests: ${python:Suggests}
+Description: client for Sentry - Python 2.X
+ Raven is a Python client for Sentry. It provides full out-of-the-box
+ support for many of the popular frameworks, including Django, and
+ Flask. Raven also includes drop-in support for any WSGI-compatible web
+ application.
+ .
+ This package contains the module for Python 2.
+
+Package: python3-raven
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends},
+Recommends: ${python3:Recommends}
+Suggests: ${python3:Suggests}
+Description: client for Sentry - Python 3.X
+ Raven is a Python client for Sentry. It provides full out-of-the-box
+ support for many of the popular frameworks, including Django, and
+ Flask. Raven also includes drop-in support for any WSGI-compatible web
+ application.
+ .
+ This package contains the module for Python 3.

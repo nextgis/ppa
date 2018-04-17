@@ -13,7 +13,7 @@ Build-Depends: debhelper (>= 9),
                libexpat1-dev,
                libgdal-dev,
                libgeos-dev,
-               libgsl0-dev | ibgsl-dev,
+               libgsl0-dev | libgsl-dev,
                libpq-dev,
                libproj-dev,
                libqt4-dev,
@@ -30,7 +30,8 @@ Build-Depends: debhelper (>= 9),
                pyqt4-dev-tools,
                python-qscintilla2,
                pyqt4.qsci-dev,
-               python-six
+               python-six,
+               python-raven
 Standards-Version: 3.9.8
 Vcs-Browser: https://github.com/nextgis/nextgisqgis
 Vcs-Git: git@github.com:nextgis/nextgisqgis.git
@@ -151,6 +152,7 @@ Depends: gdal-bin,
          python-dateutil,
          python-tz,
          python-six,
+         python-raven,
          python-yaml,
          python-pyspatialite,
          python-gdal,
