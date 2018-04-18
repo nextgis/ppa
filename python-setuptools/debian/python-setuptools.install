@@ -1,0 +1,3 @@
+usr/lib/python2.*/*-packages/easy_install*
+usr/lib/python2.*/*-packages/setuptools*
+usr/bin/easy_install
