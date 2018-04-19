@@ -118,7 +118,7 @@ Depends: ${shlibs:Depends},
          libqt4-sql-sqlite,
          libqt4-sql-psql,
          libqca2-plugin-ossl
-Description: collection of data providers to QGIS
+Description: collection of data providers for QGIS
  QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
@@ -129,7 +129,7 @@ Architecture: any
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends},
          ${misc:Depends}
-Description: collection of data providers to QGIS
+Description: collection of plugins for QGIS
  QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
