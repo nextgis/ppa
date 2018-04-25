@@ -3,8 +3,8 @@ Maintainer: NextGIS <info@nextgis.com>
 Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
 Section: science
 Priority: optional
-Build-Depends: debhelper (>= 9), 
-               cmake, 
+Build-Depends: debhelper (>= 9),
+               cmake,
                cdbs,
                dh-autoreconf,
                zlib1g-dev,
@@ -71,7 +71,7 @@ Description: Geospatial Data Abstraction Library
  TIGER data, S57, MapInfo File, DGN, GML and more.
  .
  This package contains the shared library.
- 
+
 Package: libgdal-dev
 Architecture: any
 Section: libdevel
@@ -114,7 +114,7 @@ Description: Geospatial Data Abstraction Library - Development files
  TIGER data, S57, MapInfo File, DGN, GML and more.
  .
  This package contains the files needed to develop a software that
- will use the GDAL/OGR (headers, static objects, configuration script). 
+ will use the GDAL/OGR (headers, static objects, configuration script).
 
 Package: libgdal-doc
 Architecture: all
@@ -168,6 +168,28 @@ Description: Geospatial Data Abstraction Library - Utility programs
  namely gdal_translate, gdalinfo, gdaladdo, gdalwarp, ogr2ogr, ogrinfo,
  ogrtindex.
 Homepage: http://www.gdal.org/gdal_utilities.html
+
+Package: gdal-data
+Architecture: all
+Depends: ${misc:Depends}
+Description: Geospatial Data Abstraction Library - Data files
+ GDAL is a translator library for raster geospatial data formats.
+ As a library, it presents a single abstract data model to the
+ calling application for all supported formats. The related OGR
+ library (which lives within the GDAL source tree) provides
+ a similar capability for simple features vector data.
+ .
+ GDAL supports 40+ popular data formats, including commonly used
+ ones (GeoTIFF, JPEG, PNG and more) as well as the ones used in
+ GIS and remote sensing software packages (ERDAS Imagine,
+ ESRI Arc/Info, ENVI, PCI Geomatics). Also supported many remote
+ sensing and scientific data distribution formats such as HDF,
+ EOS FAST, NOAA L1B, NetCDF, FITS.
+ .
+ OGR library supports popular vector formats like ESRI Shapefile,
+ TIGER data, S57, MapInfo File, DGN, GML and more.
+ .
+ This package contains the GDAL data files.
 
 Package: python-gdal
 Architecture: any
