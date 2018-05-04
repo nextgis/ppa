@@ -1,0 +1,53 @@
+Source: ngstd
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+Section: science
+Priority: optional
+Build-Depends: debhelper (>= 9),
+               cmake,
+               cdbs,
+               dh-autoreconf,
+               d-shlibs,
+               chrpath,
+               libgdal-dev,
+               libqt5-dev,
+               libjson-c-dev,
+               libssl-dev
+Standards-Version: 3.9.5
+Vcs-Browser: https://github.com/nextgis/lib_ngstd
+Vcs-Git: git@github.com:nextgis/lib_ngstd.git
+Homepage: https://nextgis.com
+
+Package: libngstd5
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: NextGIS standard Qt5 library implements standard API for console
+ or GUI applications and my.nextgis.com service.
+ .
+ This package contains the shared library.
+
+Package: libngstd5-dev
+Architecture: any
+Section: libdevel
+Depends: libngstd5,
+         libngstd-headers,
+         ${misc:Depends}
+Description: NextGIS standard Qt5 library.
+ NextGIS standard Qt5 library implements standard API for console
+ or GUI applications and my.nextgis.com service.
+ .
+ This package contains the files needed to develop a software that
+ will use the NextGIS standard Qt5 library (headers, static objects,
+ configuration script).
+
+
+ Package: libngstd-headers
+ Architecture: all
+ Section: libdevel
+ Depends: ${misc:Depends}
+ Suggests: libngstd5-dev
+ Description: Header files for NextGIS standard Qt library.
+  .
+  This package contains headers for NextGIS standard Qt library.
