@@ -3,26 +3,17 @@ Maintainer: NextGIS <info@nextgis.com>
 Uploaders: Mikhail Gusev <gusevmihs@gmail.com>
 Section: science
 Priority: optional
-Build-Depends: debhelper (>= 9), 
-               cmake, 
+Build-Depends: debhelper (>= 9),
+               cmake,
                cdbs,
                dh-autoreconf,
+               d-shlibs,
+               chrpath,
                qtbase5-dev,
                qttools5-dev-tools,
-               qttranslations5-l10n,
                qttools5-dev,
                libgdal-dev,
-               zlib1g-dev,
-               libjpeg-dev,
-               d-shlibs,
-               libgeos-dev,
-               libcurl4-gnutls-dev | libcurl-ssl-dev,
-               chrpath,
-               libexpat1-dev,
-               libproj-dev,
-               libtiff5-dev,
-               libgeotiff-dev,
-               libjson-c-dev
+               libngstd_framework5-dev
 Standards-Version: 3.9.5
 Vcs-Browser: https://github.com/nextgis/formbuilder
 Vcs-Git: git@github.com:nextgis/formbuilder.git
@@ -33,16 +24,16 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends}
 Description: Forms editor for NextGIS Mobile
- NextGIS Formbuilder is a desktop application for creating and editing 
- forms. Forms can be loaded into NextGIS Mobile to be rendered on the 
+ NextGIS Formbuilder is a desktop application for creating and editing
+ forms. Forms can be loaded into NextGIS Mobile to be rendered on the
  fly for convenient data collection.
  .
- NextGIS Formbuilder is able to: create new forms from the scratch and 
- based on geodata; use more than 10 different widgets; link widgets to 
+ NextGIS Formbuilder is able to: create new forms from the scratch and
+ based on geodata; use more than 10 different widgets; link widgets to
  datafields; set different options for widgets for better behaviour; have
- a preview for different screens; save set up form together with data 
+ a preview for different screens; save set up form together with data
  for upload to NextGIS Mobile.
- . 
+ .
  This package contains an executable application and according translation
  files for different languages.
 Homepage: http://nextgis.com/nextgis-formbuilder/

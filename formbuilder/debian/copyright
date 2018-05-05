@@ -5,11 +5,11 @@ Source: http://nextgis.com/
 
 Files: *
 Copyright: 2014-2016, Mikhail Gusev <gusevmihs@gmail.com>
- 2014-2016, NextGIS <info@nextgis.com>
+ 2014-2018, NextGIS <info@nextgis.com>
 License: GPL-2.0+
 
 Files: cmake/*
-Copyright: 2014-2016, Dmitry Baryshnikov <polimax@mail.ru>
+Copyright: 2014-2018, Dmitry Baryshnikov <polimax@mail.ru>
 License: GPL-2.0+
 
 Files: src/json/json-forwards.h
