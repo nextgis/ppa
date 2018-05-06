@@ -1,2 +1,2 @@
 usr/include/ngstd
-share/ngstd/CMake/NGSTDConfig.cmake
+usr/share/ngstd/CMake/NGSTDConfig.cmake
