@@ -10,9 +10,8 @@ Build-Depends: debhelper (>= 9),
                d-shlibs,
                chrpath,
                libgdal-dev,
-               libqt5-dev,
+               qtbase5-dev,
                qttools5-dev-tools,
-               qttools5-dev,
                libjson-c-dev,
                libssl-dev
 Standards-Version: 3.9.5
