@@ -77,7 +77,7 @@ Package: libngstd-headers
 Architecture: all
 Section: libdevel
 Depends: ${misc:Depends}
-Suggests: libngstd_core5-dev, libngstd_framework5-dev
+Recommends: libngstd_core5-dev, libngstd_framework5-dev
 Description: Header files for NextGIS standard Qt library.
  .
  This package contains headers for NextGIS standard Qt library.
