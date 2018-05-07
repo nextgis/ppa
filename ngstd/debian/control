@@ -25,7 +25,8 @@ Package: libngstd_core5
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
-         ${misc:Depends}
+         ${misc:Depends},
+         libngstd_core-i18n
 Description: NextGIS standard Qt5 library implements standard API for console
  or GUI applications and my.nextgis.com service.
  .
@@ -50,7 +51,8 @@ Architecture: any
 Section: libs
 Depends: libngstd_core5,
          ${shlibs:Depends},
-         ${misc:Depends}
+         ${misc:Depends},
+         libngstd_framework-i18n
 Description: NextGIS standard Qt5 library implements standard API for console
  or GUI applications and my.nextgis.com service.
  .
@@ -75,8 +77,23 @@ Package: libngstd-headers
 Architecture: all
 Section: libdevel
 Depends: ${misc:Depends}
-Suggests: libngstd_core5-dev,
-          libngstd_framework5-dev
+Suggests: libngstd_core5-dev, libngstd_framework5-dev
 Description: Header files for NextGIS standard Qt library.
  .
  This package contains headers for NextGIS standard Qt library.
+
+Package: libngstd_core-i18n
+Architecture: all
+Section: libdevel
+Depends: ${misc:Depends}
+Description: Translation files for NextGIS standard Qt library.
+ .
+ This package contains translations for NextGIS standard Qt library.
+
+Package: libngstd_framework-i18n
+Architecture: all
+Section: libdevel
+Depends: ${misc:Depends}
+Description: Translation files for NextGIS standard Qt library.
+ .
+ This package contains translations for NextGIS standard Qt library.
