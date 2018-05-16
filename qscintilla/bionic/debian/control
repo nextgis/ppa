@@ -1,0 +1,86 @@
+Source: qscintilla
+Section: python
+Priority: optional
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+Build-Depends: debhelper (>= 9),
+               cmake,
+               cdbs,
+               d-shlibs,
+               dh-python,
+               libqt4-dev,
+               python-sip-dev,
+               python-qt4-dev,
+               python-qt4,
+               pyqt4-dev-tools,
+               python-all-dev
+Standards-Version: 3.9.6
+Homepage: https://github.com/nextgis-borsch/lib_qscintilla
+Vcs-Git: git@github.com:nextgis-borsch/lib_qscintilla.git
+
+Package: libqscintilla2-qt4-13
+Architecture: any
+Depends: libqscintilla2-qt4-l10n,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Qt4 port of the Scintilla source code editing widget
+ QScintilla is a text editor for Qt4 with features especially useful when
+ writing and debugging source code. These include support for syntax
+ styling, error indicators, code completion, call tips and margins.
+ .
+ Styling choices are more open than with many editors, allowing the use
+ of proportional fonts, bold and italics, multiple foreground and background
+ colours and multiple fonts.
+
+Package: libqscintilla2-qt4-l10n
+Architecture: all
+Depends: ${misc:Depends}
+Suggests: libqscintilla2-qt4-13
+Description: Scintilla source code editing widget for Qt4, translation files
+ QScintilla is a text editor for Qt4 with features especially useful when
+ writing and debugging source code. These include support for syntax
+ styling, error indicators, code completion, call tips and margins.
+ .
+ This package contains translations for libqscintilla2.
+
+
+Package: libqscintilla2-qt4-dev
+Section: libdevel
+Architecture: any
+Depends: libqscintilla2-qt4-13,
+         libqt4-dev,
+         ${misc:Depends}
+Description: Scintilla source code editing widget for Qt4, development files
+ QScintilla is a text editor for Qt4 with features especially useful when
+ writing and debugging source code. These include support for syntax
+ styling, error indicators, code completion, call tips and margins.
+ .
+ This package contains development headers needed when developing
+ C++ applications that use QScintilla 2.
+
+
+Package: python-qscintilla2
+Section: python
+Architecture: any
+Depends: python-qt4,
+         ${misc:Depends},
+         ${python:Depends},
+         ${shlibs:Depends},
+         ${sip:Depends}
+Description: Python bindings for QScintilla 2
+ QScintilla is a text editor for Qt4 with features especially useful when
+ writing and debugging source code. These include support for syntax
+ styling, error indicators, code completion, call tips and margins.
+ .
+ This package contains Python bindings so QScintilla 2 can be used in
+ PyQt4 applications.
+
+Package: pyqt4.qsci-dev
+Architecture: all
+Depends: python-qt4-dev,
+         python-sip-dev,
+         ${misc:Depends}
+Description: Development files for Python Qscintilla2 (Qt4)
+ This package contains the source SIP files from which the Python bindings for
+ Qscintilla2 (Qt4) are created. They are needed for building PyQt4 bindindgs
+ for Qscintilla2 as well as creating bindings for own widgets written in C++.
