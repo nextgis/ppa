@@ -144,7 +144,8 @@ Homepage: http://www.gdal.org/#index_userdocs
 Package: gdal-bin
 Architecture: any
 Depends: ${shlibs:Depends},
-         ${misc:Depends}
+         ${misc:Depends},
+         gdal-data (= ${source:Version})
 Suggests: python-gdal
 Breaks: gdal-bin (<< 1.10.0-0~)
 Description: Geospatial Data Abstraction Library - Utility programs
