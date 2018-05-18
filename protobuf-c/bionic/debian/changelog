@@ -1,0 +1,154 @@
+protobuf-c (1.2.1-2) unstable; urgency=medium
+
+  [ Helmut Grohne ]
+  * Mark libprotobuf-c* Multi-Arch: same.
+  * Drop the protobuf-c-compiler -> libprotobuf-c-dev dependency.
+  * Mark protobuf-c-compiler Multi-Arch: foreign (Closes: #845518).
+
+ -- Robert Edmonds <edmonds@debian.org>  Sat, 26 Nov 2016 16:50:30 -0500
+
+protobuf-c (1.2.1-1) unstable; urgency=medium
+
+  * Imported Upstream version 1.2.0
+  * Imported Upstream version 1.2.1
+  * debian/gbp.conf: Remove [dch] id-length
+  * debian/copyright: 2016
+
+ -- Robert Edmonds <edmonds@debian.org>  Tue, 02 Feb 2016 17:41:52 -0500
+
+protobuf-c (1.1.1-1) unstable; urgency=medium
+
+  * Imported Upstream version 1.1.1
+    - (Closes: #801950.)
+  * debian/control: Update Maintainer
+  * debian/control: Update Standards-Version to 3.9.6 (no changes)
+  * debian/: Run "wrap-and-sort -sbt"
+  * debian/control: Add versioned build dependency on protobuf 2.6.0
+  * debian/gbp.conf: Add [dch] section
+  * debian/copyright: 2015
+
+ -- Robert Edmonds <edmonds@debian.org>  Sat, 24 Oct 2015 16:27:23 -0400
+
+protobuf-c (1.0.2-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Fixes FTBFS with protobuf 2.6.0.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Fri, 12 Sep 2014 16:37:43 -0400
+
+protobuf-c (1.0.1-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Explicitly set the .data field of ProtobufCBinaryData's to NULL when
+      unpacking a zero length byte string. (Closes: #756983).
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Tue, 05 Aug 2014 15:07:20 -0400
+
+protobuf-c (1.0.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Upload to unstable.
+  * protobuf-c-compiler: upgrade the Recommends on libprotobuf-c-dev to a
+    Depends. This prevents use of older libprotobuf-c0-dev with newer
+    protobuf-c-compiler.
+  * libprotobuf-c-dev: declare a Breaks on older protobuf-c-compiler. This
+    prevents use of older protobuf-c-compiler with newer libprotobuf-c-dev.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Fri, 25 Jul 2014 14:00:36 -0400
+
+protobuf-c (1.0.0~rc1-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Upload to experimental.
+  * Bump ABI version from 0 to 1.
+  * Ship the pkg-config .pc file in the -dev package. (Closes: #731726)
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Sat, 05 Apr 2014 16:29:14 -0400
+
+protobuf-c (0.15-1) unstable; urgency=low
+
+  [ tony mancill ]
+  * New upstream release. (Closes: #622915)
+    - add new versioned symbol for protobuf_c_message_init@Base
+  * Bump Standards-Version to 3.9.5 (no changes).
+  * Depend on debhelper 9; bump debian/compat.
+  * Update .install files for multi-arch installation directories.
+
+  [ Robert S. Edmonds ]
+  * protobuf-c-compiler: add a Recommends on the -dev package;
+    closes: #704877.
+  * A side-effect of bumping the debhelper compat level to 9 is to enable
+    hardened build flags; closes: #673674.
+  * Use dh-autoreconf.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Fri, 15 Nov 2013 18:53:07 -0500
+
+protobuf-c (0.14-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Tue, 07 Sep 2010 17:00:07 -0400
+
+protobuf-c (0.12-3) unstable; urgency=low
+
+  * libprotobuf-c0.symbols: Increase minimum required version for buggy
+    functions fixed in 0.12-2.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Fri, 12 Feb 2010 16:42:58 -0500
+
+protobuf-c (0.12-2) unstable; urgency=low
+
+  * Convert source package to 3.0 (quilt) format.
+  * Cherry pick upstream bug fix (issue #35) for
+    protobuf_c_enum_descriptor_get_value_by_name(),
+    protobuf_c_service_descriptor_get_method_by_name() functions.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Tue, 09 Feb 2010 19:54:28 -0500
+
+protobuf-c (0.12-1) unstable; urgency=low
+
+  * New upstream release.
+  * Drop patches included upstream: 10_ftbfs_big_endian, 30_wire_format_fix.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Sun, 24 Jan 2010 15:20:18 -0500
+
+protobuf-c (0.11-4) unstable; urgency=low
+
+  * Add versioned build dependency on libprotobuf-dev.
+  * libprotobuf-dev header renamed: wire_format_inl.h -> wire_format.h.
+  * Closes: #559960.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Mon, 07 Dec 2009 16:42:12 -0800
+
+protobuf-c (0.11-3) unstable; urgency=low
+
+  * Second attempt at fixing FTBFS on big endian platforms; closes: #544755.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Wed, 11 Nov 2009 12:07:02 -0500
+
+protobuf-c (0.11-2) unstable; urgency=low
+
+  * Fix FTBFS on big endian platforms; closes: #544755.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Tue, 10 Nov 2009 22:02:38 -0500
+
+protobuf-c (0.11-1) unstable; urgency=low
+
+  * New upstream release; closes: #529004.
+  * Add build dependency on libprotoc-dev; closes: #540970.
+  * Drop .la file from libprotobuf-c0-dev.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Sun, 23 Aug 2009 13:59:24 -0400
+
+protobuf-c (0.10-2) unstable; urgency=low
+
+  * Add dependency on libprotobuf-c0 for package libprotobuf-c0-dev;
+    closes: #529042.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Sun, 17 May 2009 15:22:48 -0400
+
+protobuf-c (0.10-1) unstable; urgency=low
+
+  * Initial release; closes: #528147.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Sun, 10 May 2009 23:34:05 -0400

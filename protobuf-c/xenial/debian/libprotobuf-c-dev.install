@@ -1,0 +1,5 @@
+usr/include/google/protobuf-c/*
+usr/include/protobuf-c/*
+usr/lib/*/lib*.a
+usr/lib/*/lib*.so
+usr/lib/*/pkgconfig/*.pc

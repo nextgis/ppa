@@ -1,0 +1,8 @@
+#!/usr/bin/make -f
+export DH_VERBOSE=1
+%:
+	dh $@ --with autoreconf
+
+override_dh_strip:
+	dh_strip -p libprotobuf-c1 --dbg-package=libprotobuf-c1-dbg
+	dh_strip -a --remaining-packages

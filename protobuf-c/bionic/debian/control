@@ -1,0 +1,99 @@
+Source: protobuf-c
+Section: devel
+Priority: optional
+Maintainer: Robert Edmonds <edmonds@debian.org>
+Build-Depends:
+ autoconf,
+ automake,
+ autotools-dev,
+ debhelper (>= 9),
+ dh-autoreconf,
+ libprotobuf-dev (>= 2.6.0~),
+ libprotoc-dev (>= 2.6.0~),
+ libtool,
+ pkg-config,
+ protobuf-compiler (>= 2.6.0~),
+Standards-Version: 3.9.6
+Homepage: https://github.com/protobuf-c/protobuf-c
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=users/edmonds/protobuf-c.git
+Vcs-Git: git://anonscm.debian.org/users/edmonds/protobuf-c.git
+
+Package: libprotobuf-c-dev
+Architecture: any
+Section: libdevel
+Depends: libprotobuf-c1 (= ${binary:Version}), ${misc:Depends}
+Provides: libprotobuf-c0-dev
+Conflicts: libprotobuf-c0-dev
+Replaces: libprotobuf-c0-dev
+Breaks: protobuf-c-compiler (<< 1.0.0~)
+Multi-Arch: same
+Description: Protocol Buffers C static library and headers (protobuf-c)
+ Protocol Buffers are a flexible, efficient, automated mechanism for
+ serializing structured data - similar to XML, but smaller, faster, and
+ simpler. You define how you want your data to be structured once, then you can
+ use special generated source code to easily write and read your structured
+ data to and from a variety of data streams and using a variety of languages.
+ You can even update your data structure without breaking deployed programs
+ that are compiled against the "old" format.
+ .
+ This is the "protobuf-c" implementation of Protocol Buffers in C.
+ .
+ This package contains the static library and development headers.
+
+Package: libprotobuf-c1
+Architecture: any
+Section: libs
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Multi-Arch: same
+Description: Protocol Buffers C shared library (protobuf-c)
+ Protocol Buffers are a flexible, efficient, automated mechanism for
+ serializing structured data - similar to XML, but smaller, faster, and
+ simpler. You define how you want your data to be structured once, then you can
+ use special generated source code to easily write and read your structured
+ data to and from a variety of data streams and using a variety of languages.
+ You can even update your data structure without breaking deployed programs
+ that are compiled against the "old" format.
+ .
+ This is the "protobuf-c" implementation of Protocol Buffers in C.
+ .
+ This package contains the shared library.
+
+Package: libprotobuf-c1-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: libprotobuf-c1 (= ${binary:Version}), ${misc:Depends}
+Multi-Arch: same
+Description: Protocol Buffers C shared library debug symbols (protobuf-c)
+ Protocol Buffers are a flexible, efficient, automated mechanism for
+ serializing structured data - similar to XML, but smaller, faster, and
+ simpler. You define how you want your data to be structured once, then you can
+ use special generated source code to easily write and read your structured
+ data to and from a variety of data streams and using a variety of languages.
+ You can even update your data structure without breaking deployed programs
+ that are compiled against the "old" format.
+ .
+ This is the "protobuf-c" implementation of Protocol Buffers in C.
+ .
+ This package contains detached debugging symbols for the shared library.
+
+Package: protobuf-c-compiler
+Architecture: any
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Multi-Arch: foreign
+Description: Protocol Buffers C compiler (protobuf-c)
+ Protocol Buffers are a flexible, efficient, automated mechanism for
+ serializing structured data - similar to XML, but smaller, faster, and
+ simpler. You define how you want your data to be structured once, then you can
+ use special generated source code to easily write and read your structured
+ data to and from a variety of data streams and using a variety of languages.
+ You can even update your data structure without breaking deployed programs
+ that are compiled against the "old" format.
+ .
+ This is the "protobuf-c" implementation of Protocol Buffers in C.
+ .
+ This package contains the "protoc-c" code generator that creates C stubs from
+ Protocol Buffers .proto files. These stubs must be compiled and linked against
+ the libprotobuf-c support library.
