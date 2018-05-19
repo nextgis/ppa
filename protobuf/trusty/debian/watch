@@ -1,0 +1,6 @@
+# format version number, currently 3; this line is compulsory!
+version=3
+opts=\
+downloadurlmangle=s|.*[?]name=(.*?)&.*|http://protobuf.googlecode.com/files/$1|,\
+filenamemangle=s|[^/]+[?]name=(.*?)&.*|$1| \
+http://code.google.com/p/protobuf/downloads/detail[?]name=protobuf-([0-9.]+).tar.gz&.*

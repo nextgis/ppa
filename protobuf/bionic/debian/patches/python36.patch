@@ -1,0 +1,29 @@
+Description: Fix two tests with Python 3.6
+Author: Michael Hudson-Doyle <michael.hudson@ubuntu.com>
+Origin: vendor
+Bug: https://github.com/google/protobuf/issues/3037
+Bug-Debian: https://bugs.debian.org/862805
+Last-Update: 2017-10-16
+
+--- a/python/google/protobuf/internal/json_format_test.py
++++ b/python/google/protobuf/internal/json_format_test.py
+@@ -753,7 +753,7 @@
+     text = '{"value": "0000-01-01T00:00:00Z"}'
+     self.assertRaisesRegexp(
+         json_format.ParseError,
+-        'Failed to parse value field: year is out of range.',
++        'Failed to parse value field: year (0 )?is out of range.',
+         json_format.Parse, text, message)
+     # Time bigger than maxinum time.
+     message.value.seconds = 253402300800
+--- a/python/google/protobuf/internal/well_known_types_test.py
++++ b/python/google/protobuf/internal/well_known_types_test.py
+@@ -284,7 +284,7 @@
+         '1972-01-01T01:00:00.01+08',)
+     self.assertRaisesRegexp(
+         ValueError,
+-        'year is out of range',
++        'year (0 )?is out of range',
+         message.FromJsonString,
+         '0000-01-01T00:00:00Z')
+     message.seconds = 253402300800

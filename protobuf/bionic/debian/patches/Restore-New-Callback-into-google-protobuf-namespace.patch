@@ -1,0 +1,125 @@
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=836200
+Bug-Upstream: https://github.com/google/protobuf/issues/1966
+Origin: upstream, https://github.com/google/protobuf/commit/eedc7be6803924e158e6a08471bbdf1908c7a93e.patch
+Author: Srivats P <pstavirs@users.noreply.github.com>
+Description: Restore New*Callback into google::protobuf namespace
+ since these are used by the service stubs code
+
+--- a/src/google/protobuf/compiler/cpp/cpp_message.cc
++++ b/src/google/protobuf/compiler/cpp/cpp_message.cc
+@@ -2955,9 +2955,9 @@
+     // unless it is actually needed. For the same reason, disable eager refresh
+     // on the CodedOutputStream.
+     printer->Print(
+       "  ::google::protobuf::io::LazyStringOutputStream unknown_fields_string(\n"
+-      "      ::google::protobuf::internal::NewPermanentCallback(\n"
++      "      ::google::protobuf::NewPermanentCallback(\n"
+       "          &MutableUnknownFieldsFor$classname$, this));\n"
+       "  ::google::protobuf::io::CodedOutputStream unknown_fields_stream(\n"
+       "      &unknown_fields_string, false);\n",
+       "classname", classname_);
+--- a/src/google/protobuf/compiler/cpp/cpp_unittest.cc
++++ b/src/google/protobuf/compiler/cpp/cpp_unittest.cc
+@@ -1251,9 +1251,9 @@
+     : descriptor_(unittest::TestService::descriptor()),
+       foo_(descriptor_->FindMethodByName("Foo")),
+       bar_(descriptor_->FindMethodByName("Bar")),
+       stub_(&mock_channel_),
+-      done_(::google::protobuf::internal::NewPermanentCallback(&DoNothing)) {}
++      done_(NewPermanentCallback(&DoNothing)) {}
+ 
+   virtual void SetUp() {
+     ASSERT_TRUE(foo_ != NULL);
+     ASSERT_TRUE(bar_ != NULL);
+--- a/src/google/protobuf/stubs/callback.h
++++ b/src/google/protobuf/stubs/callback.h
+@@ -380,8 +380,10 @@
+   typename remove_reference<P4>::type p4_;
+   typename remove_reference<P5>::type p5_;
+ };
+ 
++}  // namespace internal
++
+ // See Closure.
+ inline Closure* NewCallback(void (*function)()) {
+   return new internal::FunctionClosure0(function, true);
+ }
+@@ -532,10 +534,8 @@
+                                                 A2>(object, function, false, p1,
+                                                     p2, p3, p4, p5);
+ }
+ 
+-}  // namespace internal
+-
+ // A function which does nothing.  Useful for creating no-op callbacks, e.g.:
+ //   Closure* nothing = NewCallback(&DoNothing);
+ void LIBPROTOBUF_EXPORT DoNothing();
+ 
+--- a/src/google/protobuf/stubs/common_unittest.cc
++++ b/src/google/protobuf/stubs/common_unittest.cc
+@@ -40,10 +40,8 @@
+ #include <gtest/gtest.h>
+ 
+ namespace google {
+ namespace protobuf {
+-using internal::NewCallback;
+-using internal::NewPermanentCallback;
+ namespace {
+ 
+ // TODO(kenton):  More tests.
+ 
+--- a/src/google/protobuf/stubs/once_unittest.cc
++++ b/src/google/protobuf/stubs/once_unittest.cc
+@@ -42,9 +42,8 @@
+ #include <gtest/gtest.h>
+ 
+ namespace google {
+ namespace protobuf {
+-using internal::NewCallback;
+ namespace {
+ 
+ class OnceInitTest : public testing::Test {
+  protected:
+@@ -127,13 +126,13 @@
+     }
+   };
+ 
+   TestThread* RunInitOnceInNewThread() {
+-    return new TestThread(internal::NewCallback(this, &OnceInitTest::InitOnce));
++    return new TestThread(NewCallback(this, &OnceInitTest::InitOnce));
+   }
+   TestThread* RunInitRecursiveOnceInNewThread() {
+     return new TestThread(
+-        internal::NewCallback(this, &OnceInitTest::InitRecursiveOnce));
++        NewCallback(this, &OnceInitTest::InitRecursiveOnce));
+   }
+ 
+   enum State {
+     INIT_NOT_STARTED,
+--- a/src/google/protobuf/util/internal/protostream_objectwriter.cc
++++ b/src/google/protobuf/util/internal/protostream_objectwriter.cc
+@@ -906,9 +906,9 @@
+ // TODO(tsun): figure out how to do proto descriptor based snake case
+ // conversions as much as possible. Because ToSnakeCase sometimes returns the
+ // wrong value.
+   google::protobuf::scoped_ptr<ResultCallback1<util::Status, StringPiece> > callback(
+-      ::google::protobuf::internal::NewPermanentCallback(&RenderOneFieldPath, ow));
++      NewPermanentCallback(&RenderOneFieldPath, ow));
+   return DecodeCompactFieldMaskPaths(data.str(), callback.get());
+ }
+ 
+ Status ProtoStreamObjectWriter::RenderDuration(ProtoStreamObjectWriter* ow,
+--- a/src/google/protobuf/util/message_differencer.cc
++++ b/src/google/protobuf/util/message_differencer.cc
+@@ -1388,10 +1388,9 @@
+       // When partial matching is enabled, Compare(a, b) && Compare(a, c)
+       // doesn't necessarily imply Compare(b, c). Therefore a naive greedy
+       // algorithm will fail to find a maximum matching.
+       // Here we use the argumenting path algorithm.
+-      MaximumMatcher::NodeMatchCallback* callback =
+-          ::google::protobuf::internal::NewPermanentCallback(
++      MaximumMatcher::NodeMatchCallback* callback = NewPermanentCallback(
+               this, &MessageDifferencer::IsMatch,
+               repeated_field, key_comparator,
+               &message1, &message2, parent_fields);
+       MaximumMatcher matcher(count1, count2, callback, match_list1,

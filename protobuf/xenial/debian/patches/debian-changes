@@ -1,0 +1,48 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ protobuf (2.6.1-1) unstable; urgency=medium
+ .
+   * New upstream release.
+Author: Robert Edmonds <edmonds@debian.org>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- protobuf-2.6.1.orig/python/setup.py
++++ protobuf-2.6.1/python/setup.py
+@@ -7,18 +7,8 @@ import subprocess
+ 
+ # We must use setuptools, not distutils, because we need to use the
+ # namespace_packages option for the "google" package.
+-try:
+-  from setuptools import setup, Extension
+-except ImportError:
+-  try:
+-    from ez_setup import use_setuptools
+-    use_setuptools()
+-    from setuptools import setup, Extension
+-  except ImportError:
+-    sys.stderr.write(
+-        "Could not import setuptools; make sure you have setuptools or "
+-        "ez_setup installed.\n")
+-    raise
++from setuptools import setup, Extension
++
+ from distutils.command.clean import clean as _clean
+ from distutils.command.build_py import build_py as _build_py
+ from distutils.spawn import find_executable

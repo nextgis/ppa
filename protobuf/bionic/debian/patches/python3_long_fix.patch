@@ -1,0 +1,19 @@
+Description: Python3 doesn't have long type anymore
+ Use integer_64 which is tested for long and fall back to int when needed.
+Forwarded: not-needed
+Author: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Last-Update: 2016-11-25
+
+---
+
+--- protobuf-3.0.0.orig/python/google/protobuf/internal/reflection_test.py
++++ protobuf-3.0.0/python/google/protobuf/internal/reflection_test.py
+@@ -636,7 +636,7 @@ class ReflectionTest(unittest.TestCase):
+     if struct.calcsize('L') == 4:
+       # Python only has signed ints, so 32-bit python can't fit an uint32
+       # in an int.
+-      TestGetAndDeserialize('optional_uint32', 1 << 31, long)
++      TestGetAndDeserialize('optional_uint32', 1 << 31, integer_64)
+     else:
+       # 64-bit python can fit uint32 inside an int
+       TestGetAndDeserialize('optional_uint32', 1 << 31, int)

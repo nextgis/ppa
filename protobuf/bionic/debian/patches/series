@@ -1,0 +1,10 @@
+Restore-New-Callback-into-google-protobuf-namespace.patch
+expect_death.patch
+hurd.patch
+java-test-scope.patch
+misleading-indentation.patch
+s390x.patch
+sparc64.patch
+python3_long_fix.patch
+python36.patch
+Hide-unnecessary-exported-library-symbols.patch

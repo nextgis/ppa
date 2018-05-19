@@ -1,0 +1,268 @@
+From 65f7f19291a387dd14baf5bc8e4af3fb665881e8 Mon Sep 17 00:00:00 2001
+From: "Robert S. Edmonds" <edmonds@debian.org>
+Date: Sun, 12 Jan 2014 12:01:27 -0500
+Subject: [PATCH] Add generic GCC >= 4.7 support for atomic operations
+
+This is useful for architectures where no specialized code has been
+written.
+
+Author: Stanislav Ochotnicky <sochotnicky@redhat.com>
+Bug: https://code.google.com/p/protobuf/issues/detail?id=488
+
+[edmonds@debian.org: This squashes the two patches submitted to the
+upstream bug tracker and rewrites the architecture detection logic in
+.../platform_macros.h. The original logic was quite fragile and would
+emit a #error on architectures that were not explicitly detected, as the
+upstream protobuf release lacks a generic atomic implementation. With
+gcc >= 4.7 and the generic atomic implementation by Stanislav Ochotnicky
+we only need to be able to tell 64-bit vs. 32-bit in order to set
+GOOGLE_PROTOBUF_ARCH_64_BIT correctly (in fact,
+GOOGLE_PROTOBUF_ARCH_32_BIT is not even used in the protobuf code base;
+likely this header file has been copied from some internal Google source
+tree), and we only need to be able to detect the specific architectures
+where protobuf has a more specific atomic implementation (i.e., amd64,
+i386, armel/armhf, mips/mipsel). It should not be necessary to add
+additional architecture detection logic to .../platform_macros.h for
+other Debian architectures, as we should fall back to the generic atomic
+implementation. Theoretically, since we are willing to Build-Depend on
+gcc >= 4.7 we might be able to use the same generic gcc implementation
+across all architectures and do away with the architecture-specific
+implementations entirely, but that would be a larger and more intrusive
+patch.]
+---
+ src/Makefile.am                                    |   1 +
+ src/google/protobuf/stubs/atomicops.h              |   2 +-
+ .../stubs/atomicops_internals_generic_gcc.h        | 139 +++++++++++++++++++++
+ src/google/protobuf/stubs/platform_macros.h        |  42 +++----
+ 4 files changed, 158 insertions(+), 26 deletions(-)
+ create mode 100644 src/google/protobuf/stubs/atomicops_internals_generic_gcc.h
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index df733d9..6f5c21d 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -42,6 +42,7 @@ nobase_include_HEADERS =                                        \
+   google/protobuf/stubs/atomicops_internals_arm_gcc.h           \
+   google/protobuf/stubs/atomicops_internals_arm_qnx.h           \
+   google/protobuf/stubs/atomicops_internals_atomicword_compat.h \
++  google/protobuf/stubs/atomicops_internals_generic_gcc.h       \
+   google/protobuf/stubs/atomicops_internals_macosx.h            \
+   google/protobuf/stubs/atomicops_internals_mips_gcc.h          \
+   google/protobuf/stubs/atomicops_internals_pnacl.h             \
+diff --git a/src/google/protobuf/stubs/atomicops.h b/src/google/protobuf/stubs/atomicops.h
+index b8581fa..883b125 100644
+--- a/src/google/protobuf/stubs/atomicops.h
++++ b/src/google/protobuf/stubs/atomicops.h
+@@ -185,7 +185,7 @@ GOOGLE_PROTOBUF_ATOMICOPS_ERROR
+ #elif defined(__pnacl__)
+ #include <google/protobuf/stubs/atomicops_internals_pnacl.h>
+ #else
+-GOOGLE_PROTOBUF_ATOMICOPS_ERROR
++#include <google/protobuf/stubs/atomicops_internals_generic_gcc.h>
+ #endif
+ 
+ // Unknown.
+diff --git a/src/google/protobuf/stubs/atomicops_internals_generic_gcc.h b/src/google/protobuf/stubs/atomicops_internals_generic_gcc.h
+new file mode 100644
+index 0000000..3fc2a9b
+--- /dev/null
++++ b/src/google/protobuf/stubs/atomicops_internals_generic_gcc.h
+@@ -0,0 +1,139 @@
++// Protocol Buffers - Google's data interchange format
++// Copyright 2013 Red Hat Inc.  All rights reserved.
++// http://code.google.com/p/protobuf/
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Red Hat Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++// This file is an internal atomic implementation, use atomicops.h instead.
++
++#ifndef GOOGLE_PROTOBUF_ATOMICOPS_INTERNALS_GENERIC_GCC_H_
++#define GOOGLE_PROTOBUF_ATOMICOPS_INTERNALS_GENERIC_GCC_H_
++
++namespace google {
++namespace protobuf {
++namespace internal {
++
++inline Atomic32 NoBarrier_CompareAndSwap(volatile Atomic32* ptr,
++                                         Atomic32 old_value,
++                                         Atomic32 new_value) {
++  __atomic_compare_exchange_n(ptr, &old_value, new_value, true,
++                              __ATOMIC_RELAXED, __ATOMIC_RELAXED);
++  return old_value;
++}
++
++inline Atomic32 NoBarrier_AtomicExchange(volatile Atomic32* ptr,
++                                         Atomic32 new_value) {
++  return __atomic_exchange_n(ptr, new_value, __ATOMIC_RELAXED);
++}
++
++inline Atomic32 NoBarrier_AtomicIncrement(volatile Atomic32* ptr,
++                                          Atomic32 increment) {
++  return __atomic_add_fetch(ptr, increment, __ATOMIC_RELAXED);
++}
++
++inline Atomic32 Barrier_AtomicIncrement(volatile Atomic32* ptr,
++                                        Atomic32 increment) {
++  return __atomic_add_fetch(ptr, increment, __ATOMIC_SEQ_CST);
++}
++
++inline Atomic32 Acquire_CompareAndSwap(volatile Atomic32* ptr,
++                                       Atomic32 old_value,
++                                       Atomic32 new_value) {
++  __atomic_compare_exchange(ptr, &old_value, &new_value, true,
++                            __ATOMIC_ACQUIRE, __ATOMIC_ACQUIRE);
++  return old_value;
++}
++
++inline Atomic32 Release_CompareAndSwap(volatile Atomic32* ptr,
++                                       Atomic32 old_value,
++                                       Atomic32 new_value) {
++  __atomic_compare_exchange_n(ptr, &old_value, new_value, true,
++                            __ATOMIC_RELEASE, __ATOMIC_ACQUIRE);
++  return old_value;
++}
++
++inline void NoBarrier_Store(volatile Atomic32* ptr, Atomic32 value) {
++  __atomic_store_n(ptr, value, __ATOMIC_RELAXED);
++}
++
++inline void MemoryBarrier() {
++  __sync_synchronize();
++}
++
++inline void Acquire_Store(volatile Atomic32* ptr, Atomic32 value) {
++  __atomic_store_n(ptr, value, __ATOMIC_ACQUIRE);
++}
++
++inline void Release_Store(volatile Atomic32* ptr, Atomic32 value) {
++  __atomic_store_n(ptr, value, __ATOMIC_RELEASE);
++}
++
++inline Atomic32 NoBarrier_Load(volatile const Atomic32* ptr) {
++  return __atomic_load_n(ptr, __ATOMIC_RELAXED);
++}
++
++inline Atomic32 Acquire_Load(volatile const Atomic32* ptr) {
++  return __atomic_load_n(ptr, __ATOMIC_ACQUIRE);
++}
++
++inline Atomic32 Release_Load(volatile const Atomic32* ptr) {
++  return __atomic_load_n(ptr, __ATOMIC_RELEASE);
++}
++
++#ifdef __LP64__
++
++inline void Release_Store(volatile Atomic64* ptr, Atomic64 value) {
++  __atomic_store_n(ptr, value, __ATOMIC_RELEASE);
++}
++
++inline Atomic64 Acquire_Load(volatile const Atomic64* ptr) {
++  return __atomic_load_n(ptr, __ATOMIC_ACQUIRE);
++}
++
++inline Atomic64 Acquire_CompareAndSwap(volatile Atomic64* ptr,
++                                       Atomic64 old_value,
++                                       Atomic64 new_value) {
++  __atomic_compare_exchange_n(ptr, &old_value, new_value, true,
++                              __ATOMIC_ACQUIRE, __ATOMIC_ACQUIRE);
++  return old_value;
++}
++
++inline Atomic64 NoBarrier_CompareAndSwap(volatile Atomic64* ptr,
++                                         Atomic64 old_value,
++                                         Atomic64 new_value) {
++  __atomic_compare_exchange_n(ptr, &old_value, new_value, true,
++                            __ATOMIC_RELAXED, __ATOMIC_RELAXED);
++  return old_value;
++}
++
++#endif // defined(__LP64__)
++
++}  // namespace internal
++}  // namespace protobuf
++}  // namespace google
++
++#endif  // GOOGLE_PROTOBUF_ATOMICOPS_INTERNALS_GENERIC_GCC_H_
+diff --git a/src/google/protobuf/stubs/platform_macros.h b/src/google/protobuf/stubs/platform_macros.h
+index b1df60e..c724a61 100644
+--- a/src/google/protobuf/stubs/platform_macros.h
++++ b/src/google/protobuf/stubs/platform_macros.h
+@@ -37,34 +37,26 @@
+ //   http://msdn.microsoft.com/en-us/library/b0084kay.aspx
+ //   http://www.agner.org/optimize/calling_conventions.pdf
+ //   or with gcc, run: "echo | gcc -E -dM -"
+-#if defined(_M_X64) || defined(__x86_64__)
+-#define GOOGLE_PROTOBUF_ARCH_X64 1
+-#define GOOGLE_PROTOBUF_ARCH_64_BIT 1
+-#elif defined(_M_IX86) || defined(__i386__)
+-#define GOOGLE_PROTOBUF_ARCH_IA32 1
+-#define GOOGLE_PROTOBUF_ARCH_32_BIT 1
+-#elif defined(__QNX__)
+-#define GOOGLE_PROTOBUF_ARCH_ARM_QNX 1
+-#define GOOGLE_PROTOBUF_ARCH_32_BIT 1
+-#elif defined(__ARMEL__)
+-#define GOOGLE_PROTOBUF_ARCH_ARM 1
+-#define GOOGLE_PROTOBUF_ARCH_32_BIT 1
+-#elif defined(__MIPSEL__)
+-#define GOOGLE_PROTOBUF_ARCH_MIPS 1
+-#define GOOGLE_PROTOBUF_ARCH_32_BIT 1
+-#elif defined(__pnacl__)
+-#define GOOGLE_PROTOBUF_ARCH_32_BIT 1
+-#elif defined(__ppc__)
+-#define GOOGLE_PROTOBUF_ARCH_PPC 1
+-#define GOOGLE_PROTOBUF_ARCH_32_BIT 1
++
++#if defined(__GNUC__)
++# if __LP64__
++#  define GOOGLE_PROTOBUF_ARCH_64_BIT 1
++# else
++#  define GOOGLE_PROTOBUF_ARCH_32_BIT 1
++# endif
+ #else
+-#error Host architecture was not detected as supported by protobuf
++# error Host architecture was not detected as supported by protobuf
+ #endif
+ 
+-#if defined(__APPLE__)
+-#define GOOGLE_PROTOBUF_OS_APPLE
+-#elif defined(__native_client__)
+-#define GOOGLE_PROTOBUF_OS_NACL
++#if defined(__x86_64__)
++# define GOOGLE_PROTOBUF_ARCH_X64 1
++#elif defined(__i386__)
++# define GOOGLE_PROTOBUF_ARCH_IA32 1
++#elif defined(__ARMEL__)
++# define GOOGLE_PROTOBUF_ARCH_ARM 1
++#elif defined(__mips__) || defined(__MIPSEL__)
++# define GOOGLE_PROTOBUF_ARCH_MIPS 1
++/* Else we fallback to generic GCC implementation in atomicops.h */
+ #endif
+ 
+ #endif  // GOOGLE_PROTOBUF_PLATFORM_MACROS_H_
+-- 
+1.9.rc1
+

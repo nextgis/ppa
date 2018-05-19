@@ -1,0 +1,125 @@
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/protobuf/+bug/1667352 
+Origin: backport, https://github.com/google/protobuf/commit/c57c77b4b7b065a0f14c757f5b8983e136511067
+Author: Alexandros Frantzis <alexandros.frantzis@canonical.com>
+Description: Hide unnecessary exported library symbols
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -92,6 +92,25 @@ ACX_CHECK_SUNCC
+ # to the link
+ AC_PROG_LIBTOOL
+ 
++# Check whether the linker supports version scripts
++AC_MSG_CHECKING([whether the linker supports version scripts])
++save_LDFLAGS=$LDFLAGS
++LDFLAGS="$LDFLAGS -Wl,--version-script=conftest.map"
++cat > conftest.map <<EOF
++{
++  global:
++    main;
++  local:
++    *;
++};
++EOF
++AC_LINK_IFELSE(
++  [AC_LANG_SOURCE([int main() { return 0; }])],
++  [have_ld_version_script=yes; AC_MSG_RESULT(yes)],
++  [have_ld_version_script=no; AC_MSG_RESULT(no)])
++LDFLAGS=$save_LDFLAGS
++AM_CONDITIONAL([HAVE_LD_VERSION_SCRIPT], [test "$have_ld_version_script" == "yes"])
++
+ # Checks for header files.
+ AC_HEADER_STDC
+ AC_CHECK_HEADERS([fcntl.h inttypes.h limits.h stdlib.h unistd.h])
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 0a53431..6e900eb 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -173,6 +173,10 @@ lib_LTLIBRARIES = libprotobuf-lite.la libprotobuf.la libprotoc.la
+ 
+ libprotobuf_lite_la_LIBADD = $(PTHREAD_LIBS)
+ libprotobuf_lite_la_LDFLAGS = -version-info 10:0:0 -export-dynamic -no-undefined
++if HAVE_LD_VERSION_SCRIPT
++libprotobuf_lite_la_LDFLAGS += -Wl,--version-script=$(srcdir)/libprotobuf-lite.map
++EXTRA_libprotobuf_lite_la_DEPENDENCIES = libprotobuf-lite.map
++endif
+ libprotobuf_lite_la_SOURCES =                                  \
+   google/protobuf/stubs/atomicops_internals_x86_gcc.cc         \
+   google/protobuf/stubs/atomicops_internals_x86_msvc.cc        \
+@@ -214,6 +218,10 @@ libprotobuf_lite_la_SOURCES =                                  \
+ 
+ libprotobuf_la_LIBADD = $(PTHREAD_LIBS)
+ libprotobuf_la_LDFLAGS = -version-info 10:0:0 -export-dynamic -no-undefined
++if HAVE_LD_VERSION_SCRIPT
++libprotobuf_la_LDFLAGS += -Wl,--version-script=$(srcdir)/libprotobuf.map
++EXTRA_libprotobuf_la_DEPENDENCIES = libprotobuf.map
++endif
+ libprotobuf_la_SOURCES =                                       \
+   $(libprotobuf_lite_la_SOURCES)                               \
+   google/protobuf/any.pb.cc                                    \
+@@ -298,6 +306,10 @@ nodist_libprotobuf_la_SOURCES = $(nodist_libprotobuf_lite_la_SOURCES)
+ 
+ libprotoc_la_LIBADD = $(PTHREAD_LIBS) libprotobuf.la
+ libprotoc_la_LDFLAGS = -version-info 10:0:0 -export-dynamic -no-undefined
++if HAVE_LD_VERSION_SCRIPT
++libprotoc_la_LDFLAGS += -Wl,--version-script=$(srcdir)/libprotoc.map
++EXTRA_libprotoc_la_DEPENDENCIES = libprotoc.map
++endif
+ libprotoc_la_SOURCES =                                         \
+   google/protobuf/compiler/code_generator.cc                   \
+   google/protobuf/compiler/command_line_interface.cc           \
+@@ -551,6 +563,9 @@ EXTRA_DIST =                                                   \
+   google/protobuf/compiler/ruby/ruby_generated_code_pb.rb      \
+   google/protobuf/compiler/package_info.h                      \
+   google/protobuf/compiler/zip_output_unittest.sh              \
++  libprotobuf-lite.map                                         \
++  libprotobuf.map                                              \
++  libprotoc.map                                                \
+   README.md
+ 
+ protoc_lite_outputs =                                          \
+diff --git a/src/libprotobuf-lite.map b/src/libprotobuf-lite.map
+new file mode 100644
+index 0000000..3915546
+--- /dev/null
++++ b/src/libprotobuf-lite.map
+@@ -0,0 +1,9 @@
++{
++  global:
++    extern "C++" {
++      *google*;
++    };
++
++  local:
++    *;
++};
+diff --git a/src/libprotobuf.map b/src/libprotobuf.map
+new file mode 100644
+index 0000000..3915546
+--- /dev/null
++++ b/src/libprotobuf.map
+@@ -0,0 +1,9 @@
++{
++  global:
++    extern "C++" {
++      *google*;
++    };
++
++  local:
++    *;
++};
+diff --git a/src/libprotoc.map b/src/libprotoc.map
+new file mode 100644
+index 0000000..3915546
+--- /dev/null
++++ b/src/libprotoc.map
+@@ -0,0 +1,9 @@
++{
++  global:
++    extern "C++" {
++      *google*;
++    };
++
++  local:
++    *;
++};

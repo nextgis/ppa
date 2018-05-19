@@ -1,0 +1,22 @@
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=835388
+Bug-Upstream: https://github.com/google/protobuf/issues/2003
+Author: Bas Couwenberg <sebastic@debian.org>
+Description: Disable test if EXPECT_DEATH is not available.
+ Caused FTBFS on kfreebsd-*.
+
+--- a/src/google/protobuf/stubs/stringpiece_unittest.cc
++++ b/src/google/protobuf/stubs/stringpiece_unittest.cc
+@@ -783,11 +783,13 @@
+   EXPECT_EQ(StringPiece::npos, a.rfind('x'));
+ }
+ 
+ #ifndef NDEBUG
++#ifdef PROTOBUF_HAS_DEATH_TEST
+ TEST(NonNegativeLenTest, NonNegativeLen) {
+   EXPECT_DEATH(StringPiece("xyz", -1), "len >= 0");
+ }
++#endif  // PROTOBUF_HAS_DEATH_TEST
+ #endif  // ndef DEBUG
+ 
+ }  // namespace
+ }  // namespace protobuf
