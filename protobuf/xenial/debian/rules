@@ -43,8 +43,7 @@ endif
 	# Generate the manpage.
 	xmlto man debian/protoc.xml
 
-	# Python and Python3 build.
-	cp -rv python
+	# Python build.
 	set -e; cd python && for pv in $(shell pyversions -vr); do \
 		$(PYTHON_CROSS_VARS) python$$pv setup.py build --cpp_implementation; \
 	done
