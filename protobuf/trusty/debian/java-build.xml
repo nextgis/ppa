@@ -1,6 +1,6 @@
 <project name="protobuf-java" default="jar" basedir="..">
     <property name="srcdir" value="src" />
-    <property name="javadir" value="java" />
+    <property name="javadir" value="java/core" />
     <property name="javasrcdir" value="${javadir}/src" />
     <property name="targetdir" value="${javadir}/target" />
     <property name="classesdir" value="${targetdir}/classes" />
