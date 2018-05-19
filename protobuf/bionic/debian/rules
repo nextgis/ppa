@@ -55,24 +55,6 @@ endif
 override_dh_auto_build-indep:
 	dh_auto_build --indep
 
-	# Java build.
-	ant -f debian/java-build.xml jar
-
-override_dh_clean:
-	$(RM) -rv gmock
-	dh_clean
-
-override_dh_autoreconf: gmock
-	dh_autoreconf
-
-gmock:
-	cp -rv debian/gmock ./
-	cp -rv /usr/src/gmock/src gmock/
-	cp -rv /usr/src/gtest/src gmock/gtest/
-
-override_dh_auto_test-arch: gmock
-	dh_auto_test --arch
-
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	# Python test.
 	set -e; \
@@ -102,13 +84,6 @@ override_dh_auto_clean-arch:
 	# Python3 clean.
 	rm -rf python3
 
-override_dh_auto_clean-indep:
-	dh_auto_clean --indep
-
-	# Java clean.
-	ant -f debian/java-build.xml clean || true
-	mh_clean || true
-
 override_dh_auto_install-arch:
 	dh_auto_install --arch
 
@@ -129,12 +104,6 @@ override_dh_auto_install-arch:
 			--root=$(CURDIR)/debian/python3-protobuf; \
 	done
 	find $(CURDIR)/debian/python3-protobuf -name 'protobuf-*-nspkg.pth' -delete
-
-override_dh_auto_install-indep:
-	dh_auto_install --indep
-
-	# Java install.
-	mh_install
 
 override_dh_install-arch:
 	dh_install --arch

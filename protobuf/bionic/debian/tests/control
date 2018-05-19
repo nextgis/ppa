@@ -1,3 +1,0 @@
-Tests: simple
-Depends: @, make, python, pkg-config, zlib1g-dev, build-essential, default-jdk
-Restrictions: allow-stderr
