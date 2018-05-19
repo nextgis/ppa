@@ -48,20 +48,6 @@ endif
 		$(PYTHON_CROSS_VARS) python$$pv setup.py build --cpp_implementation; \
 	done
 
-override_dh_auto_build-indep:
-	dh_auto_build --indep
-
-ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-	# Python test.
-	set -e; \
-	export LD_LIBRARY_PATH=$(CURDIR)/src/.libs; \
-	cd python && for PYTHON in $(shell pyversions -r); do \
-		$$PYTHON setup.py test --cpp_implementation; \
-	done
-endif
-
-override_dh_auto_test-indep:
-	:
 override_dh_auto_clean-arch:
 	dh_auto_clean --arch
 
