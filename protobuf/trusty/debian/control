@@ -4,12 +4,29 @@ Priority: optional
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Robert S. Edmonds <edmonds@debian.org>
 Uploaders: Iustin Pop <iustin@debian.org>
-Build-Depends: dpkg-dev (>=1.16.1~), debhelper (>= 9),
- g++ (>= 4:4.7),
- python (>= 2.6.6-3~),
- python-setuptools (>= 0.6c9), xmlto, ant, zlib1g-dev,
- unzip, dh-python,
- maven-repo-helper, dh-autoreconf
+Build-Depends:
+# Debian build system
+ dpkg-dev (>= 1.16.1~)
+ , debhelper (>= 9)
+ , dh-autoreconf
+# C/C++
+ , g++ (>= 4:4.7)
+ , zlib1g-dev
+# Python
+ , dh-python
+ , python-all:any
+ , libpython-all-dev
+ , python-setuptools
+ , python-six
+# Manpage generator
+ , xmlto
+# Tests
+ , unzip
+# Build-Depends-Indep:
+# Java
+# , ant
+# , default-jdk
+# , maven-repo-helper
 Build-Depends-Indep: default-jdk
 Standards-Version: 3.9.5
 Homepage: https://code.google.com/p/protobuf/
@@ -161,23 +178,23 @@ Description: Python bindings for protocol buffers
  definition to Python classes, and then the modules in this package will allow
  you to use those classes in your programs.
 
-Package: libprotobuf-java
-Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Section: java
-Description: Java bindings for protocol buffers
- Protocol buffers are a flexible, efficient, automated mechanism for
- serializing structured data - similar to XML, but smaller, faster, and
- simpler. You define how you want your data to be structured once, then you can
- use special generated source code to easily write and read your structured
- data to and from a variety of data streams and using a variety of languages.
- You can even update your data structure without breaking deployed programs
- that are compiled against the "old" format.
- .
- Google uses Protocol Buffers for almost all of its internal RPC protocols and
- file formats.
- .
- This package contains the Java bindings for the protocol buffers. You will
- need the protoc tool (in the protobuf-compiler package) to compile your
- definition to Java classes, and then the modules in this package will allow
- you to use those classes in your programs.
+#Package: libprotobuf-java
+#Architecture: all
+#Depends: ${shlibs:Depends}, ${misc:Depends}
+#Section: java
+#Description: Java bindings for protocol buffers
+# Protocol buffers are a flexible, efficient, automated mechanism for
+# serializing structured data - similar to XML, but smaller, faster, and
+# simpler. You define how you want your data to be structured once, then you can
+# use special generated source code to easily write and read your structured
+# data to and from a variety of data streams and using a variety of languages.
+# You can even update your data structure without breaking deployed programs
+# that are compiled against the "old" format.
+# .
+# Google uses Protocol Buffers for almost all of its internal RPC protocols and
+# file formats.
+# .
+# This package contains the Java bindings for the protocol buffers. You will
+# need the protoc tool (in the protobuf-compiler package) to compile your
+# definition to Java classes, and then the modules in this package will allow
+# you to use those classes in your programs.
