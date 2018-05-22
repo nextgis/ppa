@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<refentry id='shptreevis'>
+
+  <refmeta>
+    <refentrytitle>shptreevis</refentrytitle>
+    <manvolnum>1</manvolnum>
+  </refmeta>
+
+  <refnamediv>
+    <refname>shptreevis</refname>
+    <refpurpose>view the quadtree quadrants of a .qix file</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv id='synopsis'>
+    <cmdsynopsis>
+      <command>shptreevis</command>
+      <arg choice='plain'><replaceable>shapefile</replaceable></arg>
+      <arg choice='plain'><replaceable>new_shapefile</replaceable></arg>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1 id='description'>
+    <title>DESCRIPTION</title>
+    <para>
+      <command>shptreevis</command> can be used to view the quadtree quadrants
+      that are part of a .qix file (that was created with the shptree utility).
+    </para>
+  </refsect1>
+
+  <refsect1 id='options'>
+    <title>OPTIONS</title>
+    <variablelist>
+
+      <varlistentry>
+        <term><replaceable>shapefile</replaceable></term>
+        <listitem>
+          <para>The name of the .shp file index.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><replaceable>new_shapefile</replaceable></term>
+        <listitem>
+          <para>The name of the .shp file to create.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+  </refsect1>
+
+  <refsect1 id='example'>
+    <title>EXAMPLE</title>
+
+    <informalexample>
+      <screen>
+shptreevis us_states.shp quad.shp
+This new LSB index supports a shapefile with 2895 shapes, 10 depth
+      </screen>
+
+      Result:
+      <blockquote>
+        A Shape data set named 'quad.shp' is created. You can now view this
+        Shape data set in a desktop GIS (such as QGIS for example) to see the
+        quadtrees that were created with the shptree command.
+      </blockquote>
+    </informalexample>
+
+    <figure>
+      <title>shptreevis result displayed in QGIS</title>
+      <ulink url="http://mapserver.org/_images/shptreevis-example.png"></ulink>
+    </figure>
+  </refsect1>
+
+  <refsect1 id='see-also'>
+    <title>SEE ALSO</title>
+
+    <citerefentry>
+      <refentrytitle>shptree</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>,
+
+    <citerefentry>
+      <refentrytitle>shptreetst</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>,
+
+    <citerefentry>
+      <refentrytitle>sortshp</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>
+  </refsect1>
+
+</refentry>

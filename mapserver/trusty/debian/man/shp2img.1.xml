@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<refentry id='shp2img'>
+
+  <refmeta>
+    <refentrytitle>shp2img</refentrytitle>
+    <manvolnum>1</manvolnum>
+  </refmeta>
+
+  <refnamediv>
+    <refname>shp2img</refname>
+    <refpurpose>create a map image from a mapfile</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv id='synopsis'>
+    <cmdsynopsis>
+      <command>shp2img</command>
+      <arg choice='plain'><option>-m</option> <replaceable>mapfile</replaceable></arg>
+      <arg choice='opt'><option>-o</option> <replaceable>image</replaceable></arg>
+      <arg choice='opt'><option>-e</option> <replaceable>minx</replaceable> <replaceable>miny</replaceable> <replaceable>maxx</replaceable> <replaceable>maxy</replaceable></arg>
+      <arg choice='opt'><option>-s</option> <replaceable>sizex</replaceable> <replaceable>sizey</replaceable></arg>
+      <arg choice='opt'><option>-l</option> "<replaceable>layer1</replaceable> <arg choice='opt'><replaceable>layer2</replaceable>...</arg>"</arg>
+      <arg choice='opt'><option>-i</option> <replaceable>format</replaceable></arg>
+      <arg choice='opt'><option>-all_debug</option> <replaceable>n</replaceable></arg>
+      <arg choice='opt'><option>-map_debug</option> <replaceable>n</replaceable></arg>
+      <arg choice='opt'><option>-layer_debug</option> <replaceable>layername</replaceable> <replaceable>n</replaceable></arg>
+      <arg choice='opt'><option>-p</option> <replaceable>n</replaceable></arg>
+      <arg choice='opt'><option>-c</option> <replaceable>n</replaceable></arg>
+      <arg choice='opt'><option>-d</option> <replaceable>layername</replaceable> <replaceable>datavalue</replaceable></arg>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1 id='description'>
+    <title>DESCRIPTION</title>
+    <para>
+      <command>shp2img</command> creates a map image from a mapfile.
+      Output is either PNG or GIF depending on what version of the GD library is
+      used. This is a useful utility to test your mapfile. You can simply
+      provide the path to your mapfile and the name of an output image, and an
+      image should be returned. If an image cannot be created an error will be
+      displayed at the command line that should refer to a line number in the mapfile.
+    </para>
+  </refsect1>
+
+  <refsect1 id='options'>
+    <title>OPTIONS</title>
+    <variablelist>
+
+      <varlistentry>
+        <term><option>-m</option> <replaceable>mapfile</replaceable></term>
+        <listitem>
+          <para>Map file to operate on - required</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-i</option> <replaceable>format</replaceable></term>
+        <listitem>
+          <para>Override the IMAGETYPE value to pick output format</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-o</option> <replaceable>image</replaceable></term>
+        <listitem>
+          <para>Output filename (STDOUT if not provided)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-e</option> <replaceable>minx</replaceable> <replaceable>miny</replaceable> <replaceable>maxx</replaceable> <replaceable>maxy</replaceable></term>
+        <listitem>
+          <para>Extents to render</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-s</option> <replaceable>sizex</replaceable> <replaceable>sizey</replaceable></term>
+        <listitem>
+          <para>Output image size</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-l</option> <replaceable>layers</replaceable></term>
+        <listitem>
+          <para>Layers to enable - make sure they are quoted and space separated if more than one listed</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-all_debug</option> <replaceable>n</replaceable></term>
+        <listitem>
+          <para>Set debug level for map and all layers</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-map_debug</option> <replaceable>n</replaceable></term>
+        <listitem>
+          <para>Set map debug level</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-layer_debug</option> <replaceable>layername</replaceable> <replaceable>n</replaceable></term>
+        <listitem>
+          <para>Set layer debug level</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-c</option> <replaceable>n</replaceable></term>
+        <listitem>
+          <para>Draw map <replaceable>n</replaceable> number of times</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-p</option> <replaceable>n</replaceable></term>
+        <listitem>
+          <para>Pause for <replaceable>n</replaceable> seconds after reading the map</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-d</option> <replaceable>layername</replaceable> <replaceable>datavalue</replaceable></term>
+        <listitem>
+          <para>Change DATA value for layer</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </refsect1>
+
+  <refsect1 id='example'>
+    <title>EXAMPLE</title>
+
+    <example>
+      <title>Example #1</title>
+
+      <screen>
+shp2img -m vector_blank.map -o test.png
+      </screen>
+
+      Result:
+      <blockquote>
+        A file named 'test.png' is created, that you can drag into your browser to view. 
+      </blockquote>
+    </example>
+
+    <example>
+      <title>Example #2</title>
+
+      <screen>
+shp2img -m gmap75.map -o test2.png -map_debug 3
+      </screen>
+
+      Result:
+      <blockquote>
+        A file named 'test2.png' is created, and layer draw speeds are returned such as:
+      </blockquote>
+      <screen>
+msDrawRasterLayerLow(bathymetry): entering
+msDrawMap(): Layer 0 (bathymetry), 0.601s
+msDrawMap(): Layer 3 (drain_fn), 0.200s
+msDrawMap(): Layer 4 (drainage), 0.300s
+msDrawMap(): Layer 5 (prov_bound), 0.191s
+msDrawMap(): Layer 6 (fedlimit), 0.030s
+msDrawMap(): Layer 9 (popplace), 0.080s
+msDrawMap(): Drawing Label Cache, 0.300s
+msDrawMap() total time: 1.702s
+msSaveImage() total time: 0.040s
+      </screen>
+    </example>
+
+    <example>
+      <title>Example #3</title>
+
+      <screen>
+shp2img -m gmap75.map -o test3.png -all_debug 3
+      </screen>
+
+      Result:
+      <blockquote>
+        A file named 'test3.png' is created, layer draw speeds are returned, and some warnings that index qix files are not found, such as:
+      </blockquote>
+      <screen>
+msLoadMap(): 0.671s
+msDrawRasterLayerLow(bathymetry): entering.
+msDrawGDAL(): src=72,417,3077,2308, dst=0,0,400,300
+msDrawGDAL(): red,green,blue,alpha bands = 1,0,0,0
+msDrawMap(): Layer 0 (bathymetry), 0.090s
+msSearchDiskTree(): Search returned no results. Unable to open spatial index
+for D:\ms4w\apps\gmap\htdocs/.\../data/drain_fn.qix. In most cases you can
+safely ignore this message, otherwise check file names and permissions.
+msDrawMap(): Layer 3 (drain_fn), 0.010s
+msDrawMap(): Layer 4 (drainage), 0.050s
+msSearchDiskTree(): Search returned no results. Unable to open spatial index
+for D:\ms4w\apps\gmap\htdocs/.\../data/province.qix. In most cases you can
+safely ignore this message, otherwise check file names and permissions.
+msDrawMap(): Layer 5 (prov_bound), 0.030s
+msSearchDiskTree(): Search returned no results. Unable to open spatial index
+for D:\ms4w\apps\gmap\htdocs/.\../data/fedlimit.qix. In most cases you can
+safely ignore this message, otherwise check file names and permissions.
+msDrawMap(): Layer 6 (fedlimit), 0.010s
+msDrawMap(): Layer 9 (popplace), 0.010s
+msDrawMap(): Drawing Label Cache, 0.201s
+msDrawMap() total time: 0.401s
+msSaveImage() total time: 0.010s
+shp2img total time: 1.082s
+      </screen>
+    </example>
+
+  </refsect1>
+
+</refentry>

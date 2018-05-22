@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<refentry id='sortshp'>
+
+  <refmeta>
+    <refentrytitle>sortshp</refentrytitle>
+    <manvolnum>1</manvolnum>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sortshp</refname>
+    <refpurpose>sort a Shape data set</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv id='synopsis'>
+    <cmdsynopsis>
+      <command>sortshp</command>
+      <group>
+        <arg choice='plain'>
+          <replaceable>infile</replaceable>
+          <arg choice='plain'><replaceable>outfile</replaceable></arg>
+          <arg choice='plain'><replaceable>item</replaceable></arg>
+          <group>
+            <arg choice='plain'><replaceable>ascending</replaceable></arg>
+            <arg choice='plain'><replaceable>descending</replaceable></arg>
+          </group>
+        </arg>
+        <arg choice='opt'><option>-v</option></arg>
+      </group>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1 id='description'>
+    <title>DESCRIPTION</title>
+    <para>
+      <command>sortshp</command> sorts a Shape data set based on a single column
+      in ascending or descending order. Supports INTEGER, DOUBLE and STRING
+      column types. Useful for prioritizing shapes for rendering and/or labeling.
+    </para>
+
+    <para>
+      The idea here is that if you know that you need to display a certain
+      attribute classed by a certain value, it will be faster for MapServer to
+      access that value if it is at the beginning of the attribute file.
+    </para>
+  </refsect1>
+
+  <refsect1 id='options'>
+    <title>OPTIONS</title>
+    <variablelist>
+
+      <varlistentry>
+        <term><replaceable>infile</replaceable></term>
+        <listitem>
+          <para>The name of the .shp file</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><replaceable>outfile</replaceable></term>
+        <listitem>
+          <para>The name of the .shp/.shx and .dbf files to create</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><replaceable>item</replaceable></term>
+        <listitem>
+          <para>Name of the field to sort on</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><replaceable>ascending</replaceable></term>
+        <term><replaceable>descending</replaceable></term>
+        <listitem>
+          <para>Sort order (default: ascending)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-v</option></term>
+        <listitem>
+          <para>Display mapserver version and build options.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+  </refsect1>
+
+  <refsect1 id='example'>
+    <title>EXAMPLE</title>
+
+    <informalexample>
+      <para>
+        This example uses a roads file ('roads_ugl') that has a field with road
+        classes in integer format ('class1').
+      </para>
+
+      <screen>
+       sortshp roads_ugl roads-sort class1 ascending
+      </screen>
+
+      Result:
+      <blockquote>
+        A new Shape data set named 'roads-sort.shp' is created with shapes
+        sorted in ascending order, according to the values in the 'class1'
+        field.
+      </blockquote>
+
+      <figure id='before'>
+        <title>Figure 1: Attributes Before sortshp</title>
+        <ulink url="http://mapserver.org/_images/sortshp-before.png"/>
+      </figure>
+
+      <figure id='after'>
+        <title>Figure 2: Attributes After sortshp</title>
+        <ulink url="http://mapserver.org/_images/sortshp-after.png"/>
+      </figure>
+    </informalexample>
+  </refsect1>
+
+  <refsect1 id='see-also'>
+    <title>SEE ALSO</title>
+
+    <citerefentry>
+      <refentrytitle>shp2img</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>,
+
+    <citerefentry>
+      <refentrytitle>shptree</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>,
+
+    <citerefentry>
+      <refentrytitle>shptreetst</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>,
+
+    <citerefentry>
+      <refentrytitle>shptreevis</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>
+  </refsect1>
+
+</refentry>

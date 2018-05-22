@@ -1,0 +1,10 @@
+debian/man/legend.1
+debian/man/mapserv.1
+debian/man/msencrypt.1
+debian/man/scalebar.1
+debian/man/shp2img.1
+debian/man/shptree.1
+debian/man/shptreetst.1
+debian/man/shptreevis.1
+debian/man/sortshp.1
+debian/man/tile4ms.1

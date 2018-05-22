@@ -1,0 +1,3 @@
+usr/include/mapserver/*
+usr/lib/*/libmapserver.so
+usr/share/mapserver/

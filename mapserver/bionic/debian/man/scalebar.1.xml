@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<refentry id='scalebar'>
+
+  <refmeta>
+    <refentrytitle>scalebar</refentrytitle>
+    <manvolnum>1</manvolnum>
+  </refmeta>
+
+  <refnamediv>
+    <refname>scalebar</refname>
+    <refpurpose>create a scalebar image from a mapfile</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv id='synopsis'>
+    <cmdsynopsis>
+      <command>scalebar</command>
+      <group>
+        <arg choice='plain'><replaceable>mapfile</replaceable>
+          <arg choice='plain'><replaceable>outputimage</replaceable></arg>
+        </arg>
+        <arg choice='opt'><option>-v</option></arg>
+      </group>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1 id='description'>
+    <title>DESCRIPTION</title>
+    <para>
+      <command>scalebar</command> creates a scalebar image from a mapfile.
+      Output is either PNG or GIF depending on what version of the GD library
+      used.
+    </para>
+  </refsect1>
+
+  <refsect1 id='options'>
+    <title>OPTIONS</title>
+    <variablelist>
+
+      <varlistentry>
+        <term><replaceable>mapfile</replaceable></term>
+        <listitem>
+          <para>Path to the mapfile.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><replaceable>outputimage</replaceable></term>
+        <listitem>
+          <para>Path to the output image file.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-v</option></term>
+        <listitem>
+          <para>Display mapserver version and build options.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </refsect1>
+
+  <refsect1 id='see-also'>
+    <title>SEE ALSO</title>
+
+    <citerefentry>
+      <refentrytitle>legend</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>
+  </refsect1>
+
+</refentry>

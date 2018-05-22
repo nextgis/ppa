@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<refentry id='msencrypt'>
+
+  <refmeta>
+    <refentrytitle>msencrypt</refentrytitle>
+    <manvolnum>1</manvolnum>
+  </refmeta>
+
+  <refnamediv>
+    <refname>msencrypt</refname>
+    <refpurpose>create an encryption key or encrypt portions of connection strings for use in mapfiles</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv id='synopsis'>
+    <cmdsynopsis>
+      <command>msencrypt</command>
+      <group>
+        <arg choice='plain'><option>-keygen</option> <replaceable>file</replaceable></arg>
+        <arg choice='plain'><option>-key</option> <replaceable>file</replaceable> <replaceable>string</replaceable></arg>
+      </group>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1 id='description'>
+    <title>DESCRIPTION</title>
+    <para>
+      <command>msencrypt</command> can create an encryption key or encrypt portions of connection strings for use in mapfiles.
+      Typically you might want to encrypt portions of the CONNECTION parameter for a database connection.
+      The following CONNECTIONTYPEs are supported for using this encryption method:
+      <itemizedlist>
+        <listitem override='bullet'>OGR</listitem>
+        <listitem override='bullet'>Oracle Spatial</listitem>
+        <listitem override='bullet'>PostGIS</listitem>
+        <listitem override='bullet'>SDE</listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1 id='options'>
+    <title>OPTIONS</title>
+    <variablelist>
+
+      <varlistentry>
+        <term><option>-keygen</option> <replaceable>file</replaceable></term>
+        <listitem>
+          <para>Creates a new encryption key in <replaceable>file</replaceable>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-key</option> <replaceable>file</replaceable> <replaceable>string</replaceable></term>
+        <listitem>
+          <para>Use the key in <replaceable>file</replaceable> to encrypt <replaceable>string</replaceable>.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </refsect1>
+
+  <refsect1 id='notes'>
+    <title>NOTES</title>
+
+    <formalpara>
+      <title>Use in Mapfile</title>
+    </formalpara>
+
+    <informalexample>
+      <para>
+        The location of the encryption key can be specified by two mechanisms,
+        either by setting the environment variable MS_ENCRYPTION_KEY or using a
+        CONFIG directive in the MAP object of your mapfile. For example:
+      </para>
+      <programlisting>
+        CONFIG MS_ENCRYPTION_KEY "/path/to/mykey.txt"
+      </programlisting>
+    </informalexample>
+
+    <informalexample>
+      <para>
+        Use the { and } characters as delimiters for encrypted strings inside
+        database CONNECTIONs in your mapfile. For example:
+      </para>
+      <programlisting>
+        CONNECTIONTYPE ORACLESPATIAL
+        CONNECTION "user/{MIIBugIBAAKBgQCP0Yj+Seh8==}@service"
+      </programlisting>
+    </informalexample>
+  </refsect1>
+
+  <refsect1 id='example'>
+    <title>EXAMPLE</title>
+
+    <para>
+      <programlisting>
+        LAYER
+          NAME "provinces"
+          TYPE POLYGON
+          CONNECTIONTYPE POSTGIS
+          CONNECTION "host=127.0.0.1 dbname=gmap user=postgres password=iluvyou18 port=5432"
+          DATA "the_geom FROM province using SRID=42304"
+          STATUS DEFAULT
+          CLASS
+            NAME "Countries"
+            COLOR 255 0 0
+          END
+        END
+      </programlisting>
+    </para>
+
+    <para>
+      Here are the steps to encrypt the password in the above connection:
+      <orderedlist>
+
+        <listitem>
+          <para>
+            Generate an encryption key (note that this key should not be
+            stored anywhere within your web server's accessible directories):
+          </para>
+        </listitem>
+        <screen>
+        msencrypt -keygen "/home/user/mykey.txt"
+        </screen>
+    
+        <para>
+          And this generated key file might contain something like:
+        </para>
+        <programlisting>
+        2137FEFDB5611448738D9FBB1DC59055
+        </programlisting>
+     
+        <listitem>
+          <para>
+            Encrypt the connection's password using that generated key:
+          </para>
+        </listitem>
+        <screen> 
+        msencrypt -key "/home/user/mykey.txt" "iluvyou18"
+        </screen> 
+     
+        <para> 
+          Which returns the password encrypted, at the commandline (you'll use it in a second):
+        </para> 
+        <programlisting>
+        3656026A23DBAFC04C402EDFAB7CE714
+        </programlisting>
+     
+        <listitem>
+          <para>
+            Edit the mapfile to make sure the 'mykey.txt' can be found, using the "MS_ENCRYPTION_KEY" environment variable. The CONFIG parameter inside the MAP object can be used to set an environment variable inside a mapfile:
+          </para>
+        </listitem>
+        <programlisting> 
+        MAP
+            ...
+            CONFIG "MS_ENCRYPTION_KEY" "/home/user/mykey.txt"
+            ...
+        END #mapfile
+        </programlisting> 
+      
+        <listitem>
+          <para>
+            Modify the layer's CONNECTION to use the generated password key, making sure to use the "{}" brackets around the key:
+          </para>
+        </listitem>
+        <programlisting> 
+        CONNECTION "host=127.0.0.1 dbname=gmap user=postgres
+                    password={3656026A23DBAFC04C402EDFAB7CE714} port=5432"
+        </programlisting> 
+      
+        <listitem>
+          <para>
+            Done! Give your new encrypted mapfile a try with the <citerefentry><refentrytitle>shp2img</refentrytitle><manvolnum>1</manvolnum></citerefentry> utility!
+          </para>
+        </listitem>
+
+      </orderedlist>
+    </para>
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<refentry id='shptree'>
+
+  <refmeta>
+    <refentrytitle>shptree</refentrytitle>
+    <manvolnum>1</manvolnum>
+  </refmeta>
+
+  <refnamediv>
+    <refname>shptree</refname>
+    <refpurpose>create a quadtree-based spatial index for a Shape data set</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv id='synopsis'>
+    <cmdsynopsis>
+      <command>shptree</command>
+      <group>
+        <arg choice='plain'>
+          <replaceable>shpfile</replaceable>
+          <arg choice='opt'><replaceable>depth</replaceable></arg>
+          <arg choice='opt'><replaceable>index_format</replaceable></arg>
+        </arg>
+        <arg choice='opt'><option>-v</option></arg>
+      </group>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1 id='description'>
+    <title>DESCRIPTION</title>
+    <para>
+      <command>shptree</command> creates a quadtree-based spatial index for a
+      Shape data set. The default tree depth is calculated so that each tree
+      node (quadtree cell) contains 8 shapes. Do not use the default with point
+      files, a value between 6 and 10 seems to work ok. Your millage may vary
+      and you'll need to do some experimenting.
+    </para>
+
+    <para>
+      This utility is a must for any MapServer application that uses Shape data
+      sets. <command>shptree</command> creates a spatial index of your Shape
+      data set, using a quadtree method. This means that MapServer will use this
+      index to quickly find the appropriate shapes to draw. It creates a file of
+      the same name as your Shape data set, with a .qix file extension. The
+      quadtree method breaks the file into 4 quadrants, recursively until only a
+      few shapes are contained in each quadrant. This minimum number can be set
+      with the <replaceable>depth</replaceable> parameter of the command.
+    </para>
+  </refsect1>
+
+  <refsect1 id='options'>
+    <title>OPTIONS</title>
+    <variablelist>
+
+      <varlistentry>
+        <term><replaceable>shpfile</replaceable></term>
+        <listitem>
+          <para>The name of the .shp file to index.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><replaceable>depth</replaceable></term>
+        <listitem>
+          <para>
+            (Optional) The maximum depth of the index to create, default is
+            0 meaning that <command>shptree</command> will calculate a
+            reasonable default depth.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><replaceable>index_format</replaceable></term>
+        <listitem>
+          <para>
+            (Optional) One of:
+            <variablelist>
+
+              <varlistentry>
+                <term><option>NL</option></term>
+                <listitem>
+                  <para>LSB byte order, using new index format</para>
+                </listitem>
+              </varlistentry>
+
+              <varlistentry>
+                <term><option>NM</option></term>
+                <listitem>
+                  <para>MSB byte order, using new index format</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            The following old format options are deprecated:
+            <variablelist>
+
+              <varlistentry>
+                <term><option>N</option></term>
+                <listitem>
+                  <para>Native byte order</para>
+                </listitem>
+              </varlistentry>
+
+              <varlistentry>
+                <term><option>L</option></term>
+                <listitem>
+                  <para>LSB (intel) byte order</para>
+                </listitem>
+              </varlistentry>
+
+              <varlistentry>
+                <term><option>M</option></term>
+                <listitem>
+                  <para>MSB byte order</para>
+                </listitem>
+              </varlistentry>
+
+            </variablelist>
+
+            The default <replaceable>index_format</replaceable> on this system is: <option>NL</option>
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-v</option></term>
+        <listitem>
+          <para>Display mapserver version and build options.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </refsect1>
+
+  <refsect1 id='notes'>
+    <title>NOTES</title>
+
+    <para>
+      Shape data sets are native to MapServer, and therefore do not require the
+      .shp extension in the DATA path of the LAYER. In fact, in order for
+      MapServer to use the .qix extension you MUST NOT specify the extension,
+      for example:
+      <programlisting>
+       LAYER
+         ...
+         DATA "us_states"    #MapServer will search for us_states.qix and will use it
+         ...
+       END
+       
+       LAYER
+         ...
+         DATA "us_states.shp" #MapServer will search for us_states.shp.qix and won't find it
+         ...
+       END
+      </programlisting>
+
+      Note: As of MapServer 5.2 the qix will be used even when the .shp extension is specified.
+    </para>
+  </refsect1>
+
+  <refsect1 id='example'>
+    <title>EXAMPLE</title>
+
+    <informalexample>
+      <screen>
+shptree us_states.shp
+  creating index of new  LSB format
+      </screen>
+
+      Result:
+      <blockquote>
+        A file named 'us_states.qix' is created in the same location. (note that
+        you can use the
+        <citerefentry>
+          <refentrytitle>shptreevis</refentrytitle>
+          <manvolnum>1</manvolnum>
+        </citerefentry>
+        utility to view the actual quadtree quadrants that are used by MapServer
+        in this qix file)
+      </blockquote>
+    </informalexample>
+  </refsect1>
+
+  <refsect1 id='see-also'>
+    <title>SEE ALSO</title>
+
+    <citerefentry>
+      <refentrytitle>shptreetst</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>,
+
+    <citerefentry>
+      <refentrytitle>shptreevis</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>,
+
+    <citerefentry>
+      <refentrytitle>sortshp</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>
+
+    <para>
+      The
+      <ulink url="https://github.com/mapserver/mapserver/wiki/ShpTree">
+        <citetitle>shptree wiki page</citetitle>
+     </ulink>
+     may also contain information on this utility.
+    </para>
+  </refsect1>
+
+</refentry>

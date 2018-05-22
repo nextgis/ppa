@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<refentry id='mapserv'>
+
+  <refmeta>
+    <refentrytitle>mapserv</refentrytitle>
+    <manvolnum>1</manvolnum>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mapserv</refname>
+    <refpurpose>mapserver CGI interface</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv id='synopsis'>
+    <cmdsynopsis>
+      <command>mapserv</command>
+      <group>
+        <arg choice='plain'><option>-v</option></arg>
+        <arg choice='plain'>
+          <arg choice='opt'><option>-nh</option></arg>
+          QUERY_STRING="<replaceable>QUERY_STRING</replaceable>"
+        </arg>
+      </group>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1 id='description'>
+    <title>DESCRIPTION</title>
+    <para>
+      <command>mapserv</command> provides commandline access to the MapServer
+      CGI interface.
+    </para>
+  </refsect1>
+
+  <refsect1 id='options'>
+    <title>OPTIONS</title>
+    <variablelist>
+
+      <varlistentry>
+        <term><option>-v</option></term>
+        <listitem>
+          <para>Display mapserver version and build options.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-nh</option></term>
+        <listitem>
+          <para>Suppress HTTP headers.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>QUERY_STRING</option>="<replaceable>QUERY_STRING</replaceable>"</term>
+        <listitem>
+          <para>
+            CGI QUERY_STRING parameter, e.g. 
+            QUERY_STRING="MAP=/home/user/wfs.map&amp;SERVICE=WFS&amp;REQUEST=GetCapabilities"
+          </para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+  </refsect1>
+
+  <refsect1 id='example'>
+    <title>EXAMPLE</title>
+
+    <informalexample>
+      <para>
+        The CGI interface can be tested at the commandline by using the "QUERY_STRING" switch, such as:
+      </para>
+
+      <screen>
+       mapserv "QUERY_STRING=map=/home/user/wms.map&amp;mode=map"
+      </screen>
+    </informalexample>
+
+    <informalexample>
+      <para>
+        To suppress the HTTP headers, you can use the "<option>-nh</option>" switch, such as:
+      </para>
+
+      <screen>
+       mapserv -nh "QUERY_STRING=map=/home/user/wms.map&amp;mode=map"
+      </screen>
+    </informalexample>
+
+    <informalexample>
+      <para>
+        To save the output into an image file, use the pipe command such as:
+      </para>
+
+      <screen>
+       mapserv -nh "QUERY_STRING=map=/home/user/wms.map&amp;mode=map" > test.png
+      </screen>
+    </informalexample>
+  </refsect1>
+
+  <refsect1 id='see-also'>
+    <title>SEE ALSO</title>
+
+    <para>
+      <ulink url="http://mapserver.org/cgi/index.html">
+        <citetitle>MapServer CGI Documentation</citetitle>
+      </ulink>
+    </para>
+  </refsect1>
+
+</refentry>

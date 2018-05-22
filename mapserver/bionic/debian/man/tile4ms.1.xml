@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<refentry id='tile4ms'>
+
+  <refmeta>
+    <refentrytitle>tile4ms</refentrytitle>
+    <manvolnum>1</manvolnum>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tile4ms</refname>
+    <refpurpose>create a tile index Shape data set for use with MapServer's TILEINDEX feature</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv id='synopsis'>
+    <cmdsynopsis>
+      <command>tile4ms</command>
+      <group>
+        <arg choice='plain'>
+          <replaceable>metafile</replaceable>
+          <arg choice='plain'><replaceable>tilefile</replaceable></arg>
+          <arg choice='opt'><option>-tile-path-only</option></arg>
+        </arg>
+        <arg choice='plain'><option>-h</option></arg>
+      </group>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1 id='description'>
+    <title>DESCRIPTION</title>
+    <para>
+      <command>tile4ms</command> creates a tile index Shape data set for use
+      with MapServer's TILEINDEX feature. The program creates a Shape data set
+      of rectangles from extents of all the Shape data sets listed in
+      <replaceable>metafile</replaceable> (one Shape data set name per line)
+      and the associated DBF with the filename for each shape tile in a column
+      called LOCATION as required by mapserv.
+    </para>
+
+    <para>
+      <emphasis>Note:</emphasis>
+      Similar functionality can be found in the GDAL commandline utilities
+      <ulink url="http://www.gdal.org/ogrtindex.html">ogrtindex</ulink> (for
+      vectors) and
+      <ulink url="http://www.gdal.org/gdaltindex.html">gdaltindex</ulink> (for
+      rasters).
+    </para>
+
+    <para>
+      <command>tile4ms</command> creates a Shape data set containing the MBR
+      (minimum bounding rectangle) of all shapes in the files provided, which
+      can then be used in the LAYER object's TILEINDEX parameter of the mapfile.
+      The new filed created with this command is used by MapServer to only load
+      the files associated with that extent (or tile).
+    </para>
+  </refsect1>
+
+  <refsect1 id='options'>
+    <title>OPTIONS</title>
+    <variablelist>
+
+      <varlistentry>
+        <term><replaceable>metafile</replaceable></term>
+        <listitem>
+          <para>
+            INPUT  file containing list of shapefile names.
+            (complete paths 255 chars max, no extension)
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><replaceable>tilefile</replaceable></term>
+        <listitem>
+          <para>
+            OUTPUT shape file of extent rectangles and names of tiles in
+            <replaceable>tilefile</replaceable>.dbf
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-tile-path-only</option></term>
+        <listitem>
+          <para>
+            Optional flag.  If specified then only the path to the shape files
+            will be stored in the LOCATION field instead of storing the full
+            filename.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-h</option></term>
+        <listitem>
+          <para>Display usage information</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+  </refsect1>
+
+  <refsect1 id='example'>
+    <title>EXAMPLE</title>
+
+    <example>
+      <title>Short Example</title>
+
+      <para>
+        Create tileindex.shp for all tiles under the /path/to/data directory:
+      </para>
+      <screen>
+       cd /path/to/data
+       find . -name "/*.shp" -print > metafile.txt
+       tile4ms metafile.txt tileindex
+      </screen>
+    </example>
+
+    <example>
+      <title>Long Example</title>
+
+      <para>
+        This example uses TIGER Census data, where the data contains files
+        divided up by county (in fact there are over 3200 counties, a very large
+        dataset indeed). In this example we will show how to display all lakes
+        for the state of Minnesota. (note that here we have already converted
+        the TIGER data into Shape format, but you could keep the data in TIGER
+        format and use the ogrtindex utility instead) The TIGER Census data for
+        Minnesota is made up of 87 different counties, each containing its own
+        lakes file ('wp.shp').
+      </para>
+
+      <orderedlist>
+
+        <listitem>
+          <para>
+            We need to create the 'meta-file' for the tile4ms command. This is
+            a text file of the paths to all 'wp.shp' files for the MN state. To
+            create this file we can use a few simple commands:
+          </para>
+
+          <screen>
+   find -name *wp.shp -print > wp_list.txt
+          </screen>
+
+          <para>
+            The newly created file might look like the following (after removing
+            the full path):
+
+            <programlisting>
+   001\wp.shp
+   003\wp.shp
+   005\wp.shp
+   007\wp.shp
+   009\wp.shp
+   011\wp.shp
+   013\wp.shp
+   015\wp.shp
+   017\wp.shp
+   019\wp.shp
+   ...
+            </programlisting>
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Execute the tile4ms command with the newly created meta-file to
+            create the index file:
+
+            <screen>
+   tile4ms wp_list.txt index
+     Processed 87 of 87 files
+            </screen>
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            A new file named 'index.shp' is created. This is the index file with
+            the MBRs of all 'wp.shp' files for the entire state, as shown in
+            Figure 1. The attribute table of this file contains a field named
+            'LOCATION', that contains the path to each 'wp.shp file', as shown
+            in Figure 2.
+
+            <figure>
+              <title>Figure 1: Index file created by tile4ms utility</title>
+              <ulink url="http://mapserver.org/_images/tile4ms-view.png"/>
+            </figure>
+
+            <figure>
+              <title>Figure 2: Attributes of index file created by tile4ms utility</title>
+              <ulink url="http://mapserver.org/_images/tile4ms-attributes.png"/>
+            </figure>
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            The final step is to use this in your mapfile.
+            
+            <itemizedlist>
+
+              <listitem>
+                <para>
+                  LAYER object's TILEINDEX - must point to the location of the
+                  index file
+                </para>
+              </listitem>
+
+              <listitem>
+                <para>
+                  LAYER object's TILEITEM - specify the name of the field in the
+                  index file containing the paths (default is 'location')
+                </para>
+              </listitem>
+
+              <listitem>
+                <para>
+                  do not need to use the LAYER's DATA parameter
+                </para>
+              </listitem>
+
+            </itemizedlist>
+
+            <para>
+              <blockquote>
+                For example:
+
+                <programlisting>
+   LAYER
+     NAME 'mn-lakes'
+     STATUS ON
+     TILEINDEX "index"
+     TILEITEM "location"
+     TYPE POLYGON
+     CLASS
+       NAME "mn-lakes"
+       STYLE
+         COLOR 0 0 255
+       END
+     END
+   END
+                </programlisting>
+              </blockquote>
+            </para>
+
+            When you view the layer in a MapServer application, you will notice
+            that when you are zoomed into a small area of the state only those
+            lakes layers are loaded, which speeds up the application.
+          </para>
+        </listitem>
+
+      </orderedlist>
+    </example>
+  </refsect1>
+
+  <refsect1 id='see-also'>
+    <title>SEE ALSO</title>
+
+    <citerefentry>
+      <refentrytitle>shp2img</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>,
+
+    <citerefentry>
+      <refentrytitle>shptree</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>,
+
+    <citerefentry>
+      <refentrytitle>shptreetst</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>,
+
+    <citerefentry>
+      <refentrytitle>shptreevis</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>,
+
+    <citerefentry>
+      <refentrytitle>sortshp</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </citerefentry>
+  </refsect1>
+
+</refentry>
