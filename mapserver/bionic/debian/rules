@@ -125,6 +125,3 @@ override_dh_compress:
 
 override_dh_python2:
 	dh_python2 -ppython-mapscript
-
-override_dh_strip:
-	dh_strip --dbg-package=libmapserver-dbg
