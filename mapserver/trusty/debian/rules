@@ -28,7 +28,7 @@ MS_VERSION := $(shell echo $(DEB_VERSION_UPSTREAM) | sed -e 's/\+.*//')
 BUILD_DATE := $(shell LC_ALL=C date -u "+%d %B %Y" -d "@$(SOURCE_DATE_EPOCH)")
 
 CMAKE_OPTS := \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_EXE_LINKER_FLAGS="$(LDFLAGS)" \
 		-DCMAKE_MODULE_LINKER_FLAGS="$(LDFLAGS)" \
 		-DCMAKE_SHARED_LINKER_FLAGS="$(LDFLAGS)" \
