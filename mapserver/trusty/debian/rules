@@ -80,7 +80,7 @@ override_dh_auto_configure:
 	dh_auto_configure -- $(CMAKE_OPTS) \
 			     -DWITH_PYTHON=1 \
 			     -DWITH_PHP=0 \
-			     -DWITH_PERL=1 \
+			     -DWITH_PERL=0 \
 			     -DWITH_RUBY=0 \
 			     -DWITH_JAVA=0 \
 			     -DWITH_CSHARP=0
@@ -125,9 +125,6 @@ override_dh_compress:
 
 override_dh_python2:
 	dh_python2 -ppython-mapscript
-
-override_dh_perl:
-	dh_perl -plibmapscript-perl
 
 override_dh_strip:
 	dh_strip --dbg-package=libmapserver-dbg

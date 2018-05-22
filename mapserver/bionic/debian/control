@@ -21,7 +21,6 @@ Build-Depends: debhelper (>= 9),
                libgif-dev,
                libharfbuzz-dev,
                libjpeg-dev,
-               libperl-dev,
                libpq-dev,
                libproj-dev,
                librsvg2-dev,
@@ -52,7 +51,6 @@ Depends: ${shlibs:Depends},
 Suggests: cgi-mapserver,
           mapserver-bin,
           mapserver-doc,
-          libmapscript-perl,
           python-mapscript
 Pre-Depends: ${misc:Pre-Depends}
 Description: Shared library for MapServer
@@ -71,7 +69,6 @@ Depends: libmapserver2 (= ${binary:Version}),
 Suggests: cgi-mapserver,
           mapserver-bin,
           mapserver-doc,
-          libmapscript-perl,
           python-mapscript
 Breaks: libmapserver-6.2.1-dev (<< 6.4.0-1~),
         libmapserver1-dev (<< 7.0.0~)
@@ -92,7 +89,6 @@ Depends: ${shlibs:Depends},
          ${misc:Depends}
 Suggests: mapserver-bin,
           mapserver-doc,
-          libmapscript-perl,
           python-mapscript
 Description: CGI executable for MapServer
  This package contains the mapserv CGI program. It provides the
@@ -112,7 +108,6 @@ Depends: ${shlibs:Depends},
 Suggests: cgi-mapserver,
           mapserver-doc,
           shapelib,
-          libmapscript-perl,
           python-mapscript
 Description: MapServer utilities
  This package provides command-line utilities for MapServer.
@@ -127,7 +122,6 @@ Architecture: all
 Section: doc
 Depends: ${misc:Depends}
 Suggests: cgi-mapserver,
-          libmapscript-perl,
           python-mapscript
 Description: documentation for MapServer
  This package provides some brief documentation for MapServer.
@@ -136,23 +130,6 @@ Description: documentation for MapServer
  supports Open Geospatial Consortium (OGC) standards. Scripting
  functionality in MapScript is provided by the suggested mapscript
  library packages.
-
-Package: libmapscript-perl
-Architecture: any
-Section: perl
-Depends: ${perl:Depends},
-         ${shlibs:Depends},
-         ${misc:Depends}
-Suggests: mapserver-bin,
-          mapserver-doc
-Conflicts: perl-mapscript
-Provides: perl-mapscript
-Replaces: perl-mapscript
-Description: Perl MapServer module
- Perl MapScript module provides MapServer functions for Perl scripts.
- .
- MapServer is a CGI-based framework for Internet map services which
- supports Open Geospatial Consortium (OGC) standards.
 
 Package: python-mapscript
 Architecture: any
