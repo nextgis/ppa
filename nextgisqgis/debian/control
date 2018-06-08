@@ -167,6 +167,7 @@ Depends: gdal-bin,
          libngqgis-core (= ${binary:Version}),
          libngqgis-python (= ${source:Version}),
          ${misc:Depends}
+Breaks: python-qgis         
 XB-Python-Version: ${python:Versions}
 Description: Python bindings to QGIS - architecture-independent files
  QGIS is a Geographic Information System (GIS) which manages, analyzes and
