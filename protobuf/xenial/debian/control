@@ -53,13 +53,13 @@ Description: protocol buffers C++ library
  .
  This package contains the runtime library needed for C++ applications.
 
-Package: libprotobuf-lite9v5
+Package: libprotobuf-lite15
 Architecture: any
 Multi-Arch: same
 Section: libs
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Conflicts: libprotobuf-lite9
-Replaces: libprotobuf-lite9
+Conflicts: libprotobuf-lite9, libprotobuf-lite9v5
+Replaces: libprotobuf-lite9, libprotobuf-lite9v5
 Description: protocol buffers C++ library (lite version)
  Protocol buffers are a flexible, efficient, automated mechanism for
  serializing structured data - similar to XML, but smaller, faster, and
