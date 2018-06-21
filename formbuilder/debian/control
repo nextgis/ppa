@@ -11,7 +11,7 @@ Build-Depends: debhelper (>= 9),
                chrpath,
                qtbase5-dev-tools,
                qttools5-dev-tools,
-               qtbase5-dev,
+               qttools5-dev,
                libqt5svg5-dev,
                libgdal-dev,
                libngstd-framework5-dev
