@@ -16,14 +16,14 @@ Build-Depends:
 # C/C++
  , zlib1g-dev
 # , google-mock
- , libgtest-dev
+# , libgtest-dev
 # Python
  , dh-python
  , python-all:any
  , libpython-all-dev
  , python3-all:any
  , libpython3-all-dev
- , python-setuptools
+ , python-setuptools    
  , python-six
  , python3-setuptools
  , python3-six
