@@ -48,7 +48,7 @@ Description: Geographic objects support for PostgreSQL
 Package: liblwgeom-2.4
 Architecture: any
 Section: libs
-Depends: ${shlibs:Depends}, libjson0 (>= 0.9~), ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: PostGIS "Lightweight Geometry" library
  PostGIS adds support for geographic objects to the PostgreSQL
  object-relational database. In effect, PostGIS "spatially enables"
