@@ -52,6 +52,7 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
                          -DENABLE_HDF4=ON \
                          -DWITH_PostgreSQL=ON \
                          -DWITH_HDF4=ON \
-                         -DGDAL_ENABLE_GNM=ON  \
+                         -DGDAL_ENABLE_GNM=ON \
                          -DENABLE_OPENJPEG=ON \
-                         -DWITH_OPENJPEG=ON 
+                         -DWITH_OPENJPEG=ON \
+						 -DWITH_QHULL=ON

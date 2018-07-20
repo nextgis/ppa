@@ -52,7 +52,9 @@ Section: libs
 Depends: ${shlibs:Depends},
          ${misc:Depends}
 Recommends: proj-bin
-Provides: gdal-abi-2-2-0
+Suggests: gdal-bin, gdal-data
+Breaks: libgdal1h (<<2.0)
+Provides: gdal-abi-2-2-3
 Description: Geospatial Data Abstraction Library
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
@@ -144,7 +146,8 @@ Homepage: http://www.gdal.org/#index_userdocs
 Package: gdal-bin
 Architecture: any
 Depends: ${shlibs:Depends},
-         ${misc:Depends}
+         ${misc:Depends},
+         gdal-data (= ${source:Version})
 Suggests: python-gdal
 Breaks: gdal-bin (<< 1.10.0-0~)
 Description: Geospatial Data Abstraction Library - Utility programs
@@ -198,6 +201,7 @@ Depends: ${shlibs:Depends},
          ${python:Depends},
          python-numpy,
          ${misc:Depends}
+Suggests: gdal-bin, gdal-data
 Provides: ${python:Provides}
 Description: Python bindings to the Geospatial Data Abstraction Library
  GDAL is a translator library for raster geospatial data formats.
@@ -227,7 +231,7 @@ Depends: ${shlibs:Depends},
          ${python3:Depends},
          python3-numpy,
          ${misc:Depends}
-Suggests: gdal-bin
+Suggests: gdal-bin, gdal-data
 Provides: ${python3:Provides}
 Description: Python 3 bindings to the Geospatial Data Abstraction Library
  GDAL is a translator library for raster geospatial data formats.
