@@ -3,8 +3,8 @@ Maintainer: NextGIS <info@nextgis.com>
 Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
 Section: science
 Priority: optional
-Build-Depends: debhelper (>= 9), 
-               cmake, 
+Build-Depends: debhelper (>= 9),
+               cmake,
                cdbs,
                doxygen,
                swig,
@@ -24,15 +24,15 @@ Suggests: libgeos-doc
 Description: Geometry engine for GIS - Development files
  GEOS provides a spatial object model and fundamental geometric
  functions. It implements the geometry model defined in the
- OpenGIS Consortium Simple Features Specification for SQL. 
+ OpenGIS Consortium Simple Features Specification for SQL.
  .
- This package contains the headers and libraries needed to 
+ This package contains the headers and libraries needed to
  develop programs using GEOS.
 
 Package: libgeos++-dev
 Architecture: any
 Section: libdevel
-Depends: libgeos-3.6.2 (= ${binary:Version}),
+Depends: libgeos-3.7.0 (= ${binary:Version}),
          libgeos-dev,
          ${misc:Depends}
 Suggests: libgeos-doc
@@ -40,11 +40,11 @@ Breaks: libgeos-dev (<< 3.3.1-1~)
 Description: Geometry engine for GIS - C++ development files
  GEOS provides a spatial object model and fundamental geometric
  functions. It implements the geometry model defined in the
- OpenGIS Consortium Simple Features Specification for SQL. 
+ OpenGIS Consortium Simple Features Specification for SQL.
  .
- This package contains the headers and libraries needed to 
+ This package contains the headers and libraries needed to
  develop programs using GEOS in C++. Note that third-parties
- programs should use the stable C API instead of the 
+ programs should use the stable C API instead of the
  unstable C++ one.
 
 Package: libgeos-c1
@@ -79,19 +79,19 @@ Description: Geometry engine for Geographic Information Systems - C Library
  This package contains the C library. A C++ library is provided
  by the libgeos-* package.
 
-Package: libgeos-3.6.2
+Package: libgeos-3.7.0
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
          ${misc:Depends}
 Description: Geometry engine for Geographic Information Systems - C++ Library
- GEOS provides a spatial object model and fundamental geometric 
- functions. It implements the geometry model defined in the 
- OpenGIS Consortium Simple Features Specification for SQL. 
+ GEOS provides a spatial object model and fundamental geometric
+ functions. It implements the geometry model defined in the
+ OpenGIS Consortium Simple Features Specification for SQL.
  Functions provided include:
  .
    * spatial predicates (based on the DE-9IM model),
-   * overlay functions (intersection, difference, union, 
+   * overlay functions (intersection, difference, union,
      symmetric difference),
    * buffer,
    * convex hull,
