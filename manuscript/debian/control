@@ -1,0 +1,39 @@
+Source: manuscript
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+Section: editors
+Priority: optional
+Build-Depends: debhelper (>= 9),
+               cmake,
+               cdbs,
+               dh-autoreconf,
+               d-shlibs,
+               chrpath,
+               qtbase5-dev-tools,
+               qttools5-dev-tools,
+               qttools5-dev,
+               libqt5svg5-dev,
+               libgdal-dev,
+               libngstd-framework5-dev
+Standards-Version: 3.9.5
+Vcs-Browser: https://github.com/nextgis/manuscript
+Vcs-Git: git@github.com:nextgis/manuscript.git
+Homepage: http://nextgis.com
+
+Package: manuscript
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: reStructured text and Sphinx documentation editor
+ NextGIS Manuscript is a desktop application for edit sphinx (rst) documentation
+ .
+ NextGIS Manuscript is able to: Open and view sphinx project with hierarchically;
+ Highlight syntax; Show warnings and errors in rst code; Show list or bookmarks
+ (references) and images; Show opened files and edit state; Cut, copy, paste,
+ bold, italic, add notes, tips, warnings, etc.; Wizard to import from
+ github/gitlab etc.; Create new article dialog; Autoupdate articles tree while
+ editing; Navigate through documentation.
+ .
+ This package contains an executable application and according translation
+ files for different languages.
+Homepage: http://nextgis.com
