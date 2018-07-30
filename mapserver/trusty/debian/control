@@ -36,7 +36,7 @@ Build-Depends:  debhelper (>= 9),
                 docbook-xsl,
                 docbook-xml,
                 xsltproc,
-                libprotobuf-c-dev,
+                libprotobuf-c0-dev | libprotobuf-c-dev,
                 protobuf-c-compiler
 Build-Conflicts: libcurl3-openssl-dev
 XS-Ruby-Versions: all
