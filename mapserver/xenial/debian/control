@@ -36,7 +36,9 @@ Build-Depends: debhelper (>= 9),
                docbook2x,
                docbook-xsl,
                docbook-xml,
-               xsltproc
+               xsltproc,
+               libprotobuf-c-dev,
+               protobuf-c-compiler
 Build-Conflicts: libcurl3-openssl-dev
 Standards-Version: 3.9.6
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-grass/mapserver.git
