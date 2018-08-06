@@ -8,3 +8,4 @@ usr/lib/*/ngqgis/plugins/libtopologyplugin.so
 usr/lib/*/ngqgis/plugins/libgeometry_checkerplugin.so
 usr/lib/*/ngqgis/plugins/libgeometry_snapperplugin.so
 usr/lib/*/ngqgis/plugins/libgeoreferencerplugin.so
+usr/lib/*/ngqgis/plugins/libdtclassifierplugin.so
