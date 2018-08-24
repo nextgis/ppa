@@ -18,7 +18,7 @@ Homepage: https://nextgis.com
 Package: libclntsh
 Architecture: any
 Section: libs
-Depends: ${misc:Depends}
+Depends: libaio1, ${misc:Depends}
 Description: Oracle Database supports C and C++ programmers with a choice of high
  performance APIs, including standards-compliant, open-source and proprietary interfaces.
  .
