@@ -34,7 +34,8 @@ Build-Depends: debhelper (>= 9),
                python-six,
                python-raven,
                python-contextlib2,
-               libopencv-core-dev, libopencv-highgui-dev, libopencv-ml-dev
+               libopencv-core-dev, libopencv-highgui-dev, libopencv-ml-dev,
+               libclntsh-dev
 Standards-Version: 3.9.8
 Vcs-Browser: https://github.com/nextgis/nextgisqgis
 Vcs-Git: git@github.com:nextgis/nextgisqgis.git
@@ -119,6 +120,7 @@ Depends: ${shlibs:Depends},
          ${misc:Depends},
          libqt4-sql-sqlite,
          libqt4-sql-psql,
+         libqt4-sql-qoci,
          libqca2-plugin-ossl | libqca2-plugins
 Description: collection of data providers for QGIS
  QGIS is a Geographic Information System (GIS) which manages, analyzes and

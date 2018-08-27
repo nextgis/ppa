@@ -24,4 +24,5 @@ DEB_CMAKE_EXTRA_FLAGS := -DWITH_EXPAT=ON \
 						 -DPYTHON_DESTDIR=$(CURDIR)/debian/tmp \
 						 -DWITH_PyQt4=ON \
 						 -DWITH_Qsci=ON \
-						 -DWITH_ZLIB=ON
+						 -DWITH_ZLIB=ON \
+						 -DWITH_OCI=ON
