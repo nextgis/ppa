@@ -57,4 +57,5 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
                          -DWITH_OPENJPEG=ON \
 						 -DWITH_QHULL=ON \
 						 -DWITH_OCI=ON \
-						 -DENABLE_OCI=ON
+						 -DENABLE_OCI=ON \
+						 -DENABLE_GEORASTER=ON
