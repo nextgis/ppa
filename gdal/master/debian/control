@@ -39,7 +39,8 @@ Build-Depends: debhelper (>= 9),
                libopenjp2-7-dev | libopenjpeg-dev,
                libgif-dev,
                libqhull-dev,
-               libclntsh-dev
+               libclntsh-dev,
+               libkml-dev
 Build-Conflicts: python-setuptools
 Standards-Version: 3.9.8
 Vcs-Browser: https://github.com/nextgis-borsch/lib_gdal
