@@ -4,9 +4,7 @@ Uploaders: Mikhail Gusev <gusevmihs@gmail.com>
 Section: science
 Priority: optional
 Build-Depends: debhelper (>= 9),
-
                software-properties-common,
-
                g++-6,
                gcc-6,
                build-essential,
@@ -22,8 +20,7 @@ Build-Depends: debhelper (>= 9),
                libboost-all-dev,
                lua5.2,
                liblua5.2-dev,
-               libtbb-dev,
-
+               libtbb-dev
 Standards-Version: 3.9.5
 Vcs-Browser: https://github.com/nextgis-borsch/osrm-backend
 Vcs-Git: git@github.com:nextgis-borsch/osrm-backend.git
