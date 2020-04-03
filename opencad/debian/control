@@ -6,7 +6,6 @@ Priority: optional
 Build-Depends: debhelper (>= 9), 
                cmake, 
                cdbs,
-               dh-autoreconf,
                d-shlibs,
                chrpath
 Standards-Version: 3.9.5
