@@ -1,0 +1,4 @@
+usr/include/*.h	usr/include/geotiff
+usr/include/*.inc usr/include/geotiff
+# usr/lib/*/lib*.a
+usr/lib/*/lib*.so
