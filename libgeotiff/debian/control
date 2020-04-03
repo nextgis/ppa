@@ -6,7 +6,8 @@ Uploaders: Francesco Paolo Lovergine <frankie@debian.org>,
 Section: science
 Priority: optional
 Build-Depends: debhelper (>= 9.20160114),
-               dh-autoreconf,
+               cmake,
+               cdbs,
                libjpeg-dev,
                libproj-dev (>= 6.0.0),
                libtiff-dev,
