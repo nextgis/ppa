@@ -1,0 +1,5 @@
+# usr/lib/*/libproj.a
+# usr/lib/*/libproj.la
+usr/lib/*/libproj.so
+usr/lib/*/pkgconfig
+usr/include
