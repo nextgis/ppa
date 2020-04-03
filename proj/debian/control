@@ -5,6 +5,8 @@ Uploaders: Francesco Paolo Lovergine <frankie@debian.org>,
 Section: science
 Priority: optional
 Build-Depends: debhelper (>= 10~),
+               cmake,
+               cdbs,
                libcurl4-gnutls-dev | libcurl-ssl-dev,
                libsqlite3-dev,
                libtiff-dev,
