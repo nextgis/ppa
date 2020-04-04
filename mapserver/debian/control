@@ -3,49 +3,51 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>
 Uploaders: Francesco Paolo Lovergine <frankie@debian.org>,
            Alan Boudreault <aboudreault@mapgears.com>,
-           Bas Couwenberg <sebastic@xs4all.nl>
+           Bas Couwenberg <sebastic@debian.org>
 Section: devel
 Priority: optional
-Build-Depends:  debhelper (>= 9),
-                dpkg-dev (>= 1.16.1.1),
-                cmake (>= 2.8.12),
-                chrpath,
-                libcairo2-dev,
-                libcurl4-gnutls-dev | libcurl-ssl-dev,
-                libfcgi-dev,
-                libfreetype6-dev (>= 2.0.9),
-                libfribidi-dev,
-                libgdal-dev (>= 1.10.1-0~),
-                libgeos-dev (>= 3.3.1-1~),
-                libgif-dev,
-                libharfbuzz-dev,
-                libjpeg-dev,
-                libpng-dev,
-                libpq-dev,
-                libproj-dev,
-                librsvg2-dev,
-                libxml2-dev,
-                libxslt1-dev,
-                zlib1g-dev (>= 1.1.4),
-                pkg-config,
-                pkg-kde-tools,
-                python-all (>= 2.6.6-3~),
-                python-all-dev (>= 2.6.6-3~),
-                swig,
-                docbook2x,
-                docbook-xsl,
-                docbook-xml,
-                xsltproc,
-                libprotobuf-c0-dev | libprotobuf-c-dev,
-                protobuf-c-compiler
+Build-Depends: debhelper (>= 9),
+               dh-python,
+               dpkg-dev (>= 1.16.1.1),
+               cmake (>= 2.8.12.1-1.2),
+               chrpath,
+               libcairo2-dev,
+               libcurl4-gnutls-dev | libcurl-ssl-dev,
+               libfcgi-dev,
+               libfreetype6-dev (>= 2.0.9),
+               libfribidi-dev,
+               libgdal-dev (>= 1.10.1-0~),
+               libgeos-dev (>= 3.3.1-1~),
+               libgif-dev,
+               libharfbuzz-dev,
+               libjpeg-dev,
+               libpng-dev,
+               libprotobuf-c-dev,
+               libpq-dev,
+               libproj-dev,
+               librsvg2-dev,
+               libxml2-dev,
+               libxslt1-dev,
+               zlib1g-dev (>= 1.1.4),
+               pkg-config,
+               pkg-kde-tools,
+               protobuf-c-compiler,
+               python3-all,
+               python3-all-dev,
+               python3-setuptools,
+               swig,
+               docbook2x,
+               docbook-xsl,
+               docbook-xml,
+               xsltproc
 Build-Conflicts: libcurl3-openssl-dev
-XS-Ruby-Versions: all
-Standards-Version: 3.9.5
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-grass/mapserver.git
-Vcs-Git: git://anonscm.debian.org/pkg-grass/mapserver.git
+Standards-Version: 4.4.0
+Vcs-Browser: https://salsa.debian.org/debian-gis-team/mapserver
+Vcs-Git: https://salsa.debian.org/debian-gis-team/mapserver.git
 Homepage: http://www.mapserver.org
+XS-Ruby-Versions: all
 
-Package: libmapserver1
+Package: libmapserver2
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
@@ -53,7 +55,7 @@ Depends: ${shlibs:Depends},
 Suggests: cgi-mapserver,
           mapserver-bin,
           mapserver-doc,
-          python-mapscript
+          python3-mapscript
 Pre-Depends: ${misc:Pre-Depends}
 Description: Shared library for MapServer
  This package contains the shared library.
@@ -63,19 +65,19 @@ Description: Shared library for MapServer
  functionality in MapScript is provided by the suggested mapscript
  library packages.
 
-Package: libmapserver1-dev
+Package: libmapserver-dev
 Architecture: any
 Section: libdevel
-Depends: libmapserver1 (= ${binary:Version}),
+Depends: libmapserver2 (= ${binary:Version}),
          ${misc:Depends}
 Suggests: cgi-mapserver,
           mapserver-bin,
           mapserver-doc,
-          python-mapscript
-Breaks: libmapserver-dev (<< 6.2.1-3~),
-        libmapserver-6.2.1-dev (<< 6.4.0-1~)
-Replaces: libmapserver-dev (<< 6.2.1-3~),
-          libmapserver-6.2.1-dev (<< 6.4.0-1~)
+          python3-mapscript
+Breaks: libmapserver-6.2.1-dev (<< 6.4.0-1~),
+        libmapserver1-dev (<< 7.0.0~)
+Replaces: libmapserver-6.2.1-dev (<< 6.4.0-1~),
+          libmapserver1-dev (<< 7.0.0~)
 Description: Shared library development files for MapServer
  This package contains the development files for the shared library.
  .
@@ -87,11 +89,10 @@ Description: Shared library development files for MapServer
 Package: cgi-mapserver
 Architecture: any
 Section: web
-Depends: ${shlibs:Depends},
+Depends: mapserver-bin,
          ${misc:Depends}
-Suggests: mapserver-bin,
-          mapserver-doc,
-          python-mapscript
+Suggests: mapserver-doc,
+          python3-mapscript
 Description: CGI executable for MapServer
  This package contains the mapserv CGI program. It provides the
  MapServer template language, and can be used to implement Web Map
@@ -110,7 +111,7 @@ Depends: ${shlibs:Depends},
 Suggests: cgi-mapserver,
           mapserver-doc,
           shapelib,
-          python-mapscript
+          python3-mapscript
 Description: MapServer utilities
  This package provides command-line utilities for MapServer.
  .
@@ -124,7 +125,7 @@ Architecture: all
 Section: doc
 Depends: ${misc:Depends}
 Suggests: cgi-mapserver,
-          python-mapscript
+          python3-mapscript
 Description: documentation for MapServer
  This package provides some brief documentation for MapServer.
  .
@@ -133,15 +134,16 @@ Description: documentation for MapServer
  functionality in MapScript is provided by the suggested mapscript
  library packages.
 
-Package: python-mapscript
+Package: python3-mapscript
 Architecture: any
 Section: python
-Depends: ${python:Depends},
+Depends: ttf-bitstream-vera,
+         ${python3:Depends},
          ${shlibs:Depends},
          ${misc:Depends}
 Suggests: mapserver-bin,
           mapserver-doc
-Provides: ${python:Provides}
+Provides: ${python3:Provides}
 Description: Python library for MapServer
  Python MapScript provides MapServer functions for Python scripts.
  .
