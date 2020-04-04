@@ -11,7 +11,7 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
                          -DWITH_EXPAT=ON -DWITH_GeoTIFF=ON \
                          -DWITH_ICONV=ON -DWITH_JSONC=ON \
                          -DWITH_LibXml2=ON -DWITH_GEOS=ON \
-                         -DWITH_PROJ4=ON \
+                         -DWITH_PROJ=ON \
                          -DWITH_TIFF=ON \
                          -DWITH_ZLIB=ON \
                          -DWITH_JBIG=ON \
@@ -19,10 +19,9 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
                          -DWITH_LibLZMA=ON \
                          -DWITH_Armadillo=ON \
                          -DPACKAGE_VENDOR=NextGIS \
-                         -DCMAKE_BUILD_TYPE=release \
+                         -DCMAKE_BUILD_TYPE=Release \
                          -DGDAL_INSTALL_DATA_IN_VERSION_DIR=ON \
                          -DWITH_PYTHON=ON \
-                         -DPYTHON_DESTDIR=$(CURDIR)/debian/tmp \
                          -DWITH_SQLite3=ON \
                          -DWITH_CURL=ON \
                          -DWITH_PNG=ON \
@@ -36,7 +35,6 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
                          -DWITH_HDF4=ON \
                          -DGDAL_ENABLE_GNM=ON \
                          -DENABLE_OPENJPEG=ON \
-                         -DWITH_OPENJPEG=ON \
 						 -DWITH_QHULL=ON \
 						 -DWITH_OCI=ON \
 						 -DENABLE_OCI=ON \
