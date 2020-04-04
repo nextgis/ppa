@@ -1,2 +1,3 @@
 usr/lib/*/libgeos.so
 usr/lib/*/libgeos.a
+usr/share/geos/CMake

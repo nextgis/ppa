@@ -2,3 +2,4 @@ usr/bin/geos-config
 usr/include/geos_c.h
 usr/include/geos/export.h
 usr/lib/*/libgeos_c.so
+usr/share/geos/CMake
