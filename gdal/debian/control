@@ -6,7 +6,6 @@ Priority: optional
 Build-Depends: debhelper (>= 9),
                cmake,
                cdbs,
-               dh-autoreconf,
                zlib1g-dev,
                libpng-dev,
                libjpeg-dev,
@@ -18,7 +17,8 @@ Build-Depends: debhelper (>= 9),
                python-numpy,
                python3-all-dev,
                python3-numpy,
-               libcurl4-gnutls-dev | libcurl4-openssl-dev,
+               python3-distutils,
+               libcurl4-gnutls-dev | libcurl-ssl-dev,
                chrpath,
                swig,
                libexpat1-dev,
@@ -26,19 +26,24 @@ Build-Depends: debhelper (>= 9),
                libxml2-dev,
                liblzma-dev,
                libarmadillo-dev,
-               libtiff5-dev,
-               libgeotiff-dev,
+               libtiff-dev,
+               libgeotiff-dev (>= 1.5.0),
                libjson-c-dev,
                libsqlite3-dev,
                libpcre3-dev,
-               libspatialite-dev,
+               libspatialite-dev (>= 4.3.0-3~),
                libpq-dev,
                postgresql-server-dev-all,
-               libhdf4-dev,
+               libhdf4-alt-dev,
                libopencad-dev,
                libopenjp2-7-dev | libopenjpeg-dev,
                libgif-dev,
-               libqhull-dev
+               libqhull-dev,         
+               libwebp-dev,
+               lsb-release,
+               libclntsh-dev,
+               libkml-dev (>= 1.3.0~rc0-3),
+               libboost-dev
 Build-Conflicts: python-setuptools
 Standards-Version: 3.9.8
 Vcs-Browser: https://github.com/nextgis-borsch/lib_gdal
@@ -46,15 +51,15 @@ Vcs-Git: git@github.com:nextgis-borsch/lib_gdal.git
 Homepage: http://www.gdal.org/
 X-Python3-Version: >= 3.2
 
-Package: libgdal20
+Package: libgdal26
 Architecture: any
 Section: libs
-Depends: ${shlibs:Depends},
+Depends: gdal-data (>= ${source:Version}),
+         ${shlibs:Depends},
          ${misc:Depends}
 Recommends: proj-bin
 Suggests: gdal-bin, gdal-data
 Breaks: libgdal1h (<<2.0)
-Provides: gdal-abi-2-2-3
 Description: Geospatial Data Abstraction Library
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
@@ -77,25 +82,28 @@ Description: Geospatial Data Abstraction Library
 Package: libgdal-dev
 Architecture: any
 Section: libdevel
-Depends: libgdal20 (= ${binary:Version}),
+Depends: libgdal26 (= ${binary:Version}),
          libc6-dev,
          libarmadillo-dev,
          libpng-dev,
          libjpeg-dev,
          libgeos-dev,
-         libtiff5-dev,
+         libtiff-dev,
+         libgeotiff-dev (>= 1.5.0),
          libcurl4-gnutls-dev | libcurl-ssl-dev,
-         libgeotiff-dev,
          libjson-c-dev,
          libsqlite3-dev,
          libspatialite-dev,
          libpq-dev,
-         postgresql-server-dev-all,
-         libhdf4-dev,
+         libproj-dev (>= 6.0.0),
+         libqhull-dev,
+         libhdf4-alt-dev,
          libopencad-dev,
          libopenjp2-7-dev | libopenjpeg-dev,
          libgif-dev,
          libqhull-dev,
+         libwebp-dev,
+         lsb-release,
          ${misc:Depends}
 Suggests: libgdal-doc
 Description: Geospatial Data Abstraction Library - Development files
@@ -145,11 +153,15 @@ Homepage: http://www.gdal.org/#index_userdocs
 
 Package: gdal-bin
 Architecture: any
-Depends: ${shlibs:Depends},
+Depends: python3-gdal (= ${binary:Version}),
+         ${python3:Depends},
+         ${shlibs:Depends},
          ${misc:Depends},
          gdal-data (= ${source:Version})
 Suggests: python-gdal
-Breaks: gdal-bin (<< 1.10.0-0~)
+Breaks: gdal-bin (<< 1.10.0-0~),
+        python-gdal (<< 2.4.3~)
+Replaces: python-gdal (<< 2.4.3~)
 Description: Geospatial Data Abstraction Library - Utility programs
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
@@ -175,6 +187,7 @@ Homepage: http://www.gdal.org/gdal_utilities.html
 Package: gdal-data
 Architecture: all
 Depends: ${misc:Depends}
+Breaks: libgdal20 (<< 2.5.0~)
 Description: Geospatial Data Abstraction Library - Data files
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
@@ -201,7 +214,7 @@ Depends: ${shlibs:Depends},
          ${python:Depends},
          python-numpy,
          ${misc:Depends}
-Suggests: gdal-bin, gdal-data
+Suggests: gdal-bin
 Provides: ${python:Provides}
 Description: Python bindings to the Geospatial Data Abstraction Library
  GDAL is a translator library for raster geospatial data formats.
@@ -231,7 +244,7 @@ Depends: ${shlibs:Depends},
          ${python3:Depends},
          python3-numpy,
          ${misc:Depends}
-Suggests: gdal-bin, gdal-data
+Suggests: gdal-bin
 Provides: ${python3:Provides}
 Description: Python 3 bindings to the Geospatial Data Abstraction Library
  GDAL is a translator library for raster geospatial data formats.
