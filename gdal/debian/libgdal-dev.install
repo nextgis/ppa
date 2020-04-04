@@ -3,4 +3,3 @@ usr/include
 usr/lib/*/libgdal.so
 usr/lib/*/libgdal.a
 usr/lib/*/pkgconfig/gdal.pc
-usr/share/man/man1/gdal-config.1
