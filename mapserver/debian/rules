@@ -48,7 +48,7 @@ override_dh_auto_configure:
 	                     -DCMAKE_VERBOSE_MAKEFILE=1 \
 	                     -DINSTALL_LIB_DIR="/usr/lib/$(DEB_HOST_MULTIARCH)" \
 	                     -DWITH_PROJ=1 \
-						 -DWITH_PROTOBUFC=1 \
+	                     -DWITH_PROTOBUFC=1 \
 	                     -DWITH_KML=1 \
 	                     -DWITH_SOS=1 \
 	                     -DWITH_WMS=1 \
