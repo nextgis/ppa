@@ -26,6 +26,8 @@ MANPAGES := $(wildcard debian/man/*.*.xml)
 
 MS_VERSION := $(shell echo $(DEB_VERSION_UPSTREAM) | sed -e 's/\+.*//')
 BUILD_DATE := $(shell LC_ALL=C date -u "+%d %B %Y" -d "@$(SOURCE_DATE_EPOCH)")
+# Support parallel building if enabled in DEB_BUILD_OPTIONS
+DEB_BUILD_PARALLEL = 1
 
 %:
 	dh $@ --with python3,pkgkde_symbolshelper \
