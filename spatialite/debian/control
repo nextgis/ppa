@@ -1,0 +1,70 @@
+Source: spatialite
+Maintainer: Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>
+Uploaders: Francesco Paolo Lovergine <frankie@debian.org>,
+           David Paleino <dapal@debian.org>,
+           Bas Couwenberg <sebastic@debian.org>
+Section: science
+Priority: optional
+Build-Depends: debhelper (>= 9),
+               cmake,
+               cdbs,
+               libsqlite3-dev,
+               libgeos-dev (>= 3.3.0),
+               libproj-dev,
+               libreadline-dev,
+               libexpat1-dev,
+               libfreexl-dev,
+               libxml2-dev,
+               pkg-config,
+               zlib1g-dev,
+               libqt4-dev,
+Standards-Version: 3.9.6
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-grass/spatialite.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-grass/spatialite.git
+Homepage: https://www.gaia-gis.it/fossil/libspatialite
+
+Package: libspatialite7
+Architecture: any
+Multi-Arch: same
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Breaks: spatialite-bin (<< 3.0.0-1~)
+Description: Geospatial extension for SQLite - libraries
+ The SpatiaLite extension enables SQLite to support spatial (geometry) data
+ in a way conformant to OpenGis specifications, with both WKT and WKB formats.
+ .
+ Spatialite also includes Virtualshape and Virtualtext to enable accessing
+ shapefiles and csv/text files as virtual tables.
+ .
+ This package contains all shared libraries used by Spatialite based programs.
+
+Package: libspatialite-dev
+Architecture: any
+Multi-Arch: same
+Section: libdevel
+Depends: libspatialite7 (= ${binary:Version}),
+         libsqlite3-dev,
+         zlib1g-dev,
+         ${misc:Depends}
+Recommends: pkg-config
+Description: Geospatial extension for SQLite - development files
+ The SpatiaLite extension enables SQLite to support spatial (geometry) data
+ in a way conformant to OpenGis specifications, with both WKT and WKB formats.
+ .
+ Spatialite also includes Virtualshape and Virtualtext to enable accessing
+ shapefiles and csv/text files as virtual tables.
+ .
+ This package contains development files (static libraries and header files).
+
+Package: libqt4-sql-spatialite
+Architecture: any
+Multi-Arch: same
+Section: libs
+Depends: libspatialite7 (= ${binary:Version}),
+         ${misc:Depends}
+Description: Geospatial extension for SQLite - libraries
+ The SpatiaLite module for Qt4 SQL plugin.
+ .
+ This package contains all shared libraries used by Qt4 library.
