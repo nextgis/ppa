@@ -1,6 +1,5 @@
 usr/lib/*/libspatialite.so
 usr/include
-usr/lib/*/pkgconfig/spatialite.pc
 
 src/headers/spatialite_private.h usr/include/
 
