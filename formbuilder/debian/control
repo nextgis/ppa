@@ -13,7 +13,7 @@ Build-Depends: debhelper (>= 9),
                qttools5-dev-tools,
                qttools5-dev,
                libqt5svg5-dev,
-               libgdal-dev,
+               libgdal-dev (>= 3.0),
                libngstd-framework5-dev
 Standards-Version: 3.9.5
 Vcs-Browser: https://github.com/nextgis/formbuilder
