@@ -1,0 +1,3 @@
+doc/man/pgsql2shp.1
+doc/man/shp2pgsql.1
+debian/raster2pgsql.1
