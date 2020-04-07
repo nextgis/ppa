@@ -7,6 +7,8 @@
 # This has to be exported to make some magic below work.
 export DH_OPTIONS
 
+export DEB_BUILD_OPTIONS=nocheck
+
 # Enable hardening build flags
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
