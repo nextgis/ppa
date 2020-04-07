@@ -1,0 +1,29 @@
+#!/bin/sh
+
+set -eu
+
+MAJOR_VERSION="3"
+PGVERSION="@PGVERSION@"
+DIR="/usr/share/postgresql/$PGVERSION/extension"
+
+# Some early 3.0 versions had a mechanism to divert the control files of older
+# PostGIS versions away. This has been removed because it was too fragile.
+
+if [ "${2:-}" ] &&
+  dpkg --compare-versions "$2" ge "3.0.0~alpha4+dfsg-2~exp1~" &&
+  dpkg --compare-versions "$2" lt "3.0.0~rc2+dfsg-1~exp2~"; then
+
+  # remove alternatives for older versions
+  update-alternatives --remove postgresql-$PGVERSION-postgis.control $DIR/postgis-old.control
+
+  # move any diverted files back
+  for ext in postgis postgis_raster postgis_sfcgal postgis_tiger_geocoder postgis_topology address_standardizer address_standardizer_data_us; do
+    dpkg-divert --package postgresql-$PGVERSION-postgis-$MAJOR_VERSION-scripts --no-rename \
+      --remove $DIR/$ext.control
+    rm -vf $DIR/$ext-old.control
+  done
+fi
+
+#DEBHELPER#
+
+exit 0
