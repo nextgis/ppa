@@ -61,8 +61,7 @@ ifeq ($(NEWEST_POSTGRES_VERSION),)
 $(error Cannot detect Postgres version, check debian/pgversions and pg_buildext)
 endif
 
-OTHER_POSTGRES_VERSIONS = $(shell pg_buildext supported-versions $(CURDIR) \
-	| grep -v "$(NEWEST_POSTGRES_VERSION)")
+OTHER_POSTGRES_VERSIONS = 
 
 COMMON_CONFIGURE_ARGS = --host=$(DEB_HOST_GNU_TYPE) \
 	--build=$(DEB_BUILD_GNU_TYPE) \
@@ -72,7 +71,6 @@ COMMON_CONFIGURE_ARGS = --host=$(DEB_HOST_GNU_TYPE) \
 	--mandir=\$${prefix}/share/man \
 	--infodir=\$${prefix}/share/info \
 	--without-interrupt-tests \
-	--without-phony-revision \
 	--with-gui
 
 NJOBS := -j1
@@ -173,37 +171,6 @@ override_dh_auto_build:
 #	This creates the required SQL scripts. Again, the Makefile is not
 #	clever enough to run this before 'install'.
 	$(MAKE) $(NJOBS) -C extensions
-
-override_dh_auto_test:
-ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-#   Run unit tests (against the newest Postgres version, first)
-	echo " ### testing $(NEWEST_POSTGRES_VERSION) ###"
-# Ignore test failure on problematic architectures
-ifneq (,$(filter $(DEB_BUILD_ARCH),mips mips64el mipsel s390x alpha hppa hurd-i386 kfreebsd-i386 powerpc ppc64 sparc64))
-	pg_virtualenv -v $(NEWEST_POSTGRES_VERSION) \
-		make check RUNTESTFLAGS="-v" || echo "Ignoring test failures"
-else
-	pg_virtualenv -v $(NEWEST_POSTGRES_VERSION) \
-		make check RUNTESTFLAGS="-v"
-endif
-
-#	Test against all other Postgres versions
-ifneq (,$(filter $(DEB_BUILD_ARCH),mips mips64el mipsel s390x alpha hppa hurd-i386 kfreebsd-i386 powerpc ppc64 sparc64))
-	set -e; \
-	for PGVER in $(OTHER_POSTGRES_VERSIONS); do \
-		echo " ### testing $$PGVER ###"; \
-		pg_virtualenv -v $$PGVER \
-			make -C $(CURDIR)/debian/build-$$PGVER check RUNTESTFLAGS="-v" || echo "Ignoring test failures"; \
-	done
-else
-	set -e; \
-	for PGVER in $(OTHER_POSTGRES_VERSIONS); do \
-		echo " ### testing $$PGVER ###"; \
-		pg_virtualenv -v $$PGVER \
-			make -C $(CURDIR)/debian/build-$$PGVER check RUNTESTFLAGS="-v"; \
-	done
-endif
-endif
 
 override_dh_auto_install:
 #	Install the most recent Postgres version. Note that we used to
