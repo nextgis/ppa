@@ -1,3 +1,2 @@
-usr/include/ngqgis/*
-usr/lib/libngqgis_core.so
-usr/share/qgis/FindQGIS.cmake
+usr/include/*
+usr/lib/*/libngqgis_core.so*
