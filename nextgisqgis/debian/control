@@ -23,7 +23,7 @@ Build-Depends: debhelper (>= 9),
                libzip-dev,
                libqt5svg5-dev,
                qt5keychain-dev
-Standards-Version: 3.9.8
+Standards-Version: 4.5.0
 Vcs-Browser: https://github.com/nextgis/nextgisqgis
 Vcs-Git: git@github.com:nextgis/nextgisqgis.git
 Homepage: http://nextgis.com/nextgis-qgis/
@@ -39,3 +39,15 @@ Description: QGIS - shared core library
  display databases of geographic information.
  .
  This package contains the shared core library.
+ 
+Package: libngqgis-dev
+Architecture: any
+Section: libdevel
+Depends: libngqgis-core,
+         ${misc:Depends}
+Description: QGIS - development files
+ QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the headers and libraries needed to develop plugins for
+ QGIS.
