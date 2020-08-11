@@ -12,6 +12,7 @@ Build-Depends: debhelper (>= 9),
                dh-python,
                flex,
                bison,
+               qt5-default,
                libngqgis-core
 Standards-Version: 0.1.0
 Vcs-Browser: https://gitlab.com/nextgis_private/qgis_headless
