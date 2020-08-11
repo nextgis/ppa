@@ -1,2 +1,2 @@
-usr/include/ngqgis/*
+usr/include/* /usr/include/ngqgis/
 usr/lib/*/libngqgis_core.so
