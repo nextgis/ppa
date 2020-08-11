@@ -13,7 +13,7 @@ Build-Depends: debhelper (>= 9),
                flex,
                bison,
                qtbase5-dev,
-               libngqgis-core
+               libngqgis-dev
 Standards-Version: 0.1.0
 Vcs-Browser: https://gitlab.com/nextgis_private/qgis_headless
 Vcs-Git: git@gitlab.com:nextgis_private/qgis_headless.git
