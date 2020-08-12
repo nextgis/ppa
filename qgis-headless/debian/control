@@ -1,4 +1,4 @@
-Source: qgisheadless
+Source: qgis-headless
 Maintainer: NextGIS <info@nextgis.com>
 Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
            Denis Ilyin <denis.ilyin@nextgis.com>
