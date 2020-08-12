@@ -1,6 +1,10 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: QGIS Headless Rendering
 Upstream-Contact: qgis-developer@lists.osgeo.org
-Source: https://github.com/qgis/QGIS
+Source: https://gitlab.com/nextgis_private/qgis_headless
 
 Files: *
+Copyright: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+           Denis Ilyin <denis.ilyin@nextgis.com>
+           
+License: GPL-3

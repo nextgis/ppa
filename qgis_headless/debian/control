@@ -20,7 +20,7 @@ Vcs-Git: git@gitlab.com:nextgis_private/qgis_headless.git
 Homepage: http://nextgis.com/nextgis-qgis/
 X-Python3-Version: >= 3.2
 
-Package: libqgis_headless
+Package: libqgis-headless
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
