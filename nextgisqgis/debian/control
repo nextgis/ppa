@@ -22,7 +22,8 @@ Build-Depends: debhelper (>= 9),
                libqca-qt5-2-dev,
                libzip-dev,
                libqt5svg5-dev,
-               qt5keychain-dev
+               qt5keychain-dev,
+               libexiv2-dev
 Standards-Version: 4.5.0
 Vcs-Browser: https://github.com/nextgis/nextgisqgis
 Vcs-Git: git@github.com:nextgis/nextgisqgis.git
