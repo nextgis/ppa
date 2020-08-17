@@ -41,6 +41,17 @@ Description: QGIS - shared core library
  .
  This package contains the shared core library.
  
+Package: libngqgis-analysis
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: QGIS - shared analysis library
+ QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the shared analysis library.
+ 
 Package: libngqgis-dev
 Architecture: any
 Section: libdevel

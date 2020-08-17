@@ -1,2 +1,3 @@
 usr/include/* /usr/include/ngqgis/
 usr/lib/*/libngqgis_core.so
+usr/lib/*/libngqgis_analysis.so
