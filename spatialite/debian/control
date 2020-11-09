@@ -17,7 +17,7 @@ Build-Depends: debhelper (>= 9),
                libxml2-dev,
                pkg-config,
                zlib1g-dev,
-               libqt4-dev,
+               qtbase5-dev,
 Standards-Version: 3.9.6
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-grass/spatialite.git
 Vcs-Git: https://anonscm.debian.org/git/pkg-grass/spatialite.git
@@ -67,4 +67,4 @@ Depends: libspatialite7 (= ${binary:Version}),
 Description: Geospatial extension for SQLite - libraries
  The SpatiaLite module for Qt5 SQL plugin.
  .
- This package contains all shared libraries used by Qt4 library.
+ This package contains all shared libraries used by Qt5 library.
