@@ -58,13 +58,13 @@ Description: Geospatial extension for SQLite - development files
  .
  This package contains development files (static libraries and header files).
 
-Package: libqt4-sql-spatialite
+Package: libqt5-sql-spatialite
 Architecture: any
 Multi-Arch: same
 Section: libs
 Depends: libspatialite7 (= ${binary:Version}),
          ${misc:Depends}
 Description: Geospatial extension for SQLite - libraries
- The SpatiaLite module for Qt4 SQL plugin.
+ The SpatiaLite module for Qt5 SQL plugin.
  .
  This package contains all shared libraries used by Qt4 library.
