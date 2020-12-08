@@ -22,7 +22,7 @@ Homepage: https://github.com/nextgis/terratile
 XS-Python-Version: all
 
 Package: python-terratile
-Architecture: all
+Architecture: any
 Pre-Depends: dpkg (>= 1.15.6~)
 Depends: ${misc:Depends}, ${python:Depends}
 Description: Clean single-source support for Python 3 and 2 - Python 2.x
