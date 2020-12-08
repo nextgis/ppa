@@ -2,6 +2,7 @@ Source: nextgisqgis
 Maintainer: NextGIS <info@nextgis.com>
 Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
            Alexander Lisovenko <alexander.lisovenko@gmail.com>
+           Denis Ilyin <denis.ilyin@nextgis.com>
 Section: science
 Priority: optional
 Build-Depends: debhelper (>= 9),
@@ -10,64 +11,24 @@ Build-Depends: debhelper (>= 9),
                dh-autoreconf,
                d-shlibs,
                dh-python,
-               libexpat1-dev,
-               libgdal-dev,
-               libgeos-dev,
-               libgsl0-dev | libgsl-dev,
-               libpq-dev,
+               flex,
+               bison,
                libproj-dev,
-               libqt4-dev,
-               libqca2-dev,
+               libgeos-dev,
+               libgdal-dev,
+               libspatialindex-dev,
                libsqlite3-dev,
                libspatialite-dev,
-               libqwt5-qt4-dev,
-               libqscintilla2-dev | libqscintilla2-qt4-dev,
-               libqtwebkit-dev,
-               libspatialindex-dev,
-               libngstd-framework4-dev,
-               python-sip-dev,
-               python-qt4-dev,
-               python-qt4,
-               pyqt4-dev-tools,
-               python-qscintilla2,
-               pyqt4.qsci-dev,
-               python-six,
-               python-raven,
-               python-contextlib2,
-               libopencv-core-dev, libopencv-highgui-dev, libopencv-ml-dev,
-               libclntsh-dev
-Standards-Version: 3.9.8
+               libqca-qt5-2-dev,
+               libzip-dev,
+               libqt5svg5-dev,
+               qt5keychain-dev,
+               libexiv2-dev
+Standards-Version: 4.5.0
 Vcs-Browser: https://github.com/nextgis/nextgisqgis
 Vcs-Git: git@github.com:nextgis/nextgisqgis.git
 Homepage: http://nextgis.com/nextgis-qgis/
 X-Python3-Version: >= 3.2
-
-Package: ngqgis
-Architecture: any
-Depends: ${shlibs:Depends},
-         ${misc:Depends},
-         python-ngqgis (= ${binary:Version}),
-         ngqgis-providers (= ${binary:Version}),
-         ngqgis-plugins (= ${source:Version})
-Description: Geographic Information System (GIS)
- A Geographic Information System (GIS) manages, analyzes, and displays
- databases of geographic information. QGIS supports shape file viewing and
- editing, spatial data storage with PostgreSQL/PostGIS, projection on-the-fly,
- map composition, and a number of other features via a plugin interface. QGIS
- also supports display of various georeferenced raster and Digital Elevation
- Model (DEM) formats including GeoTIFF, Arc/Info ASCII Grid, and USGS ASCII
- DEM.
-
-Package: libngqgis-app
-Architecture: any
-Section: libs
-Depends: ${shlibs:Depends},
-         ${misc:Depends}
-Description: QGIS - shared app library
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
- display databases of geographic information.
- .
- This package contains the shared app library.
 
 Package: libngqgis-core
 Architecture: any
@@ -79,18 +40,7 @@ Description: QGIS - shared core library
  display databases of geographic information.
  .
  This package contains the shared core library.
-
-Package: libngqgis-gui
-Architecture: any
-Section: libs
-Depends: ${shlibs:Depends},
-         ${misc:Depends}
-Description: QGIS - shared gui library
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
- display databases of geographic information.
- .
- This package contains the shared gui library.
-
+ 
 Package: libngqgis-analysis
 Architecture: any
 Section: libs
@@ -101,80 +51,15 @@ Description: QGIS - shared analysis library
  display databases of geographic information.
  .
  This package contains the shared analysis library.
-
-Package: libngqgis-python
+ 
+Package: libngqgis-dev
 Architecture: any
-Section: libs
-Depends: ${shlibs:Depends},
+Section: libdevel
+Depends: libngqgis-core,
          ${misc:Depends}
-Description: QGIS - shared Python library
+Description: QGIS - development files
  QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
- This package contains the shared Python library.
-
-Package: ngqgis-providers
-Architecture: any
-Pre-Depends: ${misc:Pre-Depends}
-Depends: ${shlibs:Depends},
-         ${misc:Depends},
-         libqt4-sql-sqlite,
-         libqt4-sql-psql,
-         libqt4-sql-qoci,
-         libqca2-plugin-ossl | libqca2-plugins
-Description: collection of data providers for QGIS
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
- display databases of geographic information.
- .
- This package contains the provider plugins for QGIS.
-
-Package: ngqgis-plugins
-Architecture: any
-Pre-Depends: ${misc:Pre-Depends}
-Depends: ${shlibs:Depends},
-         ${misc:Depends}
-Description: collection of plugins for QGIS
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
- display databases of geographic information.
- .
- This package contains the plugins for QGIS.
-
-Package: python-ngqgis
-Architecture: any
-Section: python
-Provides: ${python:Provides}
-Depends: gdal-bin,
-         python-qt4,
-         python-qt4-sql,
-         python-sip,
-         python-qscintilla2,
-         python-jinja2,
-         python-nose2,
-         python-httplib2,
-         python-markupsafe,
-         python-pygments,
-         python-requests,
-         python-dateutil,
-         python-tz,
-         python-six,
-         python-raven,
-         python-contextlib2,
-         python-yaml,
-         python-pyspatialite,
-         python-gdal,
-         python-matplotlib,
-         python-future,
-         python-psycopg2,
-         python-numpy,
-         python-ngstd,
-         libngqgis-core (= ${binary:Version}),
-         libngqgis-python (= ${source:Version}),
-         ${misc:Depends}
-Breaks: python-qgis (<< 2.18~)
-XB-Python-Version: ${python:Versions}
-Description: Python bindings to QGIS - architecture-independent files
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
- display databases of geographic information.
- .
- This package contains architecture-independent files for the QGIS Python
- bindings.
+ This package contains the headers and libraries needed to develop plugins for
+ QGIS.

@@ -8,7 +8,7 @@ Build-Depends: debhelper (>= 9),
                cdbs,
                d-shlibs,
                chrpath,
-               libqt4-dev,
+               qtbase5-private-dev,
                libaio1
 Standards-Version: 3.9.5
 Vcs-Browser: https://github.com/nextgis-borsch/lib_oci
@@ -34,12 +34,12 @@ Description: Oracle Database supports C and C++ programmers with a choice of hig
  This package contains the files needed to develop a software that
  will use the OCI (headers).
 
-Package: libqt4-sql-qoci
+Package: libqt5-sql-qoci
 Architecture: any
 Section: libs
 Depends: libclntsh,
          ${shlibs:Depends},
          ${misc:Depends}
-Description: Qt4 Oracle Database sql plugin.
+Description: Qt5 Oracle Database sql plugin.
  .
  This package contains the shared library.

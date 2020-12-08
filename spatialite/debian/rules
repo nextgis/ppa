@@ -15,7 +15,7 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
                          -DOMIT_FREEXL=ON \
                          -DENABLE_LWGEOM=FALSE \
                          -DBUILD_TESTING=OFF \
-                         -DBUILD_QT4=ON \
+                         -DBUILD_QT5=ON \
                          -DPACKAGE_VENDOR=NextGIS \
                          -DCMAKE_BUILD_TYPE=Release
 
