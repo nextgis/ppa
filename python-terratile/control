@@ -1,0 +1,40 @@
+Source: python-terratile
+Section: python
+Priority: optional
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+Build-Depends: debhelper (>= 9),
+               dh-python,
+               cmake,
+               cdbs,
+               libgdal-dev (>= 3.0.0),
+               zlib1g-dev (>= 1.1.4),
+               python-all (>= 2.6.6-3~),
+               python-setuptools,
+               python3-all,
+               python3-setuptools,
+Build-Depends-Indep: openssl, python-pytest, python-unittest2, python3-pytest, ca-certificates, python-urllib3
+Standards-Version: 3.9.6
+Vcs-Git: git@github.com:nextgis/terratile.git
+Vcs-Browser: https://github.com/nextgis/terratile
+Homepage: https://github.com/nextgis/terratile
+
+Package: python-terratile
+Architecture: all
+Pre-Depends: dpkg (>= 1.15.6~)
+Depends: ${misc:Depends}, ${python:Depends}
+Description: Clean single-source support for Python 3 and 2 - Python 2.x
+ Terrain tail server. Simple wrapper of cesium terrain builder (libctb) for 
+ terrain tiles generation.
+ .
+ This package contains the Python 2.x module.
+
+Package: python3-terratile
+Architecture: all
+Pre-Depends: dpkg (>= 1.15.6~)
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: Clean single-source support for Python 3 and 2 - Python 3.x
+ Terrain tail server. Simple wrapper of cesium terrain builder (libctb) for 
+ terrain tiles generation.
+ .
+ This package contains the Python 3.x module.
