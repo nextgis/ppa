@@ -60,7 +60,6 @@ Depends: libngqgis-core,
          libgeos-dev,
          libproj-dev,
          libqt5svg5-dev,
-         python3-dev,
          qtbase5-dev,
          ${misc:Depends}
 Description: QGIS - development files
