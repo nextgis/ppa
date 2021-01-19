@@ -24,6 +24,10 @@ Build-Depends: debhelper (>= 9),
                libqt5svg5-dev,
                qt5keychain-dev,
                qt3d5-dev,
+               qt3d-assimpsceneimport-plugin,
+               qt3d-defaultgeometryloader-plugin,
+               qt3d-gltfsceneio-plugin,
+               qt3d-scene2d-plugin,
                libexiv2-dev
 Standards-Version: 4.5.0
 Vcs-Browser: https://github.com/nextgis/nextgisqgis
