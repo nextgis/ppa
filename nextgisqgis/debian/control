@@ -66,6 +66,7 @@ Package: libngqgis-dev
 Architecture: any
 Section: libdevel
 Depends: libngqgis-core,
+         ngqgis-providers-common,
          libgdal-dev,
          libgeos-dev,
          libproj-dev,
@@ -78,3 +79,12 @@ Description: QGIS - development files
  .
  This package contains the headers and libraries needed to develop plugins for
  QGIS.
+
+Package: ngqgis-providers-common
+Architecture: all
+Depends: ${misc:Depends}
+Description: collection of data providers to QGIS - architecture-independent files
+ QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains architecture-independent files for the QGIS providers.
