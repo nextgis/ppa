@@ -45,7 +45,6 @@ Architecture: any
 Multi-Arch: same
 Section: libs
 Depends: proj-data (>= ${source:Version}),
-         ${shlibs:Depends},
          ${misc:Depends}
 Suggests: proj-bin
 Pre-Depends: ${misc:Pre-Depends}
@@ -89,8 +88,7 @@ Description: Cartographic projection library (development files)
 
 Package: proj-bin
 Architecture: any
-Depends: ${shlibs:Depends},
-         ${misc:Depends}
+Depends: ${misc:Depends}
 Description: Cartographic projection library (tools)
  Proj and invproj perform respective forward and inverse transformation
  of cartographic data to or from Cartesian data with a wide range of
