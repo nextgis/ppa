@@ -12,7 +12,6 @@ Build-Depends: debhelper (>= 9),
                libtiff-dev,
                pkg-config,
                pkg-kde-tools,
-               sharutils,
                sqlite3,
                xz-utils
 Standards-Version: 4.5.0
