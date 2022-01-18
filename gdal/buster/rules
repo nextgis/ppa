@@ -22,6 +22,8 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
                          -DCMAKE_BUILD_TYPE=Release \
                          -DGDAL_INSTALL_DATA_IN_VERSION_DIR=ON \
                          -DWITH_PYTHON=ON \
+                         -DWITH_PYTHON2=ON \
+                         -DWITH_PYTHON3=ON \
                          -DWITH_SQLite3=ON \
                          -DWITH_CURL=ON \
                          -DWITH_PNG=ON \
