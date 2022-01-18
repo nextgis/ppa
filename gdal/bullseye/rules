@@ -41,7 +41,7 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
 						 -DWITH_OCI=ON \
 						 -DENABLE_OCI=ON \
 						 -DENABLE_GEORASTER=ON \
-						 -DWITH_KML=ON 
+						 -DWITH_KML=OFF 
 
 # Support parallel building if enabled in DEB_BUILD_OPTIONS
 DEB_BUILD_PARALLEL = 1
