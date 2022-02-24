@@ -14,7 +14,7 @@ Build-Depends: debhelper (>= 9),
                pkg-kde-tools,
                sqlite3,
                xz-utils
-Standards-Version: 4.5.0
+Standards-Version: 4.6.0
 Vcs-Browser: https://salsa.debian.org/debian-gis-team/proj
 Vcs-Git: https://salsa.debian.org/debian-gis-team/proj.git
 Homepage: https://proj.org/
@@ -39,11 +39,12 @@ Description: Cartographic projection filter and library (datum package)
  This package contains auxiliary projection datum grids used by the
  library and tools.
 
-Package: libproj19
+Package: libproj22
 Architecture: any
 Multi-Arch: same
 Section: libs
 Depends: proj-data (>= ${source:Version}),
+         ${shlibs:Depends},
          ${misc:Depends}
 Suggests: proj-bin
 Pre-Depends: ${misc:Pre-Depends}
@@ -65,7 +66,7 @@ Package: libproj-dev
 Architecture: any
 Multi-Arch: same
 Section: libdevel
-Depends: libproj19 (= ${binary:Version}),
+Depends: libproj22 (= ${binary:Version}),
          libcurl4-gnutls-dev | libcurl-ssl-dev,
          libsqlite3-dev,
          libtiff-dev,
@@ -87,7 +88,8 @@ Description: Cartographic projection library (development files)
 
 Package: proj-bin
 Architecture: any
-Depends: ${misc:Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
 Description: Cartographic projection library (tools)
  Proj and invproj perform respective forward and inverse transformation
  of cartographic data to or from Cartesian data with a wide range of
