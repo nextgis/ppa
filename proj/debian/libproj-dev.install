@@ -1,6 +1,6 @@
 # usr/lib/*/libproj.a
 # usr/lib/*/libproj.la
 usr/lib/*/libproj.so
-usr/share/proj/CMake/*
+# usr/share/proj/CMake/*
 usr/lib/*/pkgconfig
 usr/include
