@@ -1,0 +1,9 @@
+usr/share/ngqgis/doc/*
+usr/share/ngqgis/i18n/*
+usr/share/ngqgis/images/*
+usr/share/ngqgis/resources/*
+usr/share/ngqgis/resources/data/*
+usr/share/ngqgis/resources/metadata-ISO/*
+usr/share/ngqgis/resources/opencl_programs/*
+usr/share/ngqgis/resources/palettes/*
+usr/share/ngqgis/resources/themes/*

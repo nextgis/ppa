@@ -1,0 +1,12 @@
+# usr/lib/*/ngqgis/plugins/libcoordinatecaptureplugin.so
+# usr/lib/*/ngqgis/plugins/libevis.so
+usr/lib/*/ngqgis/plugins/libgeometrycheckerplugin.so
+# usr/lib/*/ngqgis/plugins/libgeorefplugin.so
+# usr/lib/*/ngqgis/plugins/libgpsimporterplugin.so
+# usr/lib/*/ngqgis/plugins/liboauth2authmethod.so
+# usr/lib/*/ngqgis/plugins/libofflineeditingplugin.so
+usr/lib/*/ngqgis/plugins/libtopolplugin.so
+usr/share/applications/
+usr/share/metainfo/
+usr/share/mime/packages/
+usr/share/icons/hicolor/
