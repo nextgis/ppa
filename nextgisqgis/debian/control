@@ -142,6 +142,7 @@ Description: collection of data providers to QGIS
  display databases of geographic information.
  .
  This package contains the provider plugins for QGIS.
+
 Package: ngqgis-providers-common
 Architecture: all
 Depends: ${misc:Depends}
