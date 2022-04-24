@@ -14,7 +14,8 @@ Build-Depends: debhelper (>= 9),
                qttools5-dev-tools,
                qttools5-dev,
                libqt5svg5-dev,
-               libssl-dev
+               libssl-dev,
+               python-qt5,
 Standards-Version: 3.9.5
 Vcs-Browser: https://github.com/nextgis/lib_ngstd
 Vcs-Git: git@github.com:nextgis/lib_ngstd.git
@@ -95,3 +96,19 @@ Depends: ${misc:Depends}
 Description: Translation files for NextGIS standard Qt library.
  .
  This package contains translations for NextGIS standard Qt library.
+
+Package: python-ngstd
+Architecture: any
+Section: python
+Provides: ${python:Provides}
+Depends: python-qt5,
+         python-sip,
+         libngstd-core5 (= ${binary:Version}),
+         libngstd-framework5 (= ${binary:Version}),
+         ${misc:Depends}
+XB-Python-Version: ${python:Versions}
+Description: Python bindings to NextGIS standard library -
+ architecture-independent files
+ .
+ This package contains architecture-independent files for the NextGIS standard
+ library Python bindings.

@@ -43,23 +43,39 @@ Vcs-Git: git@github.com:nextgis/nextgisqgis.git
 Homepage: http://nextgis.com/nextgis-qgis/
 X-Python3-Version: >= 3.2
 
+Package: ngqgis
+Architecture: any
+Depends: ngqgis-common (= ${source:Version}),
+         ngqgis-providers (= ${binary:Version}),
+         qt5-image-formats-plugins,
+         ${shlibs:Depends},
+         ${misc:Depends}
+Description: Geographic Information System (GIS)
+ A Geographic Information System (GIS) manages, analyzes, and displays
+ databases of geographic information. NextGIS QGIS supports shape file viewing and
+ editing, spatial data storage with PostgreSQL/PostGIS, projection on-the-fly,
+ map composition, and a number of other features via a plugin interface. NextGIS QGIS
+ also supports display of various georeferenced raster and Digital Elevation
+ Model (DEM) formats including GeoTIFF, Arc/Info ASCII Grid, and USGS ASCII
+ DEM.
+
 Package: ngqgis-common
 Architecture: all
 Depends: ${misc:Depends}
-Description: QGIS - architecture-independent data
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
+Description: NextGIS QGIS - architecture-independent data
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains architecture-independent supporting data files for use
- with QGIS.
+ with NextGIS QGIS.
 
 Package: libngqgis-core
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
          ${misc:Depends}
-Description: QGIS - shared core library
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
+Description: NextGIS GIS - shared core library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains the shared core library.
@@ -69,8 +85,8 @@ Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
          ${misc:Depends}
-Description: QGIS - shared native gui library
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
+Description: NextGIS QGIS - shared native gui library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains the shared native gui library.
@@ -80,19 +96,30 @@ Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
          ${misc:Depends}
-Description: QGIS - shared analysis library
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
+Description: NextGIS QGIS - shared analysis library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains the shared analysis library.
+
+Package: libngqgis-app
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: NextGIS QGIS - shared app library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the shared app library.
 
 Package: libngqgis-gui
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
          ${misc:Depends}
-Description: QGIS - shared gui library
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
+Description: NextGIS QGIS - shared gui library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains the shared gui library.
@@ -104,7 +131,8 @@ Depends: libngqgis-core (= ${binary:Version}),
          libngqgis-native (= ${binary:Version}),
          libngqgis-analysis (= ${binary:Version}),
          libngqgis-gui (= ${binary:Version}),
-         ngqgis-providers-common,
+         libngqgis-app (= ${binary:Version}),
+         libqt5webkit5-dev,
          libexpat1-dev,
          libgsl-dev,
          libpq-dev,
@@ -117,10 +145,11 @@ Depends: libngqgis-core (= ${binary:Version}),
          libsqlite3-dev,
          libqt5svg5-dev,
          qtbase5-dev,
+         qttools5-dev,
          ${misc:Depends}
 Provides: ngqgis-dev
-Description: QGIS - development files
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
+Description: NextGIS QGIS - development files
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains the headers and libraries needed to develop plugins for
@@ -135,8 +164,8 @@ Depends: ngqgis-providers-common (= ${source:Version}),
          libqt5sql5-sqlite,
          ${shlibs:Depends},
          ${misc:Depends}
-Description: collection of data providers to QGIS
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
+Description: collection of data providers to NextGIS QGIS
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains the provider plugins for QGIS.
@@ -144,8 +173,8 @@ Description: collection of data providers to QGIS
 Package: ngqgis-providers-common
 Architecture: all
 Depends: ${misc:Depends}
-Description: collection of data providers to QGIS - architecture-independent files
- QGIS is a Geographic Information System (GIS) which manages, analyzes and
+Description: collection of data providers to NextGIS QGIS - architecture-independent files
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
  .
  This package contains architecture-independent files for the QGIS providers.
