@@ -6,7 +6,7 @@ usr/lib/*/ngqgis/plugins/libgeometrycheckerplugin.so
 # usr/lib/*/ngqgis/plugins/liboauth2authmethod.so
 # usr/lib/*/ngqgis/plugins/libofflineeditingplugin.so
 usr/lib/*/ngqgis/plugins/libtopolplugin.so
-# usr/share/applications/
+usr/share/applications/
 # usr/share/metainfo/
 # usr/share/mime/packages/
 # usr/share/icons/hicolor/
