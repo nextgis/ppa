@@ -71,7 +71,7 @@ Depends: libproj22 (= ${binary:Version}),
          libsqlite3-dev,
          libtiff-dev,
          ${misc:Depends}
-Suggests: proj-bin
+Suggests: proj-bin, proj-data
 Pre-Depends: ${misc:Pre-Depends}
 Description: Cartographic projection library (development files)
  Proj and invproj perform respective forward and inverse transformation
@@ -88,7 +88,8 @@ Description: Cartographic projection library (development files)
 
 Package: proj-bin
 Architecture: any
-Depends: ${shlibs:Depends},
+Depends: proj-data (>= ${source:Version}),
+         ${shlibs:Depends},
          ${misc:Depends}
 Description: Cartographic projection library (tools)
  Proj and invproj perform respective forward and inverse transformation
