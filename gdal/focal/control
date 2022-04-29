@@ -13,6 +13,7 @@ Build-Depends: debhelper (>= 9),
                d-shlibs,
                libgeos-dev,
                dh-python,
+               dh_python3,
                python-all-dev (>= 2.7),
                python-numpy,
                python3-all-dev,
@@ -37,7 +38,7 @@ Build-Depends: debhelper (>= 9),
                libopencad-dev,
                libopenjp2-7-dev | libopenjpeg-dev,
                libgif-dev,
-               libqhull-dev,         
+               libqhull-dev,
                libwebp-dev,
                lsb-release,
                libclntsh-dev,
@@ -129,7 +130,7 @@ Package: libgdal-doc
 Architecture: all
 Section: doc
 Depends: ${misc:Depends}
-Suggests: libgdal20
+Suggests: libgdal26
 Description: Documentation for the Geospatial Data Abstraction Library
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
