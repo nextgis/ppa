@@ -39,7 +39,7 @@ Description: Cartographic projection filter and library (datum package)
  This package contains auxiliary projection datum grids used by the
  library and tools.
 
-Package: libproj22
+Package: libproj25
 Architecture: any
 Multi-Arch: same
 Section: libs
@@ -66,7 +66,7 @@ Package: libproj-dev
 Architecture: any
 Multi-Arch: same
 Section: libdevel
-Depends: libproj22 (= ${binary:Version}),
+Depends: libproj25 (= ${binary:Version}),
          libcurl4-gnutls-dev | libcurl-ssl-dev,
          libsqlite3-dev,
          libtiff-dev,
