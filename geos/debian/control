@@ -32,7 +32,7 @@ Description: Geometry engine for GIS - Development files
 Package: libgeos++-dev
 Architecture: any
 Section: libdevel
-Depends: libgeos-3.8.1 (= ${binary:Version}),
+Depends: libgeos-3.9.0 (= ${binary:Version}),
          libgeos-dev,
          ${misc:Depends}
 Suggests: libgeos-doc
@@ -79,7 +79,7 @@ Description: Geometry engine for Geographic Information Systems - C Library
  This package contains the C library. A C++ library is provided
  by the libgeos-* package.
 
-Package: libgeos-3.8.1
+Package: libgeos-3.9.0
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
