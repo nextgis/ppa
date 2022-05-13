@@ -12,6 +12,4 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
 
 # Support parallel building if enabled in DEB_BUILD_OPTIONS
 DEB_BUILD_PARALLEL = 1
-
-override_dh_builddeb:
-	dh_builddeb -- -Zxz
+DEB_DH_BUILDDEB_ARGS = -- -Zxz
