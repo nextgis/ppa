@@ -1,7 +1,8 @@
 usr/share/ngqgis/doc/*
 usr/share/ngqgis/i18n/*
 usr/share/ngqgis/images/*
-usr/share/ngqgis/resources/*.xml
+usr/share/ngqgis/resources/qgis*.xml
+usr/share/ngqgis/resources/qgis*.xsd
 usr/share/ngqgis/resources/*.txt
 usr/share/ngqgis/resources/*.ini
 usr/share/ngqgis/resources/data/*
