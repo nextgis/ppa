@@ -36,7 +36,10 @@ Build-Depends: debhelper (>= 9),
                qtbase5-private-dev,
                qttools5-dev-tools,
                qttools5-dev,
-               qtdeclarative5-dev
+               qtdeclarative5-dev,
+               zipcmp,
+               zipmerge,
+               ziptool
 Standards-Version: 4.5.0
 Vcs-Browser: https://github.com/nextgis/nextgisqgis
 Vcs-Git: git@github.com:nextgis/nextgisqgis.git
