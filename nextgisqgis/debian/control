@@ -51,6 +51,7 @@ Architecture: any
 Depends: ngqgis-common (= ${source:Version}),
          ngqgis-providers (= ${binary:Version}),
          qt5-image-formats-plugins,
+         libngqgis-app,
          ${shlibs:Depends},
          ${misc:Depends}
 Description: Geographic Information System (GIS)
