@@ -127,6 +127,17 @@ Description: NextGIS QGIS - shared gui library
  display databases of geographic information.
  .
  This package contains the shared gui library.
+ 
+Package: libngqgis-3d
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: NextGIS QGIS - shared 3D library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the shared 3D library.
 
 Package: libngqgis-dev
 Architecture: any
@@ -136,6 +147,7 @@ Depends: libngqgis-core (= ${binary:Version}),
          libngqgis-analysis (= ${binary:Version}),
          libngqgis-gui (= ${binary:Version}),
          libngqgis-app (= ${binary:Version}),
+         libngqgis-3d (= ${binary:Version}),
          libqt5webkit5-dev,
          libexpat1-dev,
          libgsl-dev,
