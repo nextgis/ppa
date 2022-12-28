@@ -21,7 +21,7 @@ Vcs-Browser: https://github.com/nextgis/lib_ngstd
 Vcs-Git: git@github.com:nextgis/lib_ngstd.git
 Homepage: https://nextgis.com
 
-Package: libngstd-core5
+Package: libngstd-core
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
@@ -32,10 +32,10 @@ Description: NextGIS standard Qt5 library implements standard API for console
  .
  This package contains the shared library.
 
-Package: libngstd-core5-dev
+Package: libngstd-core-dev
 Architecture: any
 Section: libdevel
-Depends: libngstd-core5,
+Depends: libngstd-core,
          libngstd-headers,
          ${misc:Depends}
 Description: NextGIS standard Qt5 library.
@@ -46,10 +46,10 @@ Description: NextGIS standard Qt5 library.
  will use the NextGIS standard Qt5 library (headers, static objects,
  configuration script).
 
-Package: libngstd-framework5
+Package: libngstd-framework
 Architecture: any
 Section: libs
-Depends: libngstd-core5,
+Depends: libngstd-core,
          ${shlibs:Depends},
          ${misc:Depends},
          libngstd-framework-i18n
@@ -58,11 +58,11 @@ Description: NextGIS standard Qt5 library implements standard API for console
  .
  This package contains the shared library.
 
-Package: libngstd-framework5-dev
+Package: libngstd-framework-dev
 Architecture: any
 Section: libdevel
-Depends: libngstd-framework5,
-         libngstd-core5-dev,
+Depends: libngstd-framework,
+         libngstd-core-dev,
          libngstd-headers,
          ${misc:Depends}
 Description: NextGIS standard Qt5 library.
@@ -103,8 +103,8 @@ Section: python
 Provides: ${python:Provides}
 Depends: python-qt5,
          python-sip,
-         libngstd-core5 (= ${binary:Version}),
-         libngstd-framework5 (= ${binary:Version}),
+         libngstd-core (= ${binary:Version}),
+         libngstd-framework (= ${binary:Version}),
          ${misc:Depends}
 XB-Python-Version: ${python:Versions}
 Description: Python bindings to NextGIS standard library -
