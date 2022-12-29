@@ -13,7 +13,6 @@ Build-Depends: debhelper (>= 9),
                d-shlibs,
                dh-python,
                python3-dev,
-               libclntsh-dev,
                libexpat1-dev,
                libproj-dev,
                libgeos-dev,
@@ -52,7 +51,6 @@ Architecture: any
 Depends: ngqgis-common (= ${source:Version}),
          ngqgis-providers (= ${binary:Version}),
          qt5-image-formats-plugins,
-         libngqgis-app,
          ${shlibs:Depends},
          ${misc:Depends}
 Description: Geographic Information System (GIS)
