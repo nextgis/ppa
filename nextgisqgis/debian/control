@@ -145,7 +145,7 @@ Description: NextGIS QGIS - shared 3D library
  .
  This package contains the shared 3D library.
  
-Package: libqgispython
+Package: libngqgispython
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
@@ -165,7 +165,7 @@ Depends: libngqgis-core (= ${binary:Version}),
          libngqgis-gui (= ${binary:Version}),
          libngqgis-app (= ${binary:Version}),
          libngqgis-3d (= ${binary:Version}),
-         libqgispython,
+         libngqgispython,
          libqt5webkit5-dev,
          libexpat1-dev,
          libgsl-dev,
@@ -213,12 +213,12 @@ Description: collection of data providers to NextGIS QGIS - architecture-indepen
  .
  This package contains architecture-independent files for the QGIS providers.
 
-Package: python3-qgis
+Package: python3-ngqgis
 Architecture: any
 Section: python
 Depends:
- python3-qgis-common (= ${source:Version}),
- libqgispython,
+ python3-ngqgis-common (= ${source:Version}),
+ libngqgispython,
  libsqlite3-mod-spatialite,
  python3-dateutil,
  python3-future,
@@ -252,7 +252,7 @@ Description: Python bindings to QGIS
  .
  This package contains the files for the Python support.
 
-Package: python3-qgis-common
+Package: python3-ngqgis-common
 Architecture: all
 Section: python
 Depends:
