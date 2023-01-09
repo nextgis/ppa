@@ -1,2 +1,2 @@
 usr/include/
-usr/lib/*/libsentrynative.a
+usr/share/sentrynative/CMake/*
