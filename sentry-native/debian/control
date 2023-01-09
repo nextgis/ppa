@@ -1,0 +1,32 @@
+Source: sentry-native
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Denis Ilyin <denis.ilyin@nextgis.com>
+Section: science
+Priority: optional
+Build-Depends: debhelper (>= 9), 
+               cmake, 
+               cdbs,
+               d-shlibs,
+               chrpath
+Standards-Version: 3.9.5
+Vcs-Browser: https://github.com/nextgis-borsch/lib_sentrynative
+Vcs-Git: git@github.com:nextgis-borsch/lib_sentrynative.git
+Homepage: https://nextgis.com
+
+Package: libsentry-native
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}          
+Description: The Sentry Native SDK is an error and crash reporting client for native applications.
+ .
+ This package contains the shared library.
+
+Package: libsentry-native-dev
+Architecture: any
+Section: libdevel
+Depends: libsentry-native, ${misc:Depends}
+Description: The Sentry Native SDK is an error and crash reporting client for native applications.
+ .
+ This package contains the files needed to develop a software that
+ will use the Sentry (headers).
