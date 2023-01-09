@@ -108,8 +108,8 @@ Package: python-ngstd
 Architecture: any
 Section: python
 Provides: ${python:Provides}
-Depends: python-qt5,
-         python-sip,
+Depends: python3-qt5,
+         python3-sip,
          libngstd-core (= ${binary:Version}),
          libngstd-framework (= ${binary:Version}),
          ${misc:Depends}
