@@ -61,6 +61,7 @@ Architecture: any
 Depends: ngqgis-common (= ${source:Version}),
          ngqgis-providers (= ${binary:Version}),
          qt5-image-formats-plugins,
+         libngqgis-app (= ${binary:Version}),
          ${shlibs:Depends},
          ${misc:Depends}
 Description: Geographic Information System (GIS)
@@ -86,7 +87,8 @@ Package: libngqgis-core
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
-         ${misc:Depends}
+         ${misc:Depends},
+         libngqgis-native (= ${binary:Version})
 Description: NextGIS GIS - shared core library
  NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
@@ -108,7 +110,8 @@ Package: libngqgis-analysis
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
-         ${misc:Depends}
+         ${misc:Depends},
+         libngqgis-core (= ${binary:Version})
 Description: NextGIS QGIS - shared analysis library
  NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
@@ -119,7 +122,11 @@ Package: libngqgis-app
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
-         ${misc:Depends}
+         ${misc:Depends},
+         libngqgis-gui (= ${binary:Version}),
+         libngqgis-3d (= ${binary:Version}),
+         libngqgis-analysis (= ${binary:Version}),
+         libngqgispython (= ${binary:Version})
 Description: NextGIS QGIS - shared app library
  NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
@@ -130,7 +137,8 @@ Package: libngqgis-gui
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
-         ${misc:Depends}
+         ${misc:Depends},
+         libngqgis-core (= ${binary:Version})
 Description: NextGIS QGIS - shared gui library
  NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
@@ -141,7 +149,8 @@ Package: libngqgis-3d
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
-         ${misc:Depends}
+         ${misc:Depends},
+         libngqgis-core (= ${binary:Version})
 Description: NextGIS QGIS - shared 3D library
  NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
@@ -152,7 +161,8 @@ Package: libngqgispython
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
-         ${misc:Depends}
+         ${misc:Depends},
+         python3-ngqgis (= ${binary:Version})
 Description: NextGIS QGIS - shared Python library
  NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
  display databases of geographic information.
@@ -221,7 +231,7 @@ Architecture: any
 Section: python
 Depends:
  python3-ngqgis-common (= ${source:Version}),
- libngqgispython,
+ libngqgispython (= ${binary:Version}),
  libsqlite3-mod-spatialite,
  python3-dateutil,
  python3-future,
