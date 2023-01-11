@@ -233,6 +233,7 @@ Depends:
  python3-ngqgis-common (= ${source:Version}),
  libngqgispython (= ${binary:Version}),
  libsqlite3-mod-spatialite,
+ python-ngstd,
  python3-dateutil,
  python3-future,
  python3-httplib2,
