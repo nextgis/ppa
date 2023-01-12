@@ -1,0 +1,119 @@
+Source: ngstd
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+Section: science
+Priority: optional
+Build-Depends: debhelper (>= 9),
+               cmake,
+               cdbs,
+               dh-autoreconf,
+               d-shlibs,
+               chrpath,
+               libgdal-dev (>= 3.1),
+               qtbase5-dev-tools,
+               qttools5-dev-tools,
+               qttools5-dev,
+               libqt5svg5-dev,
+               libssl-dev,
+               python3-pyqt5,
+               python3-dev,
+               python3-sipbuild,
+               python3-pyqtbuild,
+               pyqt5-dev,
+               pyqt5-dev-tools,
+               libsentry-native-dev
+Standards-Version: 3.9.5
+Vcs-Browser: https://github.com/nextgis/lib_ngstd
+Vcs-Git: git@github.com:nextgis/lib_ngstd.git
+Homepage: https://nextgis.com
+
+Package: libngstd-core
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libngstd-core-i18n
+Description: NextGIS standard Qt5 library implements standard API for console
+ or GUI applications and my.nextgis.com service.
+ .
+ This package contains the shared library.
+
+Package: libngstd-core-dev
+Architecture: any
+Section: libdevel
+Depends: libngstd-core,
+         libngstd-headers,
+         ${misc:Depends}
+Description: NextGIS standard Qt5 library.
+ NextGIS standard Qt5 library implements standard API for console
+ or GUI applications and my.nextgis.com service.
+ .
+ This package contains the files needed to develop a software that
+ will use the NextGIS standard Qt5 library (headers, static objects,
+ configuration script).
+
+Package: libngstd-framework
+Architecture: any
+Section: libs
+Depends: libngstd-core,
+         ${shlibs:Depends},
+         ${misc:Depends},
+         libngstd-framework-i18n
+Description: NextGIS standard Qt5 library implements standard API for console
+ or GUI applications and my.nextgis.com service.
+ .
+ This package contains the shared library.
+
+Package: libngstd-framework-dev
+Architecture: any
+Section: libdevel
+Depends: libngstd-framework,
+         libngstd-core-dev,
+         libngstd-headers,
+         ${misc:Depends}
+Description: NextGIS standard Qt5 library.
+ NextGIS standard Qt5 library implements standard API for console
+ or GUI applications and my.nextgis.com service.
+ .
+ This package contains the files needed to develop a software that
+ will use the NextGIS standard Qt5 library (headers, static objects,
+ configuration script).
+
+Package: libngstd-headers
+Architecture: all
+Section: libdevel
+Depends: ${misc:Depends}
+Description: Header files for NextGIS standard Qt library.
+ .
+ This package contains headers for NextGIS standard Qt library.
+
+Package: libngstd-core-i18n
+Architecture: all
+Section: libdevel
+Depends: ${misc:Depends}
+Description: Translation files for NextGIS standard Qt library.
+ .
+ This package contains translations for NextGIS standard Qt library.
+
+Package: libngstd-framework-i18n
+Architecture: all
+Section: libdevel
+Depends: ${misc:Depends}
+Description: Translation files for NextGIS standard Qt library.
+ .
+ This package contains translations for NextGIS standard Qt library.
+
+Package: python-ngstd
+Architecture: any
+Section: python
+Provides: ${python:Provides}
+Depends: python3-sip,
+         libngstd-core (= ${binary:Version}),
+         libngstd-framework (= ${binary:Version}),
+         ${misc:Depends}
+XB-Python-Version: ${python:Versions}
+Description: Python bindings to NextGIS standard library -
+ architecture-independent files
+ .
+ This package contains architecture-independent files for the NextGIS standard
+ library Python bindings.
