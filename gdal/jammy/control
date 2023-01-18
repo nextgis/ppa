@@ -50,7 +50,7 @@ Vcs-Git: git@github.com:nextgis-borsch/lib_gdal.git
 Homepage: http://www.gdal.org/
 X-Python3-Version: >= 3.2
 
-Package: libgdal26
+Package: libgdal31
 Architecture: any
 Section: libs
 Depends: gdal-data (>= ${source:Version}),
@@ -81,7 +81,7 @@ Description: Geospatial Data Abstraction Library
 Package: libgdal-dev
 Architecture: any
 Section: libdevel
-Depends: libgdal26 (= ${binary:Version}),
+Depends: libgdal31 (= ${binary:Version}),
          libc6-dev,
          libarmadillo-dev,
          libpng-dev,
@@ -129,7 +129,7 @@ Package: libgdal-doc
 Architecture: all
 Section: doc
 Depends: ${misc:Depends}
-Suggests: libgdal26
+Suggests: libgdal31
 Description: Documentation for the Geospatial Data Abstraction Library
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
