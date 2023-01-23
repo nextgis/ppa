@@ -10,7 +10,10 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
                          -DPACKAGE_VENDOR=NextGIS \
                          -DBUILD_TESTING=OFF \
                          -DCMAKE_BUILD_TYPE=Release \
-                         -DWITH_OAUTH2_PLUGIN=OFF -DWITH_QGIS_PROCESS=OFF
+                         -DWITH_OAUTH2_PLUGIN=OFF -DWITH_QGIS_PROCESS=OFF \
+                         -DQt53DExtras_DIR=$(realpath external/qt3dextra-headers/cmake/Qt53DExtras) \
+                         -DQT5_3DEXTRA_INCLUDE_DIR=$(realpath external/qt3dextra-headers) \
+                         -DQT5_3DEXTRA_LIBRARY=/usr/lib/$(DEB_BUILD_MULTIARCH)/libQt53DExtras.so
 
 # Support parallel building if enabled in DEB_BUILD_OPTIONS
 DEB_BUILD_PARALLEL = 1
