@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 9),
                cmake,
                cdbs,
                libicu-dev,
-               postgresql-server-dev-12,
+               postgresql-server-dev-15,
                curl, 
                libkakasi2-dev, 
                libutf8proc-dev, 
@@ -15,7 +15,7 @@ Build-Depends: debhelper (>= 9),
                dh-autoreconf
 Standards-Version: 3.9.2
 
-Package: postgresql-12-osml10n
+Package: postgresql-15-osml10n
 Architecture: any
 # "postgis" is used as some kind of meta package here, because it
 # contains all dependencies for whatever version of PostGIS is available
