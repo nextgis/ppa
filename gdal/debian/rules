@@ -1,0 +1,47 @@
+#!/usr/bin/make -f
+
+DH_VERBOSE = 1
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+
+DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
+                         -DBUILD_SHARED_LIBS=ON \
+                         -DBUILD_STATIC_LIBS=ON \
+                         -DWITH_EXPAT=ON -DWITH_GeoTIFF=ON \
+                         -DWITH_ICONV=ON -DWITH_JSONC=ON \
+                         -DWITH_LibXml2=ON -DWITH_GEOS=ON \
+                         -DWITH_PROJ=ON \
+                         -DWITH_TIFF=ON \
+                         -DWITH_ZLIB=ON \
+                         -DWITH_JBIG=ON \
+                         -DWITH_JPEG=ON \
+                         -DWITH_LibLZMA=ON \
+                         -DWITH_Armadillo=ON \
+                         -DPACKAGE_VENDOR=NextGIS \
+                         -DCMAKE_BUILD_TYPE=Release \
+                         -DGDAL_INSTALL_DATA_IN_VERSION_DIR=ON \
+                         -DWITH_PYTHON=ON \
+                         -DWITH_PYTHON2=ON \
+                         -DWITH_PYTHON3=ON \
+                         -DWITH_SQLite3=ON \
+                         -DWITH_CURL=ON \
+                         -DWITH_PNG=ON \
+                         -DENABLE_JPEG=ON \
+                         -DENABLE_OZI=ON \
+                         -DENABLE_NITF_RPFTOC_ECRGTOC=ON \
+                         -DENABLE_PG=ON \
+                         -DENABLE_POSTGISRASTER=ON \
+                         -DENABLE_HDF4=ON \
+                         -DWITH_PostgreSQL=ON \
+                         -DWITH_HDF4=ON \
+                         -DGDAL_ENABLE_GNM=ON \
+                         -DENABLE_OPENJPEG=ON \
+						 -DWITH_QHULL=ON \
+						 -DWITH_OCI=ON \
+						 -DENABLE_OCI=ON \
+						 -DENABLE_GEORASTER=ON \
+						 -DWITH_KML=ON 
+
+# Support parallel building if enabled in DEB_BUILD_OPTIONS
+DEB_BUILD_PARALLEL = 1
