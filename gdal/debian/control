@@ -186,7 +186,7 @@ Homepage: http://www.gdal.org/gdal_utilities.html
 Package: gdal-data
 Architecture: all
 Depends: ${misc:Depends}
-Breaks: libgdal20 (<< 2.5.0~)
+Breaks: libgdal1h (<<2.0)
 Description: Geospatial Data Abstraction Library - Data files
  GDAL is a translator library for raster geospatial data formats.
  As a library, it presents a single abstract data model to the
