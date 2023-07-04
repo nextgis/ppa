@@ -41,7 +41,7 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
 						 -DWITH_OCI=ON \
 						 -DENABLE_OCI=ON \
 						 -DENABLE_GEORASTER=ON \
-						 -DWITH_KML=ON
+						 -DWITH_KML=ON \
                          -DBUILD_TESTING=ON \
                          -DSKIP_PYTHON_TESTS=OFF
 
