@@ -1,3 +1,3 @@
 usr/lib/python3*
 usr/bin/*.py
-*/*/usr/lib/*/_qgis_headless*.so		usr/lib/python3/dist-packages/qgis_headless
+*/*/usr/lib/*/_qgis_headless*.so		usr/lib/python3/dist-packages/qgis_headless/_qgis_headless.so
