@@ -27,7 +27,7 @@ Depends: ${shlibs:Depends},
          ${misc:Depends}
 Description: Headless rendering library using QGIS
 
-Package: python3-libqgis-headless
+Package: python3-qgis-headless
 Architecture: any
 Section: python
 Provides: ${python:Provides}
