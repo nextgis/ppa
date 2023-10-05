@@ -30,10 +30,11 @@ Description: Headless rendering library using QGIS
 Package: python3-qgis-headless
 Architecture: any
 Section: python
-Provides: ${python:Provides}
-Depends: libqgis-headless (= ${binary:Version}),
+Provides: ${python3:Provides}
+Depends: ${shlibs:Depends},
+         ${python3:Depends},
+         python3-setuptools,
          ${misc:Depends}
-XB-Python-Version: ${python:Versions}
 Description: Python bindings to headless rendering library using QGIS -
  architecture-independent files
  .
