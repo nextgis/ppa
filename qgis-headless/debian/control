@@ -31,7 +31,8 @@ Package: python3-qgis-headless
 Architecture: any
 Section: python
 Provides: ${python3:Provides}
-Depends: ${shlibs:Depends},
+Depends: libqgis-headless (= ${binary:Version}),
+         ${shlibs:Depends},
          ${python3:Depends},
          python3-setuptools,
          ${misc:Depends}
