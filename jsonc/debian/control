@@ -1,4 +1,4 @@
-Source: json-c
+Source: jsonc
 Priority: optional
 Maintainer: NextGIS <info@nextgis.com>
 Build-Depends:  debhelper (>= 9),
