@@ -1,0 +1,38 @@
+Source: json-c
+Priority: optional
+Maintainer: NextGIS <info@nextgis.com>
+Build-Depends:  debhelper (>= 9),
+               cmake,
+               cdbs,
+               doxygen,
+               swig,
+               d-shlibs,
+               dh-autoreconf
+Standards-Version: 3.9.5
+Vcs-Browser: https://github.com/nextgis-borsch/lib_jsonc
+Vcs-Git: git@github.com:nextgis-borsch/lib_jsonc.git
+Homepage: https://github.com/json-c/json-c/wiki
+
+Package: libjson-c5
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Description: JSON manipulation library - shared library
+ This library allows you to easily construct JSON objects in C,
+ output them as JSON formatted strings and parse JSON formatted
+ strings back into the C representation of JSON objects.
+
+Package: libjson-c-dev
+Section: libdevel
+Architecture: any
+Depends: libjson-c5 (= ${binary:Version}),
+         ${misc:Depends}
+Description: JSON manipulation library - development files
+ This library allows you to easily construct JSON objects in C,
+ output them as JSON formatted strings and parse JSON formatted
+ strings back into the C representation of JSON objects.
+ .
+ The development headers for compiling programs that use libjson-c
+ are provided by this package.
