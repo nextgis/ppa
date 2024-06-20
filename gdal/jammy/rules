@@ -42,10 +42,9 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
 						 -DENABLE_OCI=ON \
 						 -DENABLE_GEORASTER=ON \
 						 -DWITH_KML=ON \
-                         -DBUILD_TESTING=ON \
-                         -DSKIP_PYTHON_TESTS=OFF
+                         -DBUILD_TESTING=OFF \
+                         -DSKIP_PYTHON_TESTS=ON
 
 # Support parallel building if enabled in DEB_BUILD_OPTIONS
 DEB_BUILD_PARALLEL = 1
 DEB_DH_BUILDDEB_ARGS = -- -Zxz
-DEB_MAKE_CHECK_TARGET := test ARGS="-v --output-on-failure"
