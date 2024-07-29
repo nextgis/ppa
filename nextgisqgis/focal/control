@@ -245,7 +245,6 @@ Depends:
  python3-jinja2,
  python3-markupsafe,
  python3-owslib,
- python3-plotly,
  python3-psycopg2,
  python3-pygments,
  python3-pyproj,
