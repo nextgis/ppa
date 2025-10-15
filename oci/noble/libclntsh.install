@@ -1,0 +1,3 @@
+usr/lib/*/*.so
+usr/lib/*/libclntsh.so.*
+usr/lib/*/libclntshcore.so.*

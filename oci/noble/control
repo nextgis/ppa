@@ -1,0 +1,45 @@
+Source: oci
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: NextGIS <info@nextgis.com>
+Section: devel
+Priority: optional
+Build-Depends: debhelper (>= 9),
+               cmake,
+               cdbs,
+               d-shlibs,
+               chrpath,
+               qtbase5-private-dev,
+               libaio1t64
+Standards-Version: 3.9.5
+Vcs-Browser: https://github.com/nextgis-borsch/lib_oci
+Vcs-Git: git@github.com:nextgis-borsch/lib_oci.git
+Homepage: https://nextgis.com
+
+Package: libclntsh
+Architecture: any
+Section: libs
+Depends: libaio1, ${misc:Depends}
+Description: Oracle Database supports C and C++ programmers with a choice of high
+ performance APIs, including standards-compliant, open-source and proprietary interfaces.
+ .
+ This package contains the shared library.
+
+Package: libclntsh-dev
+Architecture: any
+Section: libdevel
+Depends: libclntsh, ${misc:Depends}
+Description: Oracle Database supports C and C++ programmers with a choice of high
+ performance APIs, including standards-compliant, open-source and proprietary interfaces.
+ .
+ This package contains the files needed to develop a software that
+ will use the OCI (headers).
+
+Package: libqt5-sql-qoci
+Architecture: any
+Section: libs
+Depends: libclntsh,
+         ${shlibs:Depends},
+         ${misc:Depends}
+Description: Qt5 Oracle Database sql plugin.
+ .
+ This package contains the shared library.

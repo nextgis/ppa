@@ -1,0 +1,3 @@
+usr/include/oci
+usr/include/ocispatial
+usr/share/oci/CMake/OCI*.cmake
