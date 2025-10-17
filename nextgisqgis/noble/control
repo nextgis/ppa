@@ -1,0 +1,291 @@
+Source: nextgisqgis
+Maintainer: NextGIS <info@nextgis.com>
+Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+           Alexander Lisovenko <alexander.lisovenko@gmail.com>
+           Denis Ilyin <denis.ilyin@nextgis.com>
+Section: science
+Priority: optional
+Build-Depends: debhelper (>= 9),
+               cmake,
+               cmake-data,
+               cdbs,
+               dh-autoreconf,
+               d-shlibs,
+               dh-python,
+               python3-dev,
+               python3-sipbuild,
+               python3-sip-dev,
+               python3-sip,
+               python3-pyqtbuild,
+               sip-tools,
+               pyqt5-dev,
+               pyqt5-dev-tools,
+               python3-pyqt5.qsci,
+               pyqt5.qsci-dev,
+               libexpat1-dev,
+               libproj-dev,
+               libgeos-dev,
+               libgdal-dev,
+               libgsl-dev,
+               libpq-dev,
+               libqca-qt5-2-dev,
+               libqscintilla2-qt5-dev,
+               libspatialindex-dev,
+               libsqlite3-dev,
+               libqwt-qt5-dev,
+               libspatialindex-dev,
+               libspatialite-dev,
+               libzip-dev,
+               libqt5svg5-dev,
+               libqt5xmlpatterns5-dev,
+               opencl-headers,
+               qt5keychain-dev,
+               qt3d5-dev,
+               qt3d-assimpsceneimport-plugin,
+               qt3d-defaultgeometryloader-plugin,
+               qt3d-gltfsceneio-plugin,
+               qt3d-scene2d-plugin,
+               qtbase5-dev,
+               qtbase5-private-dev,
+               qttools5-dev-tools,
+               qttools5-dev,
+               qtdeclarative5-dev,
+               qtmultimedia5-dev,
+               zipcmp,
+               zipmerge,
+               ziptool,
+               libngstd-framework-dev,
+               python-ngstd
+Standards-Version: 4.5.0
+Vcs-Browser: https://github.com/nextgis/nextgisqgis
+Vcs-Git: git@github.com:nextgis/nextgisqgis.git
+Homepage: http://nextgis.com/nextgis-qgis/
+X-Python3-Version: >= 3.2
+
+Package: ngqgis
+Architecture: any
+Depends: ngqgis-common (= ${source:Version}),
+         ngqgis-providers (= ${binary:Version}),
+         qt5-image-formats-plugins,
+         libngqgis-app (= ${binary:Version}),
+         ${shlibs:Depends},
+         ${misc:Depends}
+Description: Geographic Information System (GIS)
+ A Geographic Information System (GIS) manages, analyzes, and displays
+ databases of geographic information. NextGIS QGIS supports shape file viewing and
+ editing, spatial data storage with PostgreSQL/PostGIS, projection on-the-fly,
+ map composition, and a number of other features via a plugin interface. NextGIS QGIS
+ also supports display of various georeferenced raster and Digital Elevation
+ Model (DEM) formats including GeoTIFF, Arc/Info ASCII Grid, and USGS ASCII
+ DEM.
+
+Package: ngqgis-common
+Architecture: all
+Depends: ${misc:Depends}
+Description: NextGIS QGIS - architecture-independent data
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains architecture-independent supporting data files for use
+ with NextGIS QGIS.
+
+Package: libngqgis-core
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libngqgis-native (= ${binary:Version})
+Description: NextGIS GIS - shared core library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the shared core library.
+
+Package: libngqgis-native
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: NextGIS QGIS - shared native gui library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the shared native gui library.
+
+Package: libngqgis-analysis
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libngqgis-core (= ${binary:Version})
+Description: NextGIS QGIS - shared analysis library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the shared analysis library.
+
+Package: libngqgis-app
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libngqgis-gui (= ${binary:Version}),
+         libngqgis-3d (= ${binary:Version}),
+         libngqgis-analysis (= ${binary:Version}),
+         libngqgispython (= ${binary:Version})
+Description: NextGIS QGIS - shared app library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the shared app library.
+
+Package: libngqgis-gui
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libngqgis-core (= ${binary:Version})
+Description: NextGIS QGIS - shared gui library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the shared gui library.
+
+Package: libngqgis-3d
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libngqgis-core (= ${binary:Version})
+Description: NextGIS QGIS - shared 3D library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the shared 3D library.
+
+Package: libngqgispython
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         python3-ngqgis (= ${binary:Version})
+Description: NextGIS QGIS - shared Python library
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the shared Python library.
+
+Package: libngqgis-dev
+Architecture: any
+Section: libdevel
+Depends: libngqgis-core (= ${binary:Version}),
+         libngqgis-native (= ${binary:Version}),
+         libngqgis-analysis (= ${binary:Version}),
+         libngqgis-gui (= ${binary:Version}),
+         libngqgis-app (= ${binary:Version}),
+         libngqgis-3d (= ${binary:Version}),
+         libngqgispython,
+         libqt5webkit5-dev,
+         libexpat1-dev,
+         libgsl-dev,
+         libpq-dev,
+         libqca-qt5-2-dev,
+         libqscintilla2-qt5-dev,
+         libgdal-dev,
+         libgeos-dev,
+         libproj-dev,
+         libqwt-qt5-dev,
+         libsqlite3-dev,
+         libqt5svg5-dev,
+         qtmultimedia5-dev,
+         qtbase5-dev,
+         qttools5-dev,
+         ${misc:Depends}
+Provides: ngqgis-dev
+Description: NextGIS QGIS - development files
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the headers and libraries needed to develop plugins for
+ QGIS.
+
+Package: ngqgis-providers
+Architecture: any
+Pre-Depends: dpkg (>= 1.16.1),
+             ${misc:Pre-Depends}
+Depends: ngqgis-providers-common (= ${source:Version}),
+         libqca-qt5-2-plugins,
+         libqt5sql5-sqlite,
+         ${shlibs:Depends},
+         ${misc:Depends}
+Description: collection of data providers to NextGIS QGIS
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the provider plugins for QGIS.
+
+Package: ngqgis-providers-common
+Architecture: all
+Depends: ${misc:Depends}
+Description: collection of data providers to NextGIS QGIS - architecture-independent files
+ NextGIS QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains architecture-independent files for the QGIS providers.
+
+Package: python3-ngqgis
+Architecture: any
+Section: python
+Depends:
+ python3-ngqgis-common (= ${source:Version}),
+ libngqgispython (= ${binary:Version}),
+ libsqlite3-mod-spatialite,
+ python-ngstd,
+ python3-dateutil,
+ python3-future,
+ python3-httplib2,
+ python3-jinja2,
+ python3-markupsafe,
+ python3-owslib,
+ python3-psycopg2,
+ python3-pygments,
+ python3-pyproj,
+ python3-pyqt5,
+ python3-pyqt5.qsci,
+ python3-pyqt5.qtpositioning,
+ python3-pyqt5.qtsql,
+ python3-pyqt5.qtsvg,
+ python3-pyqt5.qtwebkit,
+ python3-pyqt5.qtmultimedia,
+ python3-requests,
+ python3-sip,
+ python3-six,
+ python3-tz,
+ python3-yaml,
+ ${python3:Depends},
+ ${shlibs:Depends},
+ ${sip3:Depends},
+ ${misc:Depends}
+Provides: ${python3:Provides}
+Description: Python bindings to QGIS
+ QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains the files for the Python support.
+
+Package: python3-ngqgis-common
+Architecture: all
+Section: python
+Depends:
+ gdal-bin,
+ python3-gdal,
+ python3-matplotlib,
+ ${python3:Depends},
+ ${misc:Depends}
+Provides: ${python3:Provides}
+Description: Python bindings to QGIS - architecture-independent files
+ QGIS is a Geographic Information System (GIS) which manages, analyzes and
+ display databases of geographic information.
+ .
+ This package contains architecture-independent files for the QGIS Python
+ bindings.

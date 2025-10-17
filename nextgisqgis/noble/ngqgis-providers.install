@@ -1,0 +1,2 @@
+usr/lib/*/ngqgis/plugins/libauthmethod_*.so
+usr/lib/*/ngqgis/plugins/libprovider_*.so
