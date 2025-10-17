@@ -11,7 +11,8 @@ DEB_CMAKE_EXTRA_FLAGS := -DSKIP_DEFAULTS=ON \
                          -DBUILD_TESTING=OFF \
                          -DCMAKE_BUILD_TYPE=Release \
                          -DWITH_OAUTH2_PLUGIN=OFF \
-                         -DWITH_QGIS_PROCESS=OFF
+                         -DWITH_QGIS_PROCESS=OFF \
+                         -DPROJ_INCLUDE_DIR:FILEPATH=/usr/include
 
 # Support parallel building if enabled in DEB_BUILD_OPTIONS
 DEB_BUILD_PARALLEL = 1
