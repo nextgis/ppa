@@ -1,6 +1,6 @@
 Source: ngstd
 Maintainer: NextGIS <info@nextgis.com>
-Uploaders: Dmitry Baryshnikov <dmitry.baryshnikov@nextgis.com>
+Uploaders: NextGIS <info@nextgis.com>
 Section: science
 Priority: optional
 Build-Depends: debhelper (>= 9),
@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 9),
                dh-autoreconf,
                d-shlibs,
                chrpath,
-               libgdal-dev (>= 3.1),
+               libgdal-dev (= 3.6.4),
                qtbase5-dev-tools,
                qttools5-dev-tools,
                qttools5-dev,
